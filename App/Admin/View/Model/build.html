@@ -1,0 +1,106 @@
+<extend name="Public/base" />
+
+<block name="body">
+<div class="fixed-bar" id="Model_Bar">
+	<div class="item-title">
+		<h3>模型管理</h3>
+		<ul class="tab-base">
+			<if condition="Is_Auth('Admin/Model/index')">
+			<li><a href="{:U('Admin/Model/index')}"><span>列表</span></a></li>
+			</if>
+			<if condition="Is_Auth('Admin/Model/add')">
+			<li><a href="{:U('Admin/Model/add')}"><span>新增</span></a></li>
+			</if>
+			<li><a class="current" href="#"><span>编辑</span></a></li>
+			<if condition="Is_Auth('Admin/Model/generate')">
+			<li><a href="{:U('Admin/Model/generate')}"><span>系统化数据模型</span></a></li>
+			</if>
+		</ul>
+	</div>
+</div>
+<form id="Model_Form" method="post">
+<table class="table tb-type2 nobdb">
+	<tbody>
+		<tr>
+			<td colspan="2" class="required"><label for="for_build_action">生成控制器文件:</label></td>
+		</tr>
+		<tr class="noborder">
+			<td class="vatop rowform">
+            <select style="height:30px;" id="for_build_action" name="build_action" class="easyui-combobox" data-options="value:'1',multiple:false,required:false,editable:false">
+                <option value="0" >不生成</option>
+                <option value="1" >生成</option>
+			</select>
+            </td>
+			<td class="vatop tips"></td>
+		</tr>
+		<tr>
+			<td colspan="2" class="required"><label for="for_build_model">生成模型文件:</label></td>
+		</tr>
+		<tr class="noborder">
+			<td class="vatop rowform">
+            <select style="height:30px;" id="for_build_model" name="build_model" class="easyui-combobox" data-options="value:'1',multiple:false,required:false,editable:false">
+                <option value="0" >不生成</option>
+                <option value="1" >生成</option>
+			</select>
+            </td>
+			<td class="vatop tips"></td>
+		</tr>
+		<tr>
+			<td colspan="2" class="required"><label for="for_build_rule">生成菜单:</label></td>
+		</tr>
+		<tr class="noborder">
+			<td class="vatop rowform">
+            <select style="height:30px;" id="for_build_rule" name="build_rule" class="easyui-combobox" data-options="value:'0',multiple:false,required:false,editable:false">
+                <option value="0" >不生成</option>
+                <option value="1" >生成</option>
+			</select>
+            </td>
+			<td class="vatop tips">新增菜单后会默认增加到 "系统->系统设置" 下，创建菜单后请移动到需要的对应菜单下</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="required"><label for="for_build_tpl_index">生成列表文件:</label></td>
+		</tr>
+		<tr class="noborder">
+			<td class="vatop rowform">
+            <select style="height:30px;" id="for_build_tpl_index" name="build_tpl_index" class="easyui-combobox" data-options="value:'1',multiple:false,required:false,editable:false">
+                <option value="0" >不生成</option>
+                <option value="1" >生成</option>
+			</select>
+            </td>
+			<td class="vatop tips"></td>
+		</tr>
+		<tr>
+			<td colspan="2" class="required"><label for="for_build_tpl_add">生成新增文件:</label></td>
+		</tr>
+		<tr class="noborder">
+			<td class="vatop rowform">
+            <select style="height:30px;" id="for_build_tpl_add" name="build_tpl_add" class="easyui-combobox" data-options="value:'1',multiple:false,required:false,editable:false">
+                <option value="0" >不生成</option>
+                <option value="1" >生成</option>
+			</select>
+            </td>
+			<td class="vatop tips"></td>
+		</tr>
+		<tr>
+			<td colspan="2" class="required"><label for="for_build_tpl_edit">生成更改文件:</label></td>
+		</tr>
+		<tr class="noborder">
+			<td class="vatop rowform">
+            <select style="height:30px;" id="for_build_tpl_edit" name="build_tpl_edit" class="easyui-combobox" data-options="value:'1',multiple:false,required:false,editable:false">
+                <option value="0" >不生成</option>
+                <option value="1" >生成</option>
+			</select>
+            </td>
+			<td class="vatop tips"></td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr class="tfoot">
+			<td colspan="2"><a class="easyui-linkbutton" href="JavaScript:void(0);" onclick="$('#Model_Form').submit();" data-options="iconCls:'iconfont icon-edit'"><span style="font-size: 14px; font-weight: 600;">提交</span></a></td>
+		</tr>
+	 </tfoot>
+</table>
+<input name="model_id" type="hidden" value="{$model_id}" />
+</form>
+</block>
+

@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>实时监控</title>
+    <script type="text/javascript" src="__STATIC__/Jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/Jquery/jquery.form.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/Easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/Easyui/locale/easyui-lang-zh_CN.js"></script>
+
+    <script type="text/javascript" src="__Manager_JS__/main.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="__STATIC__/Easyui/themes/metro-gms/easyui.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/Easyui/themes/icon.css">
+    <!--<link rel="stylesheet" href="__STATIC__/Font/iconfont.css">-->
+    <link rel="stylesheet" type="text/css" href="__STATIC__/Easyui/themes/color.css">
+</head>
+<body>
+<table id="tt" style="width:auto;height:auto">
+
+    <thead data-options="frozen:false">
+    <tr>
+
+        <th field="text" width="120" align="center" data-options="align:'right'">单位名称</th>
+        <th field="parent_name" width="120" align="center">上级名称</th>
+        <th field="responsibility_people" width="120" align="center">负责人</th>
+        <th field="tel_no" width="120" align="center">联系电话</th>
+        <th field="address" width="180" align="center">地址</th>
+        <th field="description" width="230" align="center">描述</th>
+    </tr>
+    </thead>
+
+
+</table>
+
+</body>
+<script>
+
+//    http://localhost/CourtGms/index.php?m=Service&c=VehicleInterface&a=getVehicleListTree
+    $('#tt').treegrid({
+        url:"{:U('Service/GroupInfo/getGroupInfoToList')}&value=1",
+        idField:'id',
+        treeField:'text',
+        rownumbers: true,
+        lines: true,
+        animate: true,
+        collapsible: true,
+        fitColumns: true,
+    });
+</script>

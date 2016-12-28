@@ -1,0 +1,48 @@
+
+<div class="fixed-bar" id="{$ModelInfo['name']}_Bar">
+	<div class="item-title">
+		<h3>{$ModelInfo['title']}</h3>
+		<ul class="tab-base">
+			<literal><if condition="Is_Auth('Admin/</literal>{$ModelInfo['name']}<literal>/index')"></literal>
+			<li><a href="<literal>{:U('Admin/</literal>{$ModelInfo['name']}<literal>/index')}</literal>"><span>列表</span></a></li>
+			<literal></if></literal>
+			<literal><if condition="Is_Auth('Admin/</literal>{$ModelInfo['name']}<literal>/add')"></literal>
+			<li><a href="<literal>{:U('Admin/</literal>{$ModelInfo['name']}<literal>/add')}</literal>"><span>新增</span></a></li>
+			<literal></if></literal>
+			<li><a class="current" href="#"><span>更新</span></a></li>
+		</ul>
+	</div>
+</div>
+<form id="{$ModelInfo['name']}_Form" method="post">
+<table class="table tb-type2 nobdb">
+	<tbody>
+	<volist name="Form" id="FormShow">
+	<if condition="$FormShow['type'] eq 'editor'">
+		<tr>
+			<td colspan="2" class="required"><label for="for_{$FormShow['name']}">{$FormShow['title']}:</label></td>
+		</tr>
+		<tr class="noborder">
+			<td class="vatop rowform">{$FormShow['form']}</td>
+		</tr>
+		<tr class="noborder">
+			<td colspan="2" class="vatop tips">{$FormShow['remark']}</td>
+		</tr>
+	<else/>
+		<tr>
+			<td colspan="2" class="required"><label for="for_{$FormShow['name']}">{$FormShow['title']}:</label></td>
+		</tr>
+		<tr class="noborder">
+			<td class="vatop rowform">{$FormShow['form']}</td>
+			<td class="vatop tips">{$FormShow['remark']}</td>
+		</tr>
+	</if>
+	</volist>
+	</tbody>
+	<tfoot>
+		<tr class="tfoot">
+			<td colspan="2"><a class="easyui-linkbutton" href="JavaScript:void(0);" onclick="$('#{$ModelInfo['name']}_Form').submit();" data-options="iconCls:'iconfont icon-edit'"><span style="font-size: 14px; font-weight: 600;">提交</span></a></td>
+		</tr>
+	 </tfoot>
+</table>
+<input name="id" type="hidden" value="<literal>{:I('get.id')}</literal>" />
+</form>

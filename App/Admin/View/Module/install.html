@@ -1,0 +1,60 @@
+<extend name="Public/base"/>
+<block name="body">
+  <div class="fixed-bar" id="Module_Bar" style="height: auto">
+    <div class="item-title">
+      <h3>模块</h3>
+      <ul class="tab-base">
+        <li><a href="{:U('Admin/Module/index')}"><span>列表</span></a></li>
+        <li><a class="current" href="#"><span>安装</span></a></li>
+      </ul>
+    </div>
+  </div>
+<form id="Module_Form" method="post">
+    <table class="table tb-type2 nobdb">
+      <tbody>
+      <tr>
+        <td width="100">模块名称：</td>
+        <td><strong>{$info['title']}</strong> [{$info['name']}] [{$info['version']}]</td>
+      </tr>
+      <tr>
+        <td>模块简介：</td>
+        <td>{$info['description']}</td>
+      </tr>
+      <tr>
+        <td>作者：</td>
+        <td>{$info['author']}</td>
+      </tr>
+      <tr>
+        <td>E-mail：</td>
+        <td>{$info['author_email']}</td>
+      </tr>
+      <tr>
+        <td>作者主页：</td>
+        <td><a href="{$info['author_site']}" target="_blank">{$info['author_site']}</a></td>
+      </tr>
+      <tr>
+        <td>依赖模块：</td>
+        <td><volist name='info["rely_module"]' id='vo'>
+        <php>$v_m=validate_module($vo['name'],$vo['version']);</php>
+        <switch name="v_m" >
+        <case value="1"><a href="{$vo.site}" target="_blank" class="easyui-linkbutton bon2">{$vo.title}[{$vo.name} {$vo.version}] 模块不存在</a></case>
+        <case value="2"><a href="{$vo.site}" target="_blank" class="easyui-linkbutton bon2">{$vo.title}[{$vo.name} {$vo.version}] 版本过低</a></case>
+        <case value="3"><a href="#" class="easyui-linkbutton bon2">{$vo.title}[{$vo.name} {$vo.version}] 模块未启用</a></case>
+        <case value="9"><a href="#" class="easyui-linkbutton bon1">{$vo.title}[{$vo.name} {$vo.version}]</a></case>
+        <default />未知错误
+        </switch></volist></td>
+      </tr>
+      <tr>
+        <td>依赖插件：</td>
+        <td><volist name='info["rely_addons"]' id='vo'>{$vo.name}{$vo.title}{$vo.version}{$vo.site}<br/></volist></td>
+      </tr>
+      </tbody>
+      <tfoot>
+        <tr class="tfoot">
+          <td colspan="2"><a class="easyui-linkbutton" href="JavaScript:void(0);" onclick="$('#Module_Form').submit();" data-options="iconCls:'iconfont icon-edit'"><span style="font-size: 14px; font-weight: 600;">确定安装</span></a></td>
+        </tr>
+      </tfoot>
+    </table>
+	<input type="hidden" name="modulename" value="{$name}">
+</form>
+</block>

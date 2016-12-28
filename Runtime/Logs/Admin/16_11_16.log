@@ -1,0 +1,532 @@
+[ 2016-11-16T17:32:04+08:00 ] ::1 /TobaccoGms1/index.php?m=Admin&c=Public&a=login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000072s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000852s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001485s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000679s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001026s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.0486s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0441s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.0488s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0445s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.518843s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.519220s ]
+
+[ 2016-11-16T17:32:05+08:00 ] ::1 /TobaccoGms1/index.php?m=Admin&c=Index&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000064s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000509s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001281s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000523s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000972s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.0454s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0406s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.0433s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0429s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.364901s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.365304s ]
+ERR: $Auth_RuleAdmin/Index/index
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0434s ]
+SQL: SELECT `id`,`pid`,`name`,`title`,`icon`,`menu_type` FROM `gms_auth_rule` WHERE `hide` = 0 AND `status` = 1 ORDER BY sort asc  [ RunTime:0.0442s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000314s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000857s ]
+ERR: $Auth_RuleAdmin/Index/cache
+ERR: $Auth_RuleManager/Setting/setting
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.0419s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0397s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.0399s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.0393s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0431s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','231','232','234','235','230','229','224','225','226','227','228','233','1','207','212','250','251','252','211118','216','239','240','241','208','210','245','246','247','248','274','282','283','284','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','17','20','84','25','26','27','28','13','14','15','16','4','296','297','61','45','46','47','48','49','50','51','52','29','32','31','30','33','34','35','36','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.0455s ]
+ERR: $Auth_RuleManager/Setting/generateLogs
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.302105s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.302449s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.014349s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.014697s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.013594s ]
+INFO: [ app_end ] --END-- [ RunTime:0.022190s ]
+
+[ 2016-11-16T17:51:15+08:00 ] ::1 /TobaccoGms1/index.php?m=Admin&c=AuthRule&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000066s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000403s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001020s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001328s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002264s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.0799s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0732s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.0767s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0760s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.768679s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.769020s ]
+ERR: $Auth_RuleAdmin/AuthRule/index
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.0772s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0748s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.0735s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.0767s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0775s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','231','232','234','235','230','229','224','225','226','227','228','233','1','207','212','250','251','252','211118','216','239','240','241','208','210','245','246','247','248','274','282','283','284','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','17','20','84','25','26','27','28','13','14','15','16','4','296','297','61','45','46','47','48','49','50','51','52','29','32','31','30','33','34','35','36','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.0786s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0770s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000224s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000631s ]
+ERR: $Auth_RuleAdmin/AuthRule/add
+ERR: $Auth_RuleAdmin/AuthRule/add
+ERR: $Auth_RuleAdmin/AuthRule/edit
+ERR: $Auth_RuleAdmin/AuthRule/del
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.035769s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.036115s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000298s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000618s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000434s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000757s ]
+
+[ 2016-11-16T17:51:17+08:00 ] ::1 /TobaccoGms1/index.php?m=Admin&c=AuthRule&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000068s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000430s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001058s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000618s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000965s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.1006s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.1034s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.1018s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0956s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.762400s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.762853s ]
+ERR: $Auth_RuleAdmin/AuthRule/index
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.0940s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0943s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.0944s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.0940s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0970s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','231','232','234','235','230','229','224','225','226','227','228','233','1','207','212','250','251','252','211118','216','239','240','241','208','210','245','246','247','248','274','282','283','284','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','17','20','84','25','26','27','28','13','14','15','16','4','296','297','61','45','46','47','48','49','50','51','52','29','32','31','30','33','34','35','36','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.0984s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.1028s ]
+SQL: SELECT `id`,`pid`,`title`,`name`,`icon`,`type`,`hide`,`status` FROM `gms_auth_rule` ORDER BY sort asc  [ RunTime:0.1037s ]
+
+[ 2016-11-16T17:52:44+08:00 ] ::1 /TobaccoGms1/index.php?m=Admin&c=AuthRule&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000110s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000708s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001565s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000389s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000686s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.1329s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.1351s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.1340s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.1326s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:1.048761s ]
+INFO: [ action_begin ] --END-- [ RunTime:1.049204s ]
+ERR: $Auth_RuleAdmin/AuthRule/index
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.1364s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.1377s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.1338s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.1355s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.1371s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','231','232','234','235','230','229','224','225','226','227','228','233','1','207','212','250','251','252','211118','216','239','240','241','208','210','245','246','247','248','274','282','283','284','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','17','20','84','25','26','27','28','13','14','15','16','4','296','297','61','45','46','47','48','49','50','51','52','29','32','31','30','33','34','35','36','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.1398s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.1335s ]
+SQL: SELECT `id`,`pid`,`title`,`name`,`icon`,`type`,`hide`,`status` FROM `gms_auth_rule` ORDER BY sort asc  [ RunTime:0.1350s ]
+
+[ 2016-11-16T17:52:52+08:00 ] ::1 /TobaccoGms1/index.php?m=Admin&c=AuthRule&a=add&pid=216
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000064s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000366s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000938s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000416s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000738s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.1104s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.1071s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.1065s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.1043s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.844620s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.844987s ]
+ERR: $Auth_RuleAdmin/AuthRule/add
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.1047s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.1055s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.1039s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.1066s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.1013s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','231','232','234','235','230','229','224','225','226','227','228','233','1','207','212','250','251','252','211118','216','239','240','241','208','210','245','246','247','248','274','282','283','284','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','17','20','84','25','26','27','28','13','14','15','16','4','296','297','61','45','46','47','48','49','50','51','52','29','32','31','30','33','34','35','36','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.1032s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.1035s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000225s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000567s ]
+ERR: $Auth_RuleAdmin/AuthRule/index
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.037428s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.037749s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000309s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000637s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000492s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000812s ]
+
+[ 2016-11-16T17:52:53+08:00 ] ::1 /TobaccoGms1/index.php?m=Admin&c=Function&a=get_icon&r_type=json
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000076s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000661s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001338s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000632s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001079s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.0950s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0940s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.0941s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0947s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.749002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.749292s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000462s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000729s ]
+
+[ 2016-11-16T17:52:54+08:00 ] ::1 /TobaccoGms1/index.php?m=Admin&c=Function&a=get_auth_rule&pid=-1&r_type=json
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000065s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000389s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000961s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000638s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001075s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.0915s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0905s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.0950s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0952s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.724774s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.725121s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0945s ]
+SQL: SELECT `id`,`pid`,title as text FROM `gms_auth_rule` WHERE `status` = 1 ORDER BY sort asc  [ RunTime:0.0945s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000461s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000720s ]
+
+[ 2016-11-16T17:53:30+08:00 ] ::1 /TobaccoGms1/index.php?m=Admin&c=AuthRule&a=add&pid=216
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000066s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000393s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000980s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000406s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000736s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.0906s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0917s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.0945s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0911s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.755912s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.756273s ]
+ERR: $Auth_RuleAdmin/AuthRule/add
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.0945s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0909s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.0928s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.0909s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0926s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','231','232','234','235','230','229','224','225','226','227','228','233','1','207','212','250','251','252','211118','216','239','240','241','208','210','245','246','247','248','274','282','283','284','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','17','20','84','25','26','27','28','13','14','15','16','4','296','297','61','45','46','47','48','49','50','51','52','29','32','31','30','33','34','35','36','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.0944s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0913s ]
+NOTIC: [8] Undefined index: validate /Applications/XAMPP/xamppfiles/htdocs/TobaccoGms1/ThinkPHP/Library/Think/Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto /Applications/XAMPP/xamppfiles/htdocs/TobaccoGms1/ThinkPHP/Library/Think/Model.class.php 第 1128 行.
+SQL: INSERT INTO `gms_auth_rule` (`pid`,`title`,`name`,`icon`,`type`,`hide`,`status`,`sort`,`condition`,`menu_type`,`system_jurisdiction`) VALUES ('216','转组','Service/SimCardInfo/MoveGroup','','1','0','1','0','','0','1') [ RunTime:0.1008s ]
+SQL: SHOW COLUMNS FROM `gms_action` [ RunTime:0.0937s ]
+SQL: SELECT * FROM `gms_action` WHERE `name` = 'Add_AuthRule' LIMIT 1   [ RunTime:0.0978s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000274s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000666s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.053659s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.053993s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000271s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000586s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000434s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000755s ]
+
+[ 2016-11-16T17:53:33+08:00 ] ::1 /TobaccoGms1/index.php?m=Admin&c=AuthRule&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000119s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000520s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001811s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000413s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000737s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.1084s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.1058s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.1094s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.1072s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.874599s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.874941s ]
+ERR: $Auth_RuleAdmin/AuthRule/index
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.1069s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.1068s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.1073s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.1091s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.1071s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','231','232','234','235','230','229','224','225','226','227','228','233','1','207','212','250','251','252','211118','216','239','240','241','208','210','245','246','247','248','274','282','283','284','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','17','20','84','25','26','27','28','13','14','15','16','4','296','297','61','45','46','47','48','49','50','51','52','29','32','31','30','33','34','35','36','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.1060s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.1028s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000221s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000556s ]
+ERR: $Auth_RuleAdmin/AuthRule/add
+ERR: $Auth_RuleAdmin/AuthRule/add
+ERR: $Auth_RuleAdmin/AuthRule/edit
+ERR: $Auth_RuleAdmin/AuthRule/del
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020312s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020641s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000286s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000603s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000442s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000807s ]
+
+[ 2016-11-16T17:53:35+08:00 ] ::1 /TobaccoGms1/index.php?m=Admin&c=AuthRule&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000128s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000754s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001795s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000877s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001344s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.1054s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.1052s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.1050s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.1055s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.868644s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.869079s ]
+ERR: $Auth_RuleAdmin/AuthRule/index
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.1054s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.1059s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.1065s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.1099s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.1123s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','231','232','234','235','230','229','224','225','226','227','228','233','1','207','212','250','251','252','211118','216','239','240','241','208','210','245','246','247','248','274','282','283','284','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','17','20','84','25','26','27','28','13','14','15','16','4','296','297','61','45','46','47','48','49','50','51','52','29','32','31','30','33','34','35','36','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.1105s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.1098s ]
+SQL: SELECT `id`,`pid`,`title`,`name`,`icon`,`type`,`hide`,`status` FROM `gms_auth_rule` ORDER BY sort asc  [ RunTime:0.1084s ]
+
+[ 2016-11-16T17:54:20+08:00 ] ::1 /TobaccoGms1/index.php?m=Admin&c=AuthGroup&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000065s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000388s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000966s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000444s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000919s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.0994s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0996s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.1004s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.1001s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.810746s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.811150s ]
+ERR: $Auth_RuleAdmin/AuthGroup/index
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.1013s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.1060s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.1032s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.1024s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.1029s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','231','232','234','235','230','229','224','225','226','227','228','233','1','207','212','250','251','252','211118','216','239','240','241','208','210','245','246','247','248','274','282','283','284','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','17','20','84','25','26','27','28','13','14','15','16','4','296','297','61','45','46','47','48','49','50','51','52','29','32','31','30','33','34','35','36','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.1022s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.0997s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000261s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000593s ]
+ERR: $Auth_RuleAdmin/AuthGroup/add
+ERR: $Auth_RuleAdmin/AuthGroup/add
+ERR: $Auth_RuleAdmin/AuthGroup/edit
+ERR: $Auth_RuleAdmin/AuthGroup/del
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.026989s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027342s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000312s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000635s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000537s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001031s ]
+
+[ 2016-11-16T17:54:22+08:00 ] ::1 /TobaccoGms1/index.php?m=Admin&c=Function&a=get_status_option
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000109s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000461s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001313s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000567s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000976s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.1138s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.1141s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.1146s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.1095s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.933048s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.933442s ]
+
+[ 2016-11-16T17:54:23+08:00 ] ::1 /TobaccoGms1/index.php?m=Admin&c=Function&a=get_auth_rule&r_type=json
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000066s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000639s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001345s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000428s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000745s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.1050s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.1019s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.1034s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.1025s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.859688s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.859971s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.1050s ]
+SQL: SELECT `id`,`pid`,title as text FROM `gms_auth_rule` WHERE `status` = 1 ORDER BY sort asc  [ RunTime:0.1056s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000495s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000757s ]
+
+[ 2016-11-16T17:54:24+08:00 ] ::1 /TobaccoGms1/index.php?m=Admin&c=Function&a=get_auth_group&r_type=json
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000066s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000395s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000974s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000419s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000709s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.1002s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0963s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.0964s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0957s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.806690s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.807142s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.0963s ]
+SQL: SELECT `id`,title as text FROM `gms_auth_group` WHERE `status` = 1 ORDER BY id asc  [ RunTime:0.0953s ]
+
+[ 2016-11-16T17:54:25+08:00 ] ::1 /TobaccoGms1/index.php?m=Admin&c=AuthGroup&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000067s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000401s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000987s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003951s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005079s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.0782s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0755s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.0868s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0761s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.635573s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.635903s ]
+ERR: $Auth_RuleAdmin/AuthGroup/index
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.0763s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0802s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.0782s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.0777s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0796s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','231','232','234','235','230','229','224','225','226','227','228','233','1','207','212','250','251','252','211118','216','239','240','241','208','210','245','246','247','248','274','282','283','284','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','17','20','84','25','26','27','28','13','14','15','16','4','296','297','61','45','46','47','48','49','50','51','52','29','32','31','30','33','34','35','36','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.0795s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.0880s ]
+NOTIC: [8] Undefined index: s_title /Applications/XAMPP/xamppfiles/htdocs/TobaccoGms1/App/Admin/Controller/AuthGroupController.class.php 第 72 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `gms_auth_group` WHERE `status` > -1 LIMIT 1   [ RunTime:0.0835s ]
+SQL: SELECT * FROM `gms_auth_group` WHERE `status` > -1 ORDER BY id desc LIMIT 0,20   [ RunTime:0.0843s ]
+
+[ 2016-11-16T17:54:29+08:00 ] ::1 /TobaccoGms1/index.php?m=Admin&c=AuthGroup&a=edit&id=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000067s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000580s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001220s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000491s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000816s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.1082s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.1036s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.1044s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.1033s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.845362s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.845776s ]
+ERR: $Auth_RuleAdmin/AuthGroup/edit
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.1051s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.1029s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.1054s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.1056s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.1060s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','231','232','234','235','230','229','224','225','226','227','228','233','1','207','212','250','251','252','211118','216','239','240','241','208','210','245','246','247','248','274','282','283','284','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','17','20','84','25','26','27','28','13','14','15','16','4','296','297','61','45','46','47','48','49','50','51','52','29','32','31','30','33','34','35','36','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.1045s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.1034s ]
+SQL: SELECT `id`,`title`,`rules`,`sort`,`status` FROM `gms_auth_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.1047s ]
+
+[ 2016-11-16T17:54:42+08:00 ] ::1 /TobaccoGms1/index.php?m=Admin&c=AuthGroup&a=AuthGroup&a=edit
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000063s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000375s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001057s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000509s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001003s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.1082s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.1085s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.1102s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.1111s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.882276s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.883073s ]
+ERR: $Auth_RuleAdmin/AuthGroup/edit
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.1135s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.1076s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.1074s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.1042s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.1046s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','231','232','234','235','230','229','224','225','226','227','228','233','1','207','212','250','251','252','211118','216','239','240','241','208','210','245','246','247','248','274','282','283','284','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','17','20','84','25','26','27','28','13','14','15','16','4','296','297','61','45','46','47','48','49','50','51','52','29','32','31','30','33','34','35','36','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.1037s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.1015s ]
+NOTIC: [8] Undefined index: validate /Applications/XAMPP/xamppfiles/htdocs/TobaccoGms1/ThinkPHP/Library/Think/Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto /Applications/XAMPP/xamppfiles/htdocs/TobaccoGms1/ThinkPHP/Library/Think/Model.class.php 第 1128 行.
+SQL: UPDATE `gms_auth_group` SET `title`='超级管理员',`rules`='217,266,268,259,260,257,264,220,254,232,234,235,231,230,229,224,225,226,227,228,233,1,207,212,318,250,251,252,216,239,240,241,319,208,210,245,246,247,248,274,283,284,282,213,236,237,238,298,6,209,242,243,244,57,218,219,272,295,60,59,58,25,27,26,28,17,20,84,13,14,15,16,4,296,297,61,45,46,47,48,49,50,52,51,29,32,30,31,33,35,36,34,80,81,82,83,5,37,39,40,62,38',`status`='1',`sort`='1' WHERE `id` = 1 [ RunTime:0.1051s ]
+SQL: SHOW COLUMNS FROM `gms_action` [ RunTime:0.1052s ]
+SQL: SELECT * FROM `gms_action` WHERE `name` = 'Edit_AuthGroup' LIMIT 1   [ RunTime:0.1055s ]
+
+[ 2016-11-16T17:54:44+08:00 ] ::1 /TobaccoGms1/index.php?m=Admin&c=AuthGroup&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000068s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000413s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001028s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000498s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000821s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.1025s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.1042s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.1089s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.1072s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.829207s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.829672s ]
+ERR: $Auth_RuleAdmin/AuthGroup/index
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.1066s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.1084s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.1104s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.1123s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.1118s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','232','234','235','231','230','229','224','225','226','227','228','233','1','207','212','318','250','251','252','216','239','240','241','319','208','210','245','246','247','248','274','283','284','282','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','25','27','26','28','17','20','84','13','14','15','16','4','296','297','61','45','46','47','48','49','50','52','51','29','32','30','31','33','35','36','34','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.1174s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.1131s ]
+NOTIC: [8] Undefined index: s_title /Applications/XAMPP/xamppfiles/htdocs/TobaccoGms1/App/Admin/Controller/AuthGroupController.class.php 第 72 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `gms_auth_group` WHERE `status` > -1 LIMIT 1   [ RunTime:0.1088s ]
+SQL: SELECT * FROM `gms_auth_group` WHERE `status` > -1 ORDER BY id desc LIMIT 0,20   [ RunTime:0.1061s ]
+

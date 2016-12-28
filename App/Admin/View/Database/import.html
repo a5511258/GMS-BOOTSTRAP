@@ -1,0 +1,80 @@
+<extend name="Public/base"/>
+<block name="body"><div class="fixed-bar" id="DataBase_Bar" style="height: auto">
+	<div class="item-title">
+		<h3>数据还原</h3>
+		<ul class="tab-base">
+			<li><a href="JavaScript:void(0);"><span>备份列表</span></a></li>
+		</ul>
+	</div>
+</div>
+        <table id="DataBase_Data_List">
+            <thead>
+                <tr>
+                    <th data-options="field:'time',width:200">备份名称</th>
+                    <th data-options="field:'part',width:80">卷数</th>
+                    <th data-options="field:'compress',width:80">压缩</th>
+                    <th data-options="field:'size',width:80">数据大小</th>
+                    <th data-options="field:'key',width:200">备份时间</th>
+                    <th data-options="field:'status'">状态</th>
+                    <th data-options="field:'operate',width:200">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <volist name="list" id="data">
+                    <tr>
+                        <td>{$data.time|date='Ymd-His',###}</td>
+                        <td>{$data.part}</td>
+                        <td>{$data.compress}</td>
+                        <td>{$data.size|format_bytes}</td>
+                        <td>{$key}</td>
+                        <td>-</td>
+                        <td class="action">
+                            <a class="db-import" href="{:U('import?time='.$data['time'])}">还原</a>&nbsp;
+                            <a class="ajax-get confirm" href="{:U('del?time='.$data['time'])}">删除</a>
+                        </td>
+                    </tr>
+                </volist>
+            </tbody>
+        </table>
+  <script type="text/javascript">
+$(function() {
+	$("#DataBase_Data_List").datagrid({
+		fit : true,
+		striped : true,
+		border : false,
+		toolbar : '#DataBase_Bar',
+	});
+})
+
+        $(".db-import").click(function(){
+            var self = this, status = ".";
+            $.get(self.href, success, "json");
+            window.onbeforeunload = function(){ return "正在还原数据库，请不要关闭！" }
+            return false;
+            function success(data){
+                if(data.status){
+                    if(data.gz){
+                        data.info += status;
+                        if(status.length === 5){
+                            status = ".";
+                        } else {
+                            status += ".";
+                        }
+                    }
+                    $(self).parent().prev().text(data.info);
+                    if(data.part){
+                        $.get(self.href, 
+                            {"part" : data.part, "start" : data.start}, 
+                            success, 
+                            "json"
+                        );
+                    }  else {
+                        window.onbeforeunload = function(){ return null; }
+                    }
+                } else {
+                    updateAlert(data.info,'alert-error');
+                }
+            }
+        });
+    </script>
+</block>

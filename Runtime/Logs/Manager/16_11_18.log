@@ -1,0 +1,672 @@
+[ 2016-11-18T14:56:37+08:00 ] ::1 /TobaccoGms1/index.php?m=Manager&c=Index&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000110s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000786s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001814s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000485s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000835s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.0285s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0264s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.0286s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0263s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.272768s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.273139s ]
+SQL: SHOW COLUMNS FROM `manager_setting` [ RunTime:0.0274s ]
+SQL: SELECT * FROM `manager_setting` LIMIT 1   [ RunTime:0.0285s ]
+SQL: SHOW COLUMNS FROM `service_group_info` [ RunTime:0.0313s ]
+SQL: SELECT * FROM `service_group_info` WHERE `group_id` = 1 LIMIT 1   [ RunTime:0.0281s ]
+NOTIC: [8] Undefined index: latlng /Applications/XAMPP/xamppfiles/htdocs/TobaccoGms1/App/Manager/Controller/ManagerCoreController.class.php 第 38 行.
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0295s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/Track/history' LIMIT 1   [ RunTime:0.0275s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/RealVideo/videoForOne' LIMIT 1   [ RunTime:0.0342s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000258s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000599s ]
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.0299s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0286s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.0279s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.0258s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0279s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','232','234','235','231','230','229','224','225','226','227','228','233','1','207','212','318','250','251','252','216','239','240','241','319','208','210','245','246','247','248','274','283','284','282','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','25','27','26','28','17','20','84','13','14','15','16','4','296','297','61','45','46','47','48','49','50','52','51','29','32','30','31','33','35','36','34','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.0291s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.221861s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.222209s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000472s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000825s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000616s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000982s ]
+
+[ 2016-11-18T14:57:21+08:00 ] ::1 /TobaccoGms1/index.php?m=Manager&c=Index&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000068s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000553s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001330s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000498s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000846s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.0286s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0288s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.0292s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0267s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.278610s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.278988s ]
+SQL: SHOW COLUMNS FROM `manager_setting` [ RunTime:0.0304s ]
+SQL: SELECT * FROM `manager_setting` LIMIT 1   [ RunTime:0.0270s ]
+SQL: SHOW COLUMNS FROM `service_group_info` [ RunTime:0.0309s ]
+SQL: SELECT * FROM `service_group_info` WHERE `group_id` = 1 LIMIT 1   [ RunTime:0.0263s ]
+NOTIC: [8] Undefined index: latlng /Applications/XAMPP/xamppfiles/htdocs/TobaccoGms1/App/Manager/Controller/ManagerCoreController.class.php 第 38 行.
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0320s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/Track/history' LIMIT 1   [ RunTime:0.0283s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/RealVideo/videoForOne' LIMIT 1   [ RunTime:0.0284s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000259s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000597s ]
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.0289s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0276s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.0283s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.0274s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0284s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','232','234','235','231','230','229','224','225','226','227','228','233','1','207','212','318','250','251','252','216','239','240','241','319','208','210','245','246','247','248','274','283','284','282','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','25','27','26','28','17','20','84','13','14','15','16','4','296','297','61','45','46','47','48','49','50','52','51','29','32','30','31','33','35','36','34','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.0295s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.209884s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.210224s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000294s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000609s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000580s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000947s ]
+
+[ 2016-11-18T15:14:36+08:00 ] ::1 /TobaccoGms1/index.php?m=Manager&c=Index&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000068s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000391s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000982s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000761s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001237s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.0284s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0275s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.0275s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0274s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.235679s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.236062s ]
+SQL: SHOW COLUMNS FROM `manager_setting` [ RunTime:0.0279s ]
+SQL: SELECT * FROM `manager_setting` LIMIT 1   [ RunTime:0.0286s ]
+SQL: SHOW COLUMNS FROM `service_group_info` [ RunTime:0.0280s ]
+SQL: SELECT * FROM `service_group_info` WHERE `group_id` = 1 LIMIT 1   [ RunTime:0.0306s ]
+NOTIC: [8] Undefined index: latlng /Applications/XAMPP/xamppfiles/htdocs/TobaccoGms1/App/Manager/Controller/ManagerCoreController.class.php 第 38 行.
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0299s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/Track/history' LIMIT 1   [ RunTime:0.0286s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/RealVideo/videoForOne' LIMIT 1   [ RunTime:0.0272s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000290s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000668s ]
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.0285s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0264s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.0285s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.0277s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0296s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','232','234','235','231','230','229','224','225','226','227','228','233','1','207','212','318','250','251','252','216','239','240','241','319','208','210','245','246','247','248','274','283','284','282','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','25','27','26','28','17','20','84','13','14','15','16','4','296','297','61','45','46','47','48','49','50','52','51','29','32','30','31','33','35','36','34','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.0280s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.209790s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.210131s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000308s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000630s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000605s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001151s ]
+
+[ 2016-11-18T17:16:36+08:00 ] ::1 /TobaccoGms1/index.php?m=Manager&c=Index&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000074s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000436s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001075s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000516s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000870s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.0484s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0472s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.0491s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0481s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.371413s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.371837s ]
+SQL: SHOW COLUMNS FROM `manager_setting` [ RunTime:0.0479s ]
+SQL: SELECT * FROM `manager_setting` LIMIT 1   [ RunTime:0.0454s ]
+SQL: SHOW COLUMNS FROM `service_group_info` [ RunTime:0.0480s ]
+SQL: SELECT * FROM `service_group_info` WHERE `group_id` = 1 LIMIT 1   [ RunTime:0.0472s ]
+NOTIC: [8] Undefined index: latlng /Applications/XAMPP/xamppfiles/htdocs/TobaccoGms1/App/Manager/Controller/ManagerCoreController.class.php 第 38 行.
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0487s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/Track/history' LIMIT 1   [ RunTime:0.0471s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/RealVideo/videoForOne' LIMIT 1   [ RunTime:0.0474s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000261s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000602s ]
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.0483s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0456s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.0470s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.0475s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0482s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','232','234','235','231','230','229','224','225','226','227','228','233','1','207','212','318','250','251','252','216','239','240','241','319','208','210','245','246','247','248','274','283','284','282','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','25','27','26','28','17','20','84','13','14','15','16','4','296','297','61','45','46','47','48','49','50','52','51','29','32','30','31','33','35','36','34','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.0481s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.327439s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.327818s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000299s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000625s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.018795s ]
+INFO: [ app_end ] --END-- [ RunTime:0.019462s ]
+
+[ 2016-11-18T17:18:47+08:00 ] ::1 /TobaccoGms1/index.php?m=Manager&c=Index&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000070s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000394s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001003s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000452s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000786s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.0288s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0272s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.0294s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0281s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.274776s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.275471s ]
+SQL: SHOW COLUMNS FROM `manager_setting` [ RunTime:0.0290s ]
+SQL: SELECT * FROM `manager_setting` LIMIT 1   [ RunTime:0.0279s ]
+SQL: SHOW COLUMNS FROM `service_group_info` [ RunTime:0.0285s ]
+SQL: SELECT * FROM `service_group_info` WHERE `group_id` = 1 LIMIT 1   [ RunTime:0.0294s ]
+NOTIC: [8] Undefined index: latlng /Applications/XAMPP/xamppfiles/htdocs/TobaccoGms1/App/Manager/Controller/ManagerCoreController.class.php 第 38 行.
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0294s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/Track/history' LIMIT 1   [ RunTime:0.0275s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/RealVideo/videoForOne' LIMIT 1   [ RunTime:0.0323s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000792s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001649s ]
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.0296s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0271s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.0281s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.0272s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0295s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','232','234','235','231','230','229','224','225','226','227','228','233','1','207','212','318','250','251','252','216','239','240','241','319','208','210','245','246','247','248','274','283','284','282','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','25','27','26','28','17','20','84','13','14','15','16','4','296','297','61','45','46','47','48','49','50','52','51','29','32','30','31','33','35','36','34','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.0289s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.211830s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.212180s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000302s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000628s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000615s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000980s ]
+
+[ 2016-11-18T17:19:47+08:00 ] ::1 /TobaccoGms1/index.php?m=Manager&c=Index&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000076s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000434s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001125s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000610s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001082s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.0444s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0445s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.0438s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0419s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.360281s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.360676s ]
+SQL: SHOW COLUMNS FROM `manager_setting` [ RunTime:0.0446s ]
+SQL: SELECT * FROM `manager_setting` LIMIT 1   [ RunTime:0.0408s ]
+SQL: SHOW COLUMNS FROM `service_group_info` [ RunTime:0.0469s ]
+SQL: SELECT * FROM `service_group_info` WHERE `group_id` = 1 LIMIT 1   [ RunTime:0.0414s ]
+NOTIC: [8] Undefined index: latlng /Applications/XAMPP/xamppfiles/htdocs/TobaccoGms1/App/Manager/Controller/ManagerCoreController.class.php 第 38 行.
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0415s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/Track/history' LIMIT 1   [ RunTime:0.0410s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/RealVideo/videoForOne' LIMIT 1   [ RunTime:0.0426s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000267s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000612s ]
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.0426s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0417s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.0430s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.0410s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0438s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','232','234','235','231','230','229','224','225','226','227','228','233','1','207','212','318','250','251','252','216','239','240','241','319','208','210','245','246','247','248','274','283','284','282','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','25','27','26','28','17','20','84','13','14','15','16','4','296','297','61','45','46','47','48','49','50','52','51','29','32','30','31','33','35','36','34','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.0405s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.296054s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.296394s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000292s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000621s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000617s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000983s ]
+
+[ 2016-11-18T17:20:36+08:00 ] ::1 /TobaccoGms1/index.php?m=Manager&c=Index&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000070s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000544s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001190s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000640s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001104s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.0431s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0435s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.0389s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0407s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.391984s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.392408s ]
+SQL: SHOW COLUMNS FROM `manager_setting` [ RunTime:0.0389s ]
+SQL: SELECT * FROM `manager_setting` LIMIT 1   [ RunTime:0.0378s ]
+SQL: SHOW COLUMNS FROM `service_group_info` [ RunTime:0.0387s ]
+SQL: SELECT * FROM `service_group_info` WHERE `group_id` = 1 LIMIT 1   [ RunTime:0.0443s ]
+NOTIC: [8] Undefined index: latlng /Applications/XAMPP/xamppfiles/htdocs/TobaccoGms1/App/Manager/Controller/ManagerCoreController.class.php 第 38 行.
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0384s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/Track/history' LIMIT 1   [ RunTime:0.0393s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/RealVideo/videoForOne' LIMIT 1   [ RunTime:0.0336s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000260s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000602s ]
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.0360s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0333s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.0368s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.0329s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0329s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','232','234','235','231','230','229','224','225','226','227','228','233','1','207','212','318','250','251','252','216','239','240','241','319','208','210','245','246','247','248','274','283','284','282','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','25','27','26','28','17','20','84','13','14','15','16','4','296','297','61','45','46','47','48','49','50','52','51','29','32','30','31','33','35','36','34','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.0315s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.247395s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.247740s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000310s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000731s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000648s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001145s ]
+
+[ 2016-11-18T17:21:05+08:00 ] ::1 /TobaccoGms1/index.php?m=Manager&c=Index&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000067s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000418s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001013s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000475s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000816s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.0383s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0398s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.0408s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0417s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.330220s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.330759s ]
+SQL: SHOW COLUMNS FROM `manager_setting` [ RunTime:0.0421s ]
+SQL: SELECT * FROM `manager_setting` LIMIT 1   [ RunTime:0.0398s ]
+SQL: SHOW COLUMNS FROM `service_group_info` [ RunTime:0.0401s ]
+SQL: SELECT * FROM `service_group_info` WHERE `group_id` = 1 LIMIT 1   [ RunTime:0.0389s ]
+NOTIC: [8] Undefined index: latlng /Applications/XAMPP/xamppfiles/htdocs/TobaccoGms1/App/Manager/Controller/ManagerCoreController.class.php 第 38 行.
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0375s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/Track/history' LIMIT 1   [ RunTime:0.0400s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/RealVideo/videoForOne' LIMIT 1   [ RunTime:0.0390s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000285s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000633s ]
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.0430s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0411s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.0396s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.0390s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0417s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','232','234','235','231','230','229','224','225','226','227','228','233','1','207','212','318','250','251','252','216','239','240','241','319','208','210','245','246','247','248','274','283','284','282','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','25','27','26','28','17','20','84','13','14','15','16','4','296','297','61','45','46','47','48','49','50','52','51','29','32','30','31','33','35','36','34','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.0439s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.293509s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.293848s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000304s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000626s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000543s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000900s ]
+
+[ 2016-11-18T17:21:49+08:00 ] ::1 /TobaccoGms1/index.php?m=Manager&c=Index&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000080s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000501s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001229s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000536s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000895s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.0436s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0424s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.0401s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0396s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.314798s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.315433s ]
+SQL: SHOW COLUMNS FROM `manager_setting` [ RunTime:0.0410s ]
+SQL: SELECT * FROM `manager_setting` LIMIT 1   [ RunTime:0.0391s ]
+SQL: SHOW COLUMNS FROM `service_group_info` [ RunTime:0.0401s ]
+SQL: SELECT * FROM `service_group_info` WHERE `group_id` = 1 LIMIT 1   [ RunTime:0.0390s ]
+NOTIC: [8] Undefined index: latlng /Applications/XAMPP/xamppfiles/htdocs/TobaccoGms1/App/Manager/Controller/ManagerCoreController.class.php 第 38 行.
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0393s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/Track/history' LIMIT 1   [ RunTime:0.0396s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/RealVideo/videoForOne' LIMIT 1   [ RunTime:0.0400s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000329s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000674s ]
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.0423s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0417s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.0417s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.0396s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0407s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','232','234','235','231','230','229','224','225','226','227','228','233','1','207','212','318','250','251','252','216','239','240','241','319','208','210','245','246','247','248','274','283','284','282','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','25','27','26','28','17','20','84','13','14','15','16','4','296','297','61','45','46','47','48','49','50','52','51','29','32','30','31','33','35','36','34','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.0401s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.293732s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.294266s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000463s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000924s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000728s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001315s ]
+
+[ 2016-11-18T17:49:50+08:00 ] ::1 /TobaccoGms1/index.php?m=Manager&c=Index&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000066s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000402s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000990s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000461s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000798s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.0401s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0391s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.0417s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0377s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.330622s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.331172s ]
+SQL: SHOW COLUMNS FROM `manager_setting` [ RunTime:0.0378s ]
+SQL: SELECT * FROM `manager_setting` LIMIT 1   [ RunTime:0.0401s ]
+SQL: SHOW COLUMNS FROM `service_group_info` [ RunTime:0.0408s ]
+SQL: SELECT * FROM `service_group_info` WHERE `group_id` = 1 LIMIT 1   [ RunTime:0.0386s ]
+NOTIC: [8] Undefined index: latlng /Applications/XAMPP/xamppfiles/htdocs/TobaccoGms1/App/Manager/Controller/ManagerCoreController.class.php 第 38 行.
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0389s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/Track/history' LIMIT 1   [ RunTime:0.0386s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/RealVideo/videoForOne' LIMIT 1   [ RunTime:0.0417s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000260s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000600s ]
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.0409s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0386s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.0380s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.0407s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0411s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','232','234','235','231','230','229','224','225','226','227','228','233','1','207','212','318','250','251','252','216','239','240','241','319','208','210','245','246','247','248','274','283','284','282','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','25','27','26','28','17','20','84','13','14','15','16','4','296','297','61','45','46','47','48','49','50','52','51','29','32','30','31','33','35','36','34','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.0409s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.291678s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.292100s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000294s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000619s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000677s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001116s ]
+
+[ 2016-11-18T17:49:55+08:00 ] ::1 /TobaccoGms1/index.php?m=Manager&c=Index&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000066s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000458s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001080s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000476s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000824s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.0492s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0489s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.0487s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0485s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.371188s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.371545s ]
+SQL: SHOW COLUMNS FROM `manager_setting` [ RunTime:0.0507s ]
+SQL: SELECT * FROM `manager_setting` LIMIT 1   [ RunTime:0.0495s ]
+SQL: SHOW COLUMNS FROM `service_group_info` [ RunTime:0.0488s ]
+SQL: SELECT * FROM `service_group_info` WHERE `group_id` = 1 LIMIT 1   [ RunTime:0.0505s ]
+NOTIC: [8] Undefined index: latlng /Applications/XAMPP/xamppfiles/htdocs/TobaccoGms1/App/Manager/Controller/ManagerCoreController.class.php 第 38 行.
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0507s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/Track/history' LIMIT 1   [ RunTime:0.0480s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/RealVideo/videoForOne' LIMIT 1   [ RunTime:0.0469s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000289s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000670s ]
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.0496s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0507s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.0502s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.0486s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0492s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','232','234','235','231','230','229','224','225','226','227','228','233','1','207','212','318','250','251','252','216','239','240','241','319','208','210','245','246','247','248','274','283','284','282','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','25','27','26','28','17','20','84','13','14','15','16','4','296','297','61','45','46','47','48','49','50','52','51','29','32','30','31','33','35','36','34','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.0511s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.340682s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.341043s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000367s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000848s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000562s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000955s ]
+
+[ 2016-11-18T17:49:59+08:00 ] ::1 /TobaccoGms1/index.php?m=Manager&c=Index&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000075s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000433s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001086s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000514s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000972s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.0511s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0496s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.0496s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0513s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.389036s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.389389s ]
+SQL: SHOW COLUMNS FROM `manager_setting` [ RunTime:0.0520s ]
+SQL: SELECT * FROM `manager_setting` LIMIT 1   [ RunTime:0.0499s ]
+SQL: SHOW COLUMNS FROM `service_group_info` [ RunTime:0.0490s ]
+SQL: SELECT * FROM `service_group_info` WHERE `group_id` = 1 LIMIT 1   [ RunTime:0.0496s ]
+NOTIC: [8] Undefined index: latlng /Applications/XAMPP/xamppfiles/htdocs/TobaccoGms1/App/Manager/Controller/ManagerCoreController.class.php 第 38 行.
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0492s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/Track/history' LIMIT 1   [ RunTime:0.0507s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/RealVideo/videoForOne' LIMIT 1   [ RunTime:0.0482s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000260s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000596s ]
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.0490s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0476s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.0508s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.0486s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0522s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','232','234','235','231','230','229','224','225','226','227','228','233','1','207','212','318','250','251','252','216','239','240','241','319','208','210','245','246','247','248','274','283','284','282','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','25','27','26','28','17','20','84','13','14','15','16','4','296','297','61','45','46','47','48','49','50','52','51','29','32','30','31','33','35','36','34','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.0514s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.350654s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.350994s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000289s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000606s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000552s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000938s ]
+
+[ 2016-11-18T17:51:22+08:00 ] ::1 /TobaccoGms1/index.php?m=Manager&c=Index&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000066s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000534s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001146s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000483s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000828s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.0273s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0309s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.0282s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0297s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.240785s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.241158s ]
+SQL: SHOW COLUMNS FROM `manager_setting` [ RunTime:0.0303s ]
+SQL: SELECT * FROM `manager_setting` LIMIT 1   [ RunTime:0.0255s ]
+SQL: SHOW COLUMNS FROM `service_group_info` [ RunTime:0.0281s ]
+SQL: SELECT * FROM `service_group_info` WHERE `group_id` = 1 LIMIT 1   [ RunTime:0.0293s ]
+NOTIC: [8] Undefined index: latlng /Applications/XAMPP/xamppfiles/htdocs/TobaccoGms1/App/Manager/Controller/ManagerCoreController.class.php 第 38 行.
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0328s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/Track/history' LIMIT 1   [ RunTime:0.0285s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/RealVideo/videoForOne' LIMIT 1   [ RunTime:0.0329s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000264s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000611s ]
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.0281s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0256s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.0296s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.0269s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0291s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','232','234','235','231','230','229','224','225','226','227','228','233','1','207','212','318','250','251','252','216','239','240','241','319','208','210','245','246','247','248','274','283','284','282','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','25','27','26','28','17','20','84','13','14','15','16','4','296','297','61','45','46','47','48','49','50','52','51','29','32','30','31','33','35','36','34','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.0289s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.209927s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.210313s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000343s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000749s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000593s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000987s ]
+
+[ 2016-11-18T17:51:37+08:00 ] ::1 /TobaccoGms1/index.php?m=Manager&c=Index&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000064s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000354s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001008s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000412s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000740s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.0388s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0375s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.0380s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0377s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.350099s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.350557s ]
+SQL: SHOW COLUMNS FROM `manager_setting` [ RunTime:0.0382s ]
+SQL: SELECT * FROM `manager_setting` LIMIT 1   [ RunTime:0.0384s ]
+SQL: SHOW COLUMNS FROM `service_group_info` [ RunTime:0.0372s ]
+SQL: SELECT * FROM `service_group_info` WHERE `group_id` = 1 LIMIT 1   [ RunTime:0.0382s ]
+NOTIC: [8] Undefined index: latlng /Applications/XAMPP/xamppfiles/htdocs/TobaccoGms1/App/Manager/Controller/ManagerCoreController.class.php 第 38 行.
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0401s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/Track/history' LIMIT 1   [ RunTime:0.0384s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/RealVideo/videoForOne' LIMIT 1   [ RunTime:0.0383s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000454s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000955s ]
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.0383s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0369s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.0382s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.0391s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0386s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','232','234','235','231','230','229','224','225','226','227','228','233','1','207','212','318','250','251','252','216','239','240','241','319','208','210','245','246','247','248','274','283','284','282','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','25','27','26','28','17','20','84','13','14','15','16','4','296','297','61','45','46','47','48','49','50','52','51','29','32','30','31','33','35','36','34','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.0384s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.277293s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.277661s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000406s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000788s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000591s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001120s ]
+
+[ 2016-11-18T17:54:00+08:00 ] ::1 /TobaccoGms1/index.php?m=Manager&c=Index&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000066s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000405s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000984s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000481s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000827s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.0489s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0501s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.0505s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0523s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.411439s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.411849s ]
+SQL: SHOW COLUMNS FROM `manager_setting` [ RunTime:0.0516s ]
+SQL: SELECT * FROM `manager_setting` LIMIT 1   [ RunTime:0.0482s ]
+SQL: SHOW COLUMNS FROM `service_group_info` [ RunTime:0.0495s ]
+SQL: SELECT * FROM `service_group_info` WHERE `group_id` = 1 LIMIT 1   [ RunTime:0.0502s ]
+NOTIC: [8] Undefined index: latlng /Applications/XAMPP/xamppfiles/htdocs/TobaccoGms1/App/Manager/Controller/ManagerCoreController.class.php 第 38 行.
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0487s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/Track/history' LIMIT 1   [ RunTime:0.0487s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/RealVideo/videoForOne' LIMIT 1   [ RunTime:0.0486s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000258s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000594s ]
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.0517s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0482s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.0488s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.0538s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0568s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','232','234','235','231','230','229','224','225','226','227','228','233','1','207','212','318','250','251','252','216','239','240','241','319','208','210','245','246','247','248','274','283','284','282','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','25','27','26','28','17','20','84','13','14','15','16','4','296','297','61','45','46','47','48','49','50','52','51','29','32','30','31','33','35','36','34','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.0556s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.356206s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.356549s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000296s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000652s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000536s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001032s ]
+
+[ 2016-11-18T17:54:03+08:00 ] ::1 /TobaccoGms1/index.php?m=Manager&c=Index&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000074s ]
+INFO: Run Manager\Behavior\AppInitialBehavior [ RunTime:0.000424s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001062s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000476s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000821s ]
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `gms_hooks` [ RunTime:0.0292s ]
+SQL: SELECT `name`,`addons` FROM `gms_hooks`  [ RunTime:0.0274s ]
+SQL: SHOW COLUMNS FROM `gms_addons` [ RunTime:0.0279s ]
+SQL: SELECT `id`,`name` FROM `gms_addons` WHERE `disabled` = 1 AND `name` IN ('SiteStat')  [ RunTime:0.0272s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.243630s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.244102s ]
+SQL: SHOW COLUMNS FROM `manager_setting` [ RunTime:0.0263s ]
+SQL: SELECT * FROM `manager_setting` LIMIT 1   [ RunTime:0.0286s ]
+SQL: SHOW COLUMNS FROM `service_group_info` [ RunTime:0.0302s ]
+SQL: SELECT * FROM `service_group_info` WHERE `group_id` = 1 LIMIT 1   [ RunTime:0.0291s ]
+NOTIC: [8] Undefined index: latlng /Applications/XAMPP/xamppfiles/htdocs/TobaccoGms1/App/Manager/Controller/ManagerCoreController.class.php 第 38 行.
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0310s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/Track/history' LIMIT 1   [ RunTime:0.0302s ]
+SQL: SELECT * FROM `gms_auth_rule` WHERE `name` = 'Manager/RealVideo/videoForOne' LIMIT 1   [ RunTime:0.0304s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000275s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000610s ]
+SQL: SHOW COLUMNS FROM `gms_user` [ RunTime:0.0299s ]
+SQL: SELECT `group_ids` FROM `gms_user` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0309s ]
+SQL: SHOW COLUMNS FROM `gms_auth_group` [ RunTime:0.0322s ]
+SQL: SELECT `id`,`title`,`rules` FROM `gms_auth_group` WHERE `id` IN ('1') AND `status` = 1  [ RunTime:0.0310s ]
+SQL: SHOW COLUMNS FROM `gms_auth_rule` [ RunTime:0.0295s ]
+SQL: SELECT `condition`,`name` FROM `gms_auth_rule` WHERE `id` IN ('217','266','268','259','260','257','264','220','254','232','234','235','231','230','229','224','225','226','227','228','233','1','207','212','318','250','251','252','216','239','240','241','319','208','210','245','246','247','248','274','283','284','282','213','236','237','238','298','6','209','242','243','244','57','218','219','272','295','60','59','58','25','27','26','28','17','20','84','13','14','15','16','4','296','297','61','45','46','47','48','49','50','52','51','29','32','30','31','33','35','36','34','80','81','82','83','5','37','39','40','62','38') AND `type` = 1 AND `status` = 1  [ RunTime:0.0291s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.224337s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.224685s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000308s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000761s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000612s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000993s ]
+

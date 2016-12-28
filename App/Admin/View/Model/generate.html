@@ -1,0 +1,57 @@
+<extend name="Public/base" />
+
+<block name="body">
+<div class="fixed-bar" id="Model_Bar">
+	<div class="item-title">
+		<h3>模型管理</h3>
+		<ul class="tab-base">
+			<if condition="Is_Auth('Admin/Model/index')">
+			<li><a href="{:U('Admin/Model/index')}"><span>列表</span></a></li>
+			</if>
+			<if condition="Is_Auth('Admin/Model/add')">
+			<li><a href="{:U('Admin/Model/add')}"><span>新增</span></a></li>
+			</if>
+			<li><a class="current" href="{:U('Admin/Model/generate')}"><span>系统化数据模型</span></a></li>
+		</ul>
+	</div>
+</div>
+<form id="Model_Form" method="post">
+<table class="table tb-type2 nobdb">
+	<tbody>
+		<tr>
+			<td colspan="2" class="required"><label for="for_table">数据表:</label></td>
+		</tr>
+		<tr class="noborder">
+			<td class="vatop rowform">
+            <select style="height:30px;" id="for_table" name="table" class="easyui-combobox" data-options="editable:false">
+				<volist name="tables" id="tb">
+				<option value="{$tb}">{$tb}</option>
+				</volist>
+			</select>
+			</td>
+			<td class="vatop tips">当前数据库的所有表</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="required"><label for="for_name">模型标识:</label></td>
+		</tr>
+		<tr class="noborder">
+			<td class="vatop rowform"><input type="text" style="height:30px;" id="for_name" name="name" class="easyui-textbox"></td>
+			<td class="vatop tips">请输入文档模型标识</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="required"><label for="for_title">模型名称:</label></td>
+		</tr>
+		<tr class="noborder">
+			<td class="vatop rowform"><input type="text" style="height:30px;" id="for_title" name="title" class="easyui-textbox"></td>
+			<td class="vatop tips">请输入模型的名称</td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr class="tfoot">
+			<td colspan="2"><a class="easyui-linkbutton" href="JavaScript:void(0);" onclick="$('#Model_Form').submit();" data-options="iconCls:'iconfont icon-edit'"><span style="font-size: 14px; font-weight: 600;">提交</span></a></td>
+		</tr>
+	 </tfoot>
+</table>
+</form>
+</block>
+

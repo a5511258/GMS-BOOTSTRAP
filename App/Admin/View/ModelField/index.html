@@ -1,0 +1,182 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<div class="fixed-bar" id="ModelField_Bar" style="height: auto">
+	<div class="item-title">
+		<h3>字段管理</h3>
+		<ul class="tab-base">
+			<if condition="Is_Auth('Admin/Model/index')">
+			<li><a href="{:U('Admin/Model/index')}"><span>模型列表</span></a></li>
+			</if>
+			<li><a class="current" href="JavaScript:void(0);" onclick="Data_Reload('ModelField_Data_List');"><span>字段列表</span></a></li>
+			<if condition="Is_Auth('Admin/ModelField/add')">
+			<li><a href="{:U('Admin/ModelField/add',array('model_id'=>I('get.model_id')))}"><span>新增</span></a></li>
+			</if>
+			<li><a id="save_bon" href="JavaScript:void(0);" onclick="list_save('ModelField_Data_List');" style="display:none"><span>保存</span></a></li>
+			<li><a id="save_bon" href="JavaScript:void(0);" onclick="list_redo('ModelField_Data_List');" style="display:none"><span>取消</span></a></li>
+		</ul>
+	</div>
+</div>
+<table id="ModelField_Data_List"></table>
+<script type="text/javascript">
+$(function() {
+    $("#ModelField_Data_List").datagrid({
+        url: "{:U('Admin/ModelField/index')}&model_id={:I('get.model_id')}",
+        fit: true,
+        striped: true,
+        border: false,
+        pagination: true,
+        pageSize: 50,
+        pageList: [10, 20, 50],
+        pageNumber: 1,
+        sortName: 'id',
+        sortOrder: 'desc',
+        toolbar: '#ModelField_Bar',
+        singleSelect: true,
+        onDblClickRow: function(rowIndex, rowData) {
+            list_edit('ModelField_Data_List', rowIndex);
+        },
+        columns: [[{
+            field: 'title',
+            title: '字段标题',
+            width: 100,
+            sortable: true
+        },
+        {
+            field: 'name',
+            title: '字段名',
+            width: 100,
+            sortable: true
+        },
+        {
+            field: 'type',
+            title: '数据类型',
+            width: 100,
+            sortable: true,
+            formatter: function(value, row, index) {
+                var op_type = new Array();
+                op_type['num'] = '数字';
+                op_type['string'] = '文本框';
+                op_type['textarea'] = '文本区域';
+                op_type['datetime'] = '日期时间';
+                op_type['select'] = '下拉框';
+                op_type['checkbox'] = '选择';
+                op_type['editor'] = '编辑器';
+                op_type['pictures'] = '图片';
+                op_type['files'] = '附件';
+                return op_type[value];
+            }
+        },
+        {
+            field: 'remark',
+            title: '备注',
+            width: 200,
+            sortable: true,
+            editor: {
+                type: 'text',
+            }
+        },
+        {
+            field: 'status',
+            title: '状态',
+            width: 100,
+            sortable: true,
+            formatter: function(value, row, index) {
+                var op_status = new Array();
+				op_status['0'] = "禁用";
+                op_status['1'] = "启用";
+                return op_status[value];
+            },
+            editor: {
+                type: 'combobox',
+                options: {
+                    data: [{
+                        text: '禁用',
+                        value: '0'
+                    },
+                    {
+                        text: '启用',
+                        value: '1'
+                    }],
+                },
+            }
+        },
+        {
+            field: 'sort_l',
+            title: '列表',
+            width: 40,
+            sortable: true,
+            editor: {
+                type: 'numberbox',
+            }
+        },
+        {
+            field: 'sort_s',
+            title: '搜索',
+            width: 40,
+            sortable: true,
+            editor: {
+                type: 'numberbox',
+            }
+        },
+        {
+            field: 'sort_a',
+            title: '新增',
+            width: 40,
+            sortable: true,
+            editor: {
+                type: 'numberbox',
+            }
+        },
+        {
+            field: 'sort_e',
+            title: '修改',
+            width: 40,
+            sortable: true,
+            editor: {
+                type: 'numberbox',
+            }
+        },
+        {
+            field: 'l_width',
+            title: '列表宽度',
+            width: 55,
+            sortable: true,
+            editor: {
+                type: 'numberbox',
+            }
+        },
+        {
+            field: 'operate',
+            title: '操作',
+            width: 200,
+            formatter: function(value, row, index) {
+                operate_menu = '';
+				
+				<if condition="Is_Auth('Admin/ModelField/edit')">
+				operate_menu = operate_menu+"<a href='<?php echo U('Admin/ModelField/edit'); ?>&id="+row.id+"&model_id=<?php echo I('get.model_id'); ?>' >编辑</a>";
+				</if>
+				
+				<if condition="Is_Auth('Admin/ModelField/del')">
+				operate_menu = operate_menu+" | <a href='#' onclick=Data_Remove('<?php echo U('Admin/ModelField/del'); ?>&id="+row.id+"','ModelField_Data_List')>删除</a>";
+				</if>
+
+				return operate_menu;
+			}}
+		]],
+		onAfterEdit : function (rowIndex, rowData, changes) {
+			$('#save_bon,#redo_bon ').hide();
+			$.post('{:U("edit")}', rowData, function(res){
+				if(!res.status){
+					$.messager.show({title:'错误提示',msg:res.info,timeout:2000,showType:'slide '});
+				}else{
+					$.messager.show({title:'成功提示',msg:res.info,timeout:1000,showType:'slide '});
+					editRow = undefined;
+					console.log(rowData);
+				}
+			})
+		},
+	});
+})
+</script>
+</block>

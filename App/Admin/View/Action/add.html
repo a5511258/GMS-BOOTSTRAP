@@ -1,0 +1,58 @@
+<extend name="Public/base"/><block name="body"><div class="fixed-bar" id="Action_Bar" style="height: auto">
+	<div class="item-title">
+		<h3>行为</h3>
+		<ul class="tab-base">
+			<if condition="Is_Auth('Admin/Action/index')">
+			<li><a href="{:U('Admin/Action/index')}"><span>列表</span></a></li>
+			</if>
+			<li><a class="current"href="{:U('Admin/Action/add')}"><span>新增</span></a></li>
+		</ul>
+	</div>
+</div>
+<form id="Action_Form" method="post">
+<table class="table tb-type2 nobdb">
+	<tbody>
+	<tr>
+			<td colspan="2" class="required"><label for="for_name">行为唯一标识:</label></td>
+		</tr>
+		<tr class="noborder">
+			<td class="vatop rowform"><input name="name" type="text" class="easyui-textbox" style="height:30px;" value="" data-options="required:false"></td>
+			<td class="vatop tips"></td>
+		</tr><tr>
+			<td colspan="2" class="required"><label for="for_name">行为说明:</label></td>
+		</tr>
+		<tr class="noborder">
+			<td class="vatop rowform"><input name="title" type="text" class="easyui-textbox" style="height:30px;" value="" data-options="required:false"></td>
+			<td class="vatop tips"></td>
+		</tr><tr>
+			<td colspan="2" class="required"><label for="for_name">行为描述:</label></td>
+		</tr>
+		<tr class="noborder">
+			<td class="vatop rowform"><input name="remark" value="" type="text" class="easyui-textbox" data-options="required:false,multiline:true" style="width:300px; height:80px;"></td>
+			<td class="vatop tips"></td>
+		</tr><tr>
+			<td colspan="2" class="required"><label for="for_name">行为规则:</label></td>
+		</tr>
+		<tr class="noborder">
+			<td class="vatop rowform"><input name="rule" value="" type="text" class="easyui-textbox" data-options="required:false,multiline:true" style="width:300px; height:80px;"></td>
+			<td class="vatop tips"></td>
+		</tr><tr>
+			<td colspan="2" class="required"><label for="for_name">日志规则:</label></td>
+		</tr>
+		<tr class="noborder">
+			<td class="vatop rowform"><input name="log" value="" type="text" class="easyui-textbox" data-options="required:false,multiline:true" style="width:300px; height:80px;"></td>
+			<td class="vatop tips"></td>
+		</tr><tr>
+			<td colspan="2" class="required"><label for="for_name">状态:</label></td>
+		</tr>
+		<tr class="noborder">
+			<td class="vatop rowform"><input name="status" type="text" class="easyui-textbox" style="height:30px;" value="0" data-options="required:false"></td>
+			<td class="vatop tips"></td>
+		</tr>	</tbody>
+	<tfoot>
+		<tr class="tfoot">
+			<td colspan="2"><a class="easyui-linkbutton" href="JavaScript:void(0);" onclick="$('#Action_Form').submit();" data-options="iconCls:'iconfont icon-edit'"><span style="font-size: 14px; font-weight: 600;">提交</span></a></td>
+		</tr>
+	 </tfoot>
+</table>
+</form></block>

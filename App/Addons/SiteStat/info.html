@@ -1,0 +1,53 @@
+<extend name="Public/base"/>
+<block name="body">
+<link rel="stylesheet" type="text/css" href="{$ADDON_PATH}base.css">
+<div class="fixed-bar datagrid-toolbar">
+  <div class="item-title">
+    <h3>系统信息</h3>
+  </div>
+</div>
+<div class="info-panel">
+  <dl>
+    <dt>
+      <h3>系统信息</h3>
+      <div class="ps-container">
+        <ul>
+  <volist name="server_info" id="vo">
+          <li>{$key}  <span>{$vo}</span></li>
+  </volist>
+        </ul>
+        <div class="ps-scrollbar-x" style="left: 0px; bottom: 3px; width: 0px;"></div>
+        <div class="ps-scrollbar-y" style="top: 0px; right: 3px; height: 25px;"></div>
+      </div>
+    </dt>
+    <dd>
+      <ul>
+        <li class="w50pre none"><a href='{:C("SOFT_SITE")}' target='_blank'>{:C('SOFT_NAME').C('SOFT_VERSION')}</a></li>
+        <li class="w50pre none"><a href="{:C('SOFT_BBS')}" target='_blank'>官方论坛</a></li>
+      </ul>
+    </dd>
+  </dl>
+  <dl>
+    <dt>
+      <h3>版权信息</h3>
+      <div class="ps-container">
+        <ul>
+          <li>版权所有  <span><a href="{:C('SOFT_SITE')}" target="_blank">{:C('SOFT_NAME')}</a></span></li>
+          <li>负责人  <span><a href="{:C('SOFT_AUTHOR_SITE')}" target="_blank">{:C('SOFT_AUTHOR')}</a></span></li>
+          <li>软件作者  <span><a href="{:C('SOFT_AUTHOR_SITE')}" target="_blank">{:C('SOFT_AUTHOR')}</a></span></li>
+          <li>联系邮箱  <span>{:C('SOFT_AUTHOR_EMAIL')}</span></li>
+        </ul>
+        <div class="ps-scrollbar-x" style="left: 0px; bottom: 3px; width: 0px;"></div>
+        <div class="ps-scrollbar-y" style="top: 0px; right: 3px; height: 25px;"></div>
+      </div>
+    </dt>
+    <dd>
+      <ul>
+        <li class="w50pre none"><a href="{:C('SOFT_AUTHOR_SITE')}" target='_blank'>负责人：{:C('SOFT_AUTHOR')}</a></li>
+        <li class="w50pre none"><a href='tencent://message/?uin={:C("SOFT_AUTHOR_QQ")}&Site={:C('SOFT_SITE')}&Menu=yes' target='_blank'>QQ:{:C('SOFT_AUTHOR_QQ')}</a></li>
+      </ul>
+    </dd>
+  </dl>
+  <div class=" clear"></div>
+</div>
+</block>

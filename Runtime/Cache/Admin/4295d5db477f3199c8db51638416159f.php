@@ -1,0 +1,723 @@
+<?php if (!defined('THINK_PATH')) exit();?><!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> <?php echo C('SOFT_NAME');?>|Gms管理系统</title>
+    <link href="/TobaccoGms1/Public/Admin/images/favicon.ico" mce_href="/TobaccoGms1/Public/Admin/images/favicon.ico" rel="bookmark" type="image/x-icon" /> 
+    <link href="/TobaccoGms1/Public/Admin/images/favicon.ico" mce_href="/TobaccoGms1/Public/Admin/images/favicon.ico" rel="icon" type="image/x-icon" /> 
+    <link href="/TobaccoGms1/Public/Admin/images/favicon.ico" mce_href="/TobaccoGms1/Public/Admin/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="/TobaccoGms1/Public/Static/Easyui/themes/metro-gms/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/TobaccoGms1/Public/Static/themes/default.css">
+    <link rel="stylesheet" type="text/css" href="/TobaccoGms1/Public/Static/Font/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="/TobaccoGms1/Public/Static/Easyui/themes/icon.css">
+
+    <link rel="stylesheet" type="text/css" href="/TobaccoGms1/Public/Static/kindeditor/themes/default/default.css" />
+    <link rel="stylesheet" type="text/css" href="/TobaccoGms1/Public/Static/Easyui/themes/color.css">
+    <link rel="stylesheet" href="/TobaccoGms1/Public/Admin/css/skin.css" />
+    <script type="text/javascript" src="/TobaccoGms1/Public/Static/Jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/TobaccoGms1/Public/Static/Easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/TobaccoGms1/Public/Static/Easyui/locale/easyui-lang-zh_CN.js"></script>
+    <script charset="utf-8" src="/TobaccoGms1/Public/Static/kindeditor/kindeditor-min.js"></script>
+    <script charset="utf-8" src="/TobaccoGms1/Public/Static/kindeditor/lang/zh_CN.js"></script>
+    <script charset="utf-8" src="/TobaccoGms1/Public/Static/Echarts/echarts.js"></script>
+    <script charset="utf-8" src="/TobaccoGms1/Public/Admin/js/base.js" /></script><script>
+	var ke_pasteType=2;
+	var ke_fileManagerJson="<?php echo U('Admin/FilesUpdata/filemanager');?>";
+	var ke_uploadJson="<?php echo U('Admin/FilesUpdata/upload');?>";
+	var ke_Uid='<?php echo session(C("AUTH_KEY"));;?>';
+	var Root='/TobaccoGms1';
+	</script>
+</head>
+<body>
+
+	<style>
+		.ftitle {
+			font-size: 14px;
+			font-weight: bold;
+			padding: 5px 0;
+			margin-bottom: 10px;
+			border-bottom: 1px solid #ccc;
+		}
+		.fitem {
+			margin-bottom: 10px;
+		}
+		.fitem label {
+			display: inline-block;
+			width: 100px;
+			text-align:right;
+		}
+		.fitem{
+			margin-bottom:5px;
+		}
+		.fitem {
+			text-align: left;
+			padding: 6px;
+			margin: 3px;
+			height: 30px;
+			/*background-color: #EEEEEE;*/
+		}
+		.fitem:nth-child(2n){
+			/*background-color: #F2F8FB;*/
+		}
+	</style>
+	<div class="fixed-bar" id="User_Bar" style="height: auto">
+	<div class="item-title">
+
+		<form class="search_from">
+			<table>
+				<tr>
+					<td>用户名称 : </td>
+					<td><input id="s_username" name="s_action_id" type="text" class="easyui-combobox" style="height:25px;width: 180px"></td>
+					<td><a href="javascript:;" class="easyui-linkbutton" onclick="click_search()"
+						   data-options="iconCls:'icon-search',plain:true">查询</a></td>
+					<td><?php if(Is_Auth('Admin/User/add')): ?><a href="javascript:;" class="easyui-linkbutton" onclick="click_add('div_dialog')"
+						   data-options="iconCls:'icon-add',plain:true">添加</a><?php endif; ?></td>
+					<td><a href="javascript:;" class="easyui-linkbutton" onclick="click_redo()"
+						   data-options="iconCls:'icon-redo',plain:true">重置</a></td>
+				</tr>
+			</table>
+		</form>
+		<!--<h3>用户列表</h3>-->
+		<!--<ul class="tab-base">-->
+			<!--&lt;!&ndash;<li><a class="current" href="JavaScript:void(0);" onclick="Data_Reload('User_Data_List');"><span>列表</span></a></li>&ndash;&gt;-->
+			<!--<li><a href="JavaScript:void(0);" onclick="Data_Search('User_Search_From','User_Data_List');"><span>搜索用户</span></a></li>-->
+			<!--<?php if(Is_Auth('Admin/User/add')): ?>-->
+			<!--<li><a href="<?php echo U('Admin/User/add');?>"><span>新增用户</span></a></li>-->
+			<!--<?php endif; ?>-->
+		<!--</ul>-->
+	</div>
+	</div>
+	<div style="display: none">
+		<form id="User_Form" class="update_from"></form>
+	</div>
+	<div id="div_dialog" class="easyui-dialog"
+		 data-options="closed:true,buttons:'#add-buttons',modal:true" title="用户管理"
+		 style="width: 702px; height:auto; padding: 5px 10px;">
+		<div id="div_ftitle" class="ftitle"></div>
+		<form id="User_add_From" method="post" enctype="multipart/form-data">
+			<div style="width:50%;float:left;">
+				<div class="fitem">
+					<label>用户名称：</label>
+					<input id="inp_id" name="id" type="hidden"/>
+					<input id="inp_username" name="username" type="text" class="easyui-textbox" style="height:30px;width: 180px" value="" data-options="required:true"/>
+					<span style="color: #CC0000;margin-left: 5px;line-height: inherit;text-align:center;font-weight: bold;">*</span>
+				</div>
+				<div class="fitem">
+					<label>用户密码：</label>
+					<input id="inp_password" name="password" type="password" class="easyui-textbox" style="height:30px;width: 180px" value="" data-options="required:true,validType:'minLength[5]'"/>
+					<span style="color: #CC0000;margin-left: 5px;line-height: inherit;text-align:center;font-weight: bold;">*</span>
+				</div>
+				<div class="fitem">
+					<label>确认密码：</label>
+					<input id="inp_eque_password" name="eque_password" type="password" class="easyui-textbox" required="required" validType="equals['#inp_password']" style="height:30px;width: 180px" value=""/>
+					<span style="color: #CC0000;margin-left: 5px;line-height: inherit;text-align:center;font-weight: bold;">*</span>
+				</div>
+				<div class="fitem">
+					<label>组织名称：</label>
+					<input id="inp_service_group_id" name="service_group_id" class="easyui-combotree" style="height:30px;width: 180px;" data-options="url:'<?php echo U("Admin/Function/getGroupInfosToTree");?>',valueField:'id',textField:'text',multiple:false,required:true,editable:false,panelHeight:100"/>
+					<span style="color: #CC0000;margin-left: 5px;line-height: inherit;text-align:center;font-weight: bold;">*</span>
+				</div>
+				<div class="fitem">
+					<label>角色名称：</label>
+					<input id="inp_group_ids" name="group_ids" class="easyui-combobox" style="height:30px;width: 180px;" data-options="url:'<?php echo U("Admin/Function/getAuthList");?>',valueField:'id',textField:'text',required:true,multiple:false,editable:false,panelHeight:100"/>
+					<span style="color: #CC0000;margin-left: 5px;line-height: inherit;text-align:center;font-weight: bold;">*</span>
+				</div>
+				<div class="fitem">
+					<label>邮箱：</label>
+					<input id="inp_email" type="text" name="email" class="easyui-textbox" data-options="validType:'email'" style="height:30px;width: 180px;"/>
+				</div>
+				<div class="fitem">
+					<label>电话：</label>
+					<input id="inp_phone" type="text" name="phone" class="easyui-numberbox" data-options="validType:'phone'" style="height:30px;width: 180px;"/>
+				</div>
+				<div class="fitem">
+					<label>状态：</label>
+					<input id="inp_status" name="status" class="easyui-combobox" style="height:30px;width: 180px;" data-options="url:'<?php echo U("Admin/Function/get_status_option");?>',valueField:'id',textField:'text',multiple:false,required:false,editable:false,panelHeight:'auto'"/>
+					<span style="color: #CC0000;margin-left: 5px;line-height: inherit;text-align:center;font-weight: bold;">*</span>
+				</div>
+			</div>
+			<div style="width:50%;float:left;">
+				<div>
+					<label style="margin-left:20px;">用户头像：</label>
+					<img id="img_photo" alt="头像预览" style=" width:240px; height:260px;"/>
+					<input id="inp_head_img"
+						   style="margin-top: 10px;margin-left:10px;border-radius:10px;-moz-border-radius:10px;
+                            -ms-border-radius:10px;-o-border-radius:10px;-webkit-border-radius:10px;border:1px solid #ccc;
+                           font-size:10pt;padding:5px 10px;width: 300px;height: 30px" class="uploadbutton" type="file" name="user_photo"
+						   accept="image/*" onchange=fileSelected() />
+				</div>
+
+				<div class="fitem">
+					<label>备注：</label>
+					<input id="inp_remark" type="text" name="remark" class="easyui-textbox" style="height:30px;width: 180px;"/>
+				</div>
+			</div>
+		</form>
+		<div id="add-buttons">
+			<a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-ok"
+			   onclick=operateSure()>确定</a>
+			<a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel"
+			   onclick=operateCancel("div_dialog")>取消</a>
+		</div>
+	</div>
+
+	<div id="edit_dialog" class="easyui-dialog"
+		 data-options="closed:true,buttons:'#edit-buttons',modal:true" title="用户管理"
+		 style="width: 702px; height: 400px; padding: 5px 10px;">
+		<div id="edit_tabs" class="easyui-tabs" data-options="fit:true,border:false" style="padding: 5px 10px;">
+			<div title="用户信息" style="padding:10px;">
+				<form id="User_edit_From" method="post" enctype="multipart/form-data">
+					<div style="width:50%;float:left;">
+						<div class="fitem">
+							<label>用户名称：</label>
+							<input id="edit_id" name="id" type="hidden"/>
+							<input id="edit_username" name="username" type="text" class="easyui-textbox" style="height:30px;width: 180px" data-options="disabled:true,editable:false,readonly:true"/>
+						</div>
+						<div class="fitem">
+							<label>所属单位：</label>
+							<input id="edit_service_group_id" name="service_group_id" class="easyui-combotree" style="height:30px;width: 180px;" data-options="url:'<?php echo U("Admin/Function/getGroupInfosToTree");?>',valueField:'id',textField:'text',multiple:false,required:true,editable:false,panelHeight:100" />
+							<span style="color: #CC0000;margin-left: 5px;line-height: inherit;text-align:center;font-weight: bold;">*</span>
+						</div>
+						<div class="fitem">
+							<label>角色名称：</label>
+							<input id="edit_group_ids" name="group_ids" class="easyui-combobox" style="height:30px;width: 180px;"  data-options="url:'<?php echo U("Admin/Function/getAuthList");?>',valueField:'id',textField:'text',required:true,multiple:false,editable:false,panelHeight:100"/>
+							<span style="color: #CC0000;margin-left: 5px;line-height: inherit;text-align:center;font-weight: bold;">*</span>
+						</div>
+						<div class="fitem">
+							<label>邮箱：</label>
+							<input id="edit_email" type="text" name="email" data-options="validType:'email'" class="easyui-textbox" style="height:30px;width: 180px;" />
+						</div>
+						<div class="fitem">
+							<label>电话：</label>
+							<input id="edit_phone" type="text" name="phone" data-options="validType:'phone'" class="easyui-numberbox" style="height:30px;width: 180px;" />
+						</div>
+						<div class="fitem">
+							<label>状态：</label>
+							<input id="edit_status" name="status" class="easyui-combobox" style="height:30px;width: 180px;" data-options="url:'<?php echo U("Admin/Function/get_status_option");?>',valueField:'id',textField:'text',editable:false,panelHeight:'auto'"/>
+							<span style="color: #CC0000;margin-left: 5px;line-height: inherit;text-align:center;font-weight: bold;">*</span>
+						</div>
+					</div>
+					<div style="width:50%;float:left;">
+						<div>
+							<label style="margin-left:20px;">用户头像：</label>
+							<img id="edit_photo" alt="头像预览" style=" width:180px; height:170px;"/>
+							<input id="edit_head_img"
+								   style="margin-top: 10px;margin-left:10px;border-radius:10px;-moz-border-radius:10px;
+                            -ms-border-radius:10px;-o-border-radius:10px;-webkit-border-radius:10px;border:1px solid #ccc;
+                           font-size:10pt;padding:5px 10px;width: 270px;height: 26px" class="uploadbutton" type="file" name="user_photo"
+								   accept="image/*" onchange=fileSelected() />
+						</div>
+
+						<div class="fitem">
+							<label>备注：</label>
+							<input id="edit_remark" type="text" name="remark" class="easyui-textbox" style="height:30px;width: 180px;" />
+						</div>
+					</div>
+				</form>
+			</div>
+			<div title="修改密码"style="padding:10px;">
+				<form id="Updatepassword" method="post">
+					<div style="width:50%;float:left;">
+						<div class="fitem">
+							<input id="edit_user_id" name="id" type="hidden"/>
+							<label>用户名称：</label>
+							<input id="pas_username" name="username" type="text" class="easyui-textbox" style="height:30px;width: 180px" data-options="disabled:true,readonly:true,editable:false"/>
+						</div>
+						<div class="fitem">
+							<label>新密码：</label>
+							<input id="edit_new_password" name="new_password" type="password" class="easyui-textbox" style="height:30px;width: 180px;"  data-options="required:true,validType:'minLength[5]'"/>
+							<span style="color: #CC0000;margin-left: 5px;line-height: inherit;text-align:center;font-weight: bold;">*</span>
+						</div>
+						<div class="fitem">
+							<label>确认密码：</label>
+							<input id="edit_eque_password" name="eque_password" type="password" class="easyui-textbox" style="height:30px;width: 180px;" required="required" validType="equals['#edit_new_password']" />
+							<span style="color: #CC0000;margin-left: 5px;line-height: inherit;text-align:center;font-weight: bold;">*</span>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div id="edit-buttons">
+			<a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-ok"
+			   onclick=operateSure()>确定</a>
+			<a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel"
+			   onclick=operateCancel("edit_dialog")>取消</a>
+		</div>
+	</div>
+
+
+
+
+<table id="User_Data_List"></table>
+
+<script type="text/javascript">
+
+
+	var operateFlag = undefined;
+	var uploadCarImgDir = '/CourtGms/Uploads/'; // 定义上传图片目录
+
+
+	$(function() {
+
+	////数据正确性校验
+		$.extend($.fn.validatebox.defaults.rules, {
+			minLength: {
+				validator: function (value, param) {
+					var reg = /^[\s\u4E00-\u9FA5A-Za-z0-9-_]*$/;
+					value = $.trim(value);
+					return reg.test(value) && value.length >= param;
+				},
+				message: '请至少输入{0}个有效字符'
+			},
+			equals: {
+				validator: function(value,param){
+					return value == $(param[0]).val();
+				},
+				message: '两次输入不一样,请修改'
+			},
+			phone:{
+				validator: function (value, param) {
+					var rex=/^1[3-8]+\d{9}$/;
+					//var rex=/^(([0\+]\d{2,3}-)?(0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/;
+					//区号：前面一个0，后面跟2-3位数字 ： 0\d{2,3}
+					//电话号码：7-8位数字： \d{7,8
+					//分机号：一般都是3位数字： \d{3,}
+					//这样连接起来就是验证电话的正则表达式了：/^((0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/
+					var rex2=/^((0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/;
+					value = $.trim(value);
+					return rex.test(value)||rex2.test(value);
+				},
+				message: '手机号码有误，请重填'
+			}
+		});
+
+
+		$("#s_username").combobox({
+			url:"<?php echo U('Function/searchUser');?>",
+			multiple:true,
+			valueField: 'word_id',
+			textField: 'word',
+			panelHeight:100
+		});
+
+
+		$('#edit_tabs').tabs({
+
+			onSelect:function (title,index) {
+
+				if("1" == index.toString()){
+
+					operateFlag = 'Updatepassword';
+
+
+//					$("#User_edit_From").form('clear');
+				}
+				else{
+
+					operateFlag = 'edit';
+//					$("#Updatepassword").form('clear');
+				}
+
+				console.log(operateFlag);
+
+
+			}
+		});
+
+
+
+
+		$("#User_Data_List").datagrid({
+			url: "<?php echo U('User/index');?>",
+			fit: true,
+			striped: true,
+			border: false,
+			pagination: true,
+			pageSize: 20,
+			pageList: [10, 20, 50],
+			pageNumber: 1,
+			sortName: 'id',
+			sortOrder: 'desc',
+			toolbar: '#User_Bar',
+			singleSelect: true,
+			columns: [[{
+				field: 'id',
+				title: 'ID',
+				width: 40,
+				sortable: true
+			},
+			{
+				field: "username",
+				title: "用户名",
+				width: 100,
+				sortable: true
+			},
+			{
+				field: "group_name",
+				title: "单位名称",
+				width: 140,
+				sortable: true
+			},
+			{
+				field: "auth_name",
+				title: "角色名称",
+				width: 140,
+				sortable: true
+			},
+			{
+				field: "phone",
+				title: "电话",
+				width: 100,
+				sortable: true
+			},
+			{
+				field: "create_time",
+				title: "创建时间",
+				width: 150,
+				sortable: true,
+				formatter: function(value, row, index) {
+					return u_to_ymdhis(value)
+				}
+			},
+			{
+				field: "update_time",
+				title: "更新时间",
+				width: 150,
+				sortable: true,
+				formatter: function(value, row, index) {
+					return u_to_ymdhis(value)
+				}
+			},
+			{
+				field: "status",
+				title: "状态",
+				width: 50,
+				sortable: true,
+				formatter: function(value, row, index) {
+					var op_status = new Array()
+					op_status["0"] = "禁用"
+					op_status["1"] = "启用"
+					op_status["2"] = "审核中"
+
+					return op_status[value];
+				}
+			},
+			{
+				field: "operate",
+				title: "操作",
+				width: 240,
+				formatter: function(value, row, index) {
+					operate_menu = '';
+					<?php if(Is_Auth('Admin/User/edit')): ?>operate_menu = operate_menu + "<a href='#' onclick=click_edit('edit_dialog',\"" + row.id + "\")><img style='width: 18px;vertical-align: bottom' src='/CourtGms/Public/Static/Easyui/themes/icons/edit_add3.png'>&nbsp;编辑&nbsp;</a>";<?php endif; ?>
+					<?php if(Is_Auth('Admin/User/del')): ?>operate_menu = operate_menu+" | <a href='#' onclick=Data_Remove('<?php echo U('del'); ?>&id=" + row.id + "','User_Data_List') ><img style='width: 18px;vertical-align: bottom' src='/CourtGms/Public/Static/Easyui/themes/icons/delete2.png'>&nbsp;删除&nbsp;</a>";<?php endif; ?>
+
+					return operate_menu;
+				}}
+			]]
+		});
+
+
+	})
+
+
+
+
+	function click_search() {
+		var queryParams = $('#User_Data_List').datagrid('options').queryParams;
+
+		var username_ids = $('#s_username').combobox('getValues');
+
+		if(username_ids.length != 0){
+
+			console.log('s_username =>' + username_ids);
+			queryParams['s_username'] = username_ids.toString();
+			console.log('queryParams[s_username] =>' + queryParams['s_username']);
+
+		}
+
+		$('#User_Data_List').datagrid('reload');
+	}
+
+	function click_redo() {
+
+		$('#s_username').combobox('setValue','');
+
+		$('#User_Data_List').datagrid({queryParams: {}});
+	}
+
+
+	function fileSelected() {
+		var fileinfo = document.getElementById('inp_head_img').files[0];
+
+		var fileinfo1 = document.getElementById('edit_head_img').files[0];
+
+//		console.log(fileinfo+"    ",fileinfo1);
+
+		if(fileinfo != undefined){
+			var url = window.URL.createObjectURL(fileinfo);
+			$('#img_photo').attr('src',url);
+		}
+		if(fileinfo1 != undefined){
+			var url = window.URL.createObjectURL(fileinfo1);
+			$('#edit_photo').attr('src',url);
+		}
+
+
+//		var url1 = window.URL.createObjectURL(fileinfo1);
+//
+//		$('#edit_photo').attr('src',url1);
+	}
+
+	function fillForm(obj) {
+
+//		console.log(obj);
+		if (obj) {
+
+			$("#edit_id").val(obj.id);
+
+			$("#edit_user_id").val(obj.id);
+
+			$('#edit_username').textbox('setValue',obj.username);
+
+			$('#pas_username').textbox('setValue',obj.username);
+
+
+			$('#edit_service_group_id').combotree('setValue',obj.service_group_id);
+
+			$('#edit_group_ids').combobox('setValue',obj.group_ids);
+
+			$('#edit_email').textbox('setValue',obj.email);
+
+			$('#edit_phone').textbox('setValue',obj.phone);
+
+			$('#edit_status').combobox('setValue',obj.status);
+
+			$('#edit_remark').textbox('setValue',obj.remark);
+
+
+			if(obj.head_img != 'null' && obj.head_img != null && obj.head_img.length > 0){
+				$('#edit_photo').attr('src',uploadCarImgDir + obj.head_img);
+			}
+			else{
+				$('#edit_photo').attr('src',"/CourtGms/Public/Service/img/people.png");
+			}
+
+		}
+	}
+
+	function click_add(id) {
+
+		$("#User_add_From").form('clear');
+		operateFlag = 'add';
+
+		$('#inp_status').combobox('setValue','请选择');
+
+		$('#img_photo').attr('src',"/CourtGms/Public/Service/img/people.png");
+		window.setTimeout(function(){$("#username").focus();},500);
+		$("#"+id).dialog('center');
+		$("#"+id).dialog('open');
+	}
+
+	function click_edit(id,row_id) {
+
+
+
+
+		$("#User_edit_From").form('clear');
+
+		$("#Updatepassword").form('clear');
+
+		$('#edit_photo').attr('src',"/CourtGms/Public/Service/img/people.png");
+
+
+		var tab = $('#edit_tabs').tabs('getSelected');
+		var index = $('#edit_tabs').tabs('getTabIndex',tab);
+
+		if("1" == index.toString()){
+
+			operateFlag = 'Updatepassword';
+
+			$("#User_edit_From").form('clear');
+		}
+		else{
+
+			operateFlag = 'edit';
+
+
+		}
+
+
+
+		//operateFlag = 'edit';
+		if(row_id){
+
+			console.log(operateFlag);
+			$.ajax({
+				url: "<?php echo U('User/userinfo');?>",
+				type: 'Post',
+				dataType: 'Json',
+				data: {
+					id: row_id
+				}
+			}).done(function (result) {
+				if (result.Code == 200) {
+					fillForm(result.Result);
+				} else {
+					$.messager.alert('错误','数据错误','error');
+				}
+			});
+		}
+		window.setTimeout(function(){$("#edit_email").focus();},500);
+		$("#"+id).dialog('center');
+		$("#"+id).dialog('open');
+
+	}
+
+	function operateSure() {
+
+
+
+		var action = "";
+
+		var id = "";
+
+		if("add" == operateFlag){
+
+			id = "User_add_From";
+
+			action = "add";
+
+		}
+		else if("edit" == operateFlag){
+
+
+			id = "User_edit_From";
+
+			action = "edit";
+		}
+		else{
+
+
+			id = "Updatepassword";
+
+			action = "updatePassword1";
+		}
+
+
+
+//		var action = operateFlag == "add" ? "add" : "edit";
+
+		$("#"+id).form('submit', {
+			url: "<?php echo U('User');?>&a="+action,
+			onSubmit: function () {
+				var flag = true;
+
+				if("add" == action){
+					flag = flag && $("#inp_username").textbox('isValid');
+					if(!flag){
+						$.messager.alert('提示',"用户名为必填内容,请填写", 'info');
+						return flag;
+					}
+					flag = flag && $("#inp_password").textbox('isValid');
+					if(!flag){
+						$.messager.alert('提示',"密码为必填内容,请填写", 'info');
+						return flag;
+					}
+					if("add" == operateFlag){
+
+						flag = flag && $("#inp_eque_password").textbox('isValid');
+						if(!flag){
+							$.messager.alert('提示',"确认密码为必填内容,请填写", 'info');
+							return flag;
+						}
+
+					}
+					flag = flag && $("#inp_service_group_id").combotree('isValid');
+					if(!flag){
+						$.messager.alert('提示',"组织名称为必填内容,请填写", 'info');
+						return flag;
+					}
+
+					flag = flag && $("#inp_group_ids").combobox('isValid');
+					if(!flag){
+						$.messager.alert('提示',"角色名称为必填内容,请填写", 'info');
+						return flag;
+					}
+
+					var str =  $("#inp_status").combotree('getValue');
+					if('请选择' == str){
+						$.messager.alert('提示',"角色状态为必填内容,请填写", 'info');
+						return false;
+					}
+				}
+				else if("edit" == action){
+
+					flag = flag && $("#edit_service_group_id").combotree('isValid');
+					if(!flag){
+						$.messager.alert('提示',"组织名称为必填内容,请填写", 'info');
+						return flag;
+					}
+
+					flag = flag && $("#edit_group_ids").combobox('isValid');
+					if(!flag){
+						$.messager.alert('提示',"角色名称为必填内容,请填写", 'info');
+						return flag;
+					}
+
+				}
+
+				else{
+
+					flag = flag && $("#edit_new_password").textbox('isValid');
+					if(!flag){
+						$.messager.alert('提示',"新密码为必填内容,请检查后修改", 'info');
+						return flag;
+					}
+
+					flag = flag && $("#edit_eque_password").textbox('isValid');
+					if(!flag){
+						$.messager.alert('提示',"确认密码为必填内容或与新密码不同,请修改", 'info');
+						return flag;
+					}
+				}
+			},
+			success: function (data) {
+				var jsonResult = $.parseJSON(data);
+				if (jsonResult.Code == 200) {
+					if (jsonResult.Result) {
+						$("#User_Data_List").datagrid('reload');
+						$("#div_dialog").dialog('close');
+
+						$("#edit_dialog").dialog('close');
+						$.messager.show({
+							title:'消息提示',
+							msg:jsonResult.Msg,
+							timeout:3000,
+							showType:'slide'
+						});
+					}
+					else {
+						$.messager.alert("提示", jsonResult.Msg, 'error');
+					}
+				}
+				else {
+					$.messager.alert("提示", jsonResult.Msg, 'error');
+				}
+			}
+		});
+	}
+
+	function operateCancel(id) {
+		$("#User_add_From").form('clear');
+
+		$("#User_edit_From").form('clear');
+
+		$('#img_photo').attr('src',"/CourtGms/Public/Service/img/people.png");
+		$('#edit_photo').attr('src',"/CourtGms/Public/Service/img/people.png");
+		$("#"+id).dialog('close');
+	}
+
+</script>
+
+</body>
+</html>

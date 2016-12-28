@@ -1,0 +1,173 @@
+
+
+/*
+ * {$ModelInfo['title']}控制器
+ * Auth   : Ghj
+ * Time   : <?php echo date("Y年m月d日",time());?> 
+ * QQ     : 912524639
+ * Email  : 912524639@qq.com
+ * Site   : http://guanblog.sinaapp.com/
+ */
+ 
+namespace Admin\Controller;
+
+class {$ModelInfo['name']}Controller extends AdminCoreController {
+	
+	//系统默认模型
+	private $Model = null;
+
+    protected function _initialize() {
+		//继承初始化方法
+		parent::_initialize ();
+		//设置控制器默认模型
+        $this->Model = D('{$ModelInfo['name']}');
+    }
+	
+    /* 列表(默认首页)
+     * Auth   : Ghj
+     * Time   : <?php echo date("Y年m月d日",time());?> 
+     **/
+	public function index(){
+		if (IS_POST) {
+			$post_data = I ( 'post.' );
+			$post_data ['first'] = $post_data ['rows'] * ($post_data ['page'] - 1);
+			$map = array ();
+        	$map = $this->_search();
+			$total = $this->Model->where ( $map )->count ();
+			if ($total == 0) {
+				$_list = '';
+			} else {
+				$_list = $this->Model->where ( $map )->order ( $post_data ['sort'] . ' ' . $post_data ['order'] )->limit ( $post_data ['first'] . ',' . $post_data ['rows'] )->select ();
+			}
+			$data = array (
+					'total' => $total,
+					'rows' => $_list 
+			);
+			$this->ajaxReturn ( $data );
+		} else {
+        	$this->meta_title = '模型列表';
+			$this->display ();
+		}
+	}
+	
+    /* 搜索
+     * Auth   : Ghj
+     * Time   : <?php echo date("Y年m月d日",time());?> 
+     **/
+	protected function _search() {
+		$map = array ();
+		$post_data=I('post.');
+		<?php 
+		foreach ($_Search as $key => $field_one ) {
+		if($field_one['type']=='datetime'){?>/* 名称：<?php echo $field_one['title'];?> 字段：<?php echo $field_one['name'];?> 类型：<?php echo $field_one['type'];?>*/
+		if($post_data['s_<?php echo $field_one['name'];?>_min']!=''){
+			$map['<?php echo $field_one['name'];?>'][]=array('gt',strtotime($post_data['s_<?php echo $field_one['name'];?>_min']));
+		}
+		if($post_data['s_<?php echo $field_one['name'];?>_max']!=''){
+			$map['<?php echo $field_one['name'];?>'][]=array('lt',strtotime($post_data['s_<?php echo $field_one['name'];?>_max']));
+		}
+		<?php }elseif($field_one['type']=='string' || $field_one['type']=='textarea'){?>/* 名称：<?php echo $field_one['title'];?> 字段：<?php echo $field_one['name'];?> 类型：<?php echo $field_one['type'];?>*/
+		if($post_data['s_<?php echo $field_one['name'];?>']!=''){
+			$map['<?php echo $field_one['name'];?>']=array('like', '%'.$post_data['s_<?php echo $field_one['name'];?>'].'%');
+		}
+		<?php }else{?>/* 名称：<?php echo $field_one['title'];?> 字段：<?php echo $field_one['name'];?> 类型：<?php echo $field_one['type'];?>*/
+		if($post_data['s_<?php echo $field_one['name'];?>']!=''){
+			$map['<?php echo $field_one['name'];?>']=$post_data['s_<?php echo $field_one['name'];?>'];
+		}
+		<?php }
+		} ?>return $map;
+	}
+    
+    /* 添加
+     * Auth   : Ghj
+     * Time   : <?php echo date("Y年m月d日",time());?> 
+     **/
+	public function add(){
+		if(IS_POST){
+			$post_data=I('post.');
+<?php 
+          foreach($_Add as $field_key=>$field){
+            if(in_array($field['type'],array('select','checkbox'))){
+				$extra=unserialize($field['extra']);
+                if($extra['multiple']==1){
+            echo '$post_data["'.$field["name"].'"]=I("post.'.$field["name"].'");';
+            echo '$post_data["'.$field["name"].'"]=implode(",",$post_data["'.$field["name"].'"]);';
+                }
+            }
+          }
+          ?> 
+			$data=$this->Model->create($post_data);
+			if($data){
+				$result = $this->Model->add($data);
+				if($result){
+					action_log('Add_{$ModelInfo['name']}', '{$ModelInfo['name']}', $result);
+					$this->success ( "操作成功！",U('index'));
+				}else{
+					$error = $this->Model->getError();
+					$this->error($error ? $error : "操作失败！");
+				}
+			}else{
+                $error = $this->Model->getError();
+                $this->error($error ? $error : "操作失败！");
+			}
+		}else{
+        	$this->display();
+		}
+	}
+	
+    /* 编辑
+     * Auth   : Ghj
+     * Time   : <?php echo date("Y年m月d日",time());?> 
+     **/
+	public function edit(){
+		if(IS_POST){
+			$post_data=I('post.');
+<?php 
+          foreach($_Edit as $field_key=>$field){
+            if(in_array($field['type'],array('select','checkbox'))){
+				$extra=unserialize($field['extra']);
+                if($extra['multiple']==1){
+            echo '$post_data["'.$field["name"].'"]=I("post.'.$field["name"].'");';
+            echo '$post_data["'.$field["name"].'"]=implode(",",$post_data["'.$field["name"].'"]);';
+                }
+            }
+          }
+          ?> 
+			$data=$this->Model->create($post_data);
+			if($data){
+				$result = $this->Model->where(array('id'=>$post_data['id']))->save($data);
+				if($result){
+					action_log('Edit_{$ModelInfo['name']}', '{$ModelInfo['name']}', $post_data['id']);
+					$this->success ( "操作成功！",U('index'));
+				}else{
+					$error = $this->Model->getError();
+					$this->error($error ? $error : "操作失败！");
+				}
+			}else{
+                $error = $this->Model->getError();
+                $this->error($error ? $error : "操作失败！");
+			}
+		}else{
+			$_info=I('get.');
+			$_info = $this->Model->where(array('id'=>$_info['id']))->find();
+			$this->assign('_info', $_info);
+        	$this->display();
+		}
+	}
+	
+    /* 删除
+     * Auth   : Ghj
+     * Time   : <?php echo date("Y年m月d日",time());?> 
+     **/
+	public function del(){
+		$id=I('get.id');
+		empty($id)&&$this->error('参数不能为空！');
+		$res=$this->Model->delete($id);
+		if(!$res){
+			$this->error($this->Model->getError());
+		}else{
+			action_log('Del_{$ModelInfo['name']}', '{$ModelInfo['name']}', $id);
+			$this->success('删除成功！');
+		}
+	}
+}

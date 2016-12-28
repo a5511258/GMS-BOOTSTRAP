@@ -1,0 +1,50 @@
+<extend name="Public/base"/><block name="body"><div class="fixed-bar" id="AuthGroup_Bar" style="height: auto">
+	<div class="item-title">
+		<h3>角色</h3>
+		<ul class="tab-base">
+			<if condition="Is_Auth('Admin/AuthGroup/index')">
+			<li><a href="{:U('Admin/AuthGroup/index')}"><span>列表</span></a></li>
+			</if>
+			<if condition="Is_Auth('Admin/AuthGroup/add')">
+			<li><a href="{:U('Admin/AuthGroup/add')}"><span>新增</span></a></li>
+			</if>
+			<li><a class="current" href="#"><span>更新</span></a></li>
+		</ul>
+	</div>
+</div>
+<form id="AuthGroup_Form" method="post">
+<table class="table tb-type2 nobdb">
+	<tbody>
+	<tr>
+			<td colspan="2" class="required"><label for="for_name">角色名称 :</label></td>
+		</tr>
+		<tr class="noborder">
+			<td class="vatop rowform"><input name="title" type="text" class="easyui-textbox" style="height:30px;" value="{$_info["title"]}" data-options="required:false"></td>
+			<td class="vatop tips"></td>
+		</tr><tr>
+			<td colspan="2" class="required"><label for="for_name">角色状态:</label></td>
+		</tr>
+		<tr class="noborder">
+			<td class="vatop rowform"><select name="status" class="easyui-combobox" style="height:30px;" data-options="value:'{$_info["status"]}',multiple:false,required:false,editable:false"><option value="0" >禁用</option><option value="1" >启用</option></select></td>
+			<td class="vatop tips"></td>
+		</tr><tr>
+			<td colspan="2" class="required"><label for="for_name">角色权限:</label></td>
+		</tr>
+		<tr class="noborder">
+			<td class="vatop rowform"><select name="rules[]" class="easyui-combotree" style="height:30px;" data-options="value:'{$_info["rules"]}',url:'{:U("Admin/Function/get_auth_rule")}&r_type=json',valueField:'id',textField:'text',multiple:true,cascadeCheck:false,required:false,editable:false"></select></td>
+			<td class="vatop tips"></td>
+		</tr><tr>
+			<td colspan="2" class="required"><label for="for_name">排序:</label></td>
+		</tr>
+		<tr class="noborder">
+			<td class="vatop rowform"><input name="sort" value="{$_info["sort"]}" type="text" class="easyui-numberbox" style="height:30px;" data-options="precision:'0',decimalSeparator:'.',groupSeparator:',',required:false"></td>
+			<td class="vatop tips"></td>
+		</tr>	</tbody>
+	<tfoot>
+		<tr class="tfoot">
+			<td colspan="2"><a class="easyui-linkbutton" href="JavaScript:void(0);" onclick="$('#AuthGroup_Form').submit();" data-options="iconCls:'iconfont icon-edit'"><span style="font-size: 14px; font-weight: 600;">提交</span></a></td>
+		</tr>
+	 </tfoot>
+</table>
+<input name="id" type="hidden" value="{:I('get.id')}" />
+</form></block>

@@ -1,0 +1,94 @@
+<!--转组功能-->
+
+<style>
+    .ftitle {
+        font-size: 14px;
+        font-weight: bold;
+        padding: 5px 0;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+    .fitem {
+        margin-bottom: 10px;
+
+    }
+    .fitem label {
+        display: inline-block;
+        width: 100px;
+        text-align:right;
+    }
+    .fitem {
+        text-align: left;
+        padding: 6px;
+        margin: 3px;
+        height: 30px;
+        line-height:30px;
+        background-color: #EEEEEE;
+    }
+    .fitem:nth-child(2n){
+        background-color: #F2F8FB;
+    }
+    .settingImg {
+        width: 20px;
+        height: 20px;
+        vertical-align:middle;
+    }
+</style>
+
+<div>
+    <h3 class="ftitle">批量转组</h3>
+    <br>
+    <div class="fitem">
+        <label>待转车辆选择：</label>
+        <input id="change_cars" style="width: 180px;height: 30px;">
+        <span style="color: #CC0000;margin-left: 5px;line-height: inherit;text-align:center;font-weight: bold;">*</span>
+    </div>
+    <div class="fitem">
+        <label>目标单位选择：</label>
+        <input id="change_group" style="width: 180px;height: 30px;">
+        <span style="color: #CC0000;margin-left: 5px;line-height: inherit;text-align:center;font-weight: bold;">*</span>
+    </div>
+
+    <br >
+    <!--<div style="border-bottom: 1px solid #ccc;"></div>-->
+    <br >
+    <!--<br >-->
+    <!--<div style="text-align: center">-->
+        <!--<a href="javascript:;" class="easyui-linkbutton" onclick="save()"-->
+           <!--data-options="iconCls:'icon-ok'" style="width: 100px;height: 36px;background-color: #F2F8FB; ">确定</a>-->
+        <!--<a href="javascript:;" class="easyui-linkbutton" onclick="close()"-->
+           <!--data-options="iconCls:'icon-no'" style="width: 100px;height: 36px;background-color: #F2F8FB; ">关闭</a>-->
+    <!--</div>-->
+
+</div>
+
+
+<script>
+//    var online = '{$online}';
+//    var offline = '{$offline}';
+//    var time = '{$time}';
+
+    $('#change_cars').combotree({
+        url: "{:U('Service/VehicleInterface/getVehicleListTree')}&type=all",
+        multiple:true,
+        required:true
+    });
+    $('#change_group').combotree({
+        url:"{:U('GroupInfo/getGroupInfosToTree')}",
+        required:true
+    });
+
+
+
+    //显示右下角提示框
+    function showTipsMessage(msg){
+
+        $.messager.alert("提示",msg, 'info');
+//        $.messager.show({
+//            title:'提示',
+//            msg:msg,
+//            timeout:1500,
+//            showType:'slide',
+//        });
+    }
+</script>

@@ -1,0 +1,73 @@
+<!--文本下发窗口弹出内容-->
+<style>
+    td {
+        width: 50%;
+        padding-left: 10%;
+    }
+</style>
+<div style="text-align: center">
+    <textarea id="text" style="width: 80%;height: 50%;" placeholder="请输入内容："/>
+    <hr style="margin-top: 16px;margin-bottom: 16px">
+    <div style="width: 80%" >
+            <!-- 这里是checkbox-->
+        <table id="textCheckBoxs" style="width: 100%">
+            <tr>
+                <td><input type="checkbox" checked="true" value="3">TTS播读</td>
+                <td><input type="checkbox" value="4">广告屏显示</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" value="5">CAN故障码信息</td>
+                <td><input type="checkbox" value="0">紧急</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" value="2">终端显示屏显示</td>
+            </tr>
+
+        </table>
+
+    </div>
+    <hr style="margin-top: 16px;margin-bottom: 16px">
+    <button onclick="sendTextMsgByRight()">发送</button>
+    <button onclick="closeWindows()">关闭</button>
+
+</div>
+
+
+
+<script>
+    function sendTextMsgByRight(){
+        var msg = $("#text").val();
+
+        var param = 0;
+        var arr = $("#textCheckBoxs input:checkbox:checked");
+
+        for (var i = 0;i< arr.length;i++){
+            var temp = parseInt(arr[i].value);
+            param += 1<<temp;
+        }
+        var returnMsg = ["【"+currNode.attributes.carinfo.car_license+"】文本下发成功",
+            "【"+currNode.attributes.carinfo.car_license+"】车辆不在线"];
+        var d =
+        {
+            "operate": "text_message",
+            "vehicle_id": [currNode.attributes.carinfo.vehicle_id],
+            "data": {
+                "flag": param,
+                "content": msg
+            },
+            "client_msg":returnMsg
+        };
+
+        send(JSON.stringify(d));
+        var msg = "【"+currNode.attributes.carinfo.car_license+"】下发文本信息指令";
+        showTipsMessage(msg);
+        updateOperateLog(msg);
+        updateOperateLogForDB(7,msg, currNode.attributes.carinfo.vehicle_id);
+
+
+        $(<?php echo "'#".$windowId."'";?>).window('close');
+    }
+    function closeWindows(){
+        $(<?php echo "'#".$windowId."'";?>).window('close');
+    }
+</script>

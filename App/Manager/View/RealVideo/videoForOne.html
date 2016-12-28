@@ -1,0 +1,530 @@
+<!--实时视频-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>视频监控</title>
+
+    <script type="text/javascript" src="__STATIC__/Jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/Jquery/jquery.form.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/Easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/Easyui/locale/easyui-lang-zh_CN.js"></script>
+
+    <script type="text/javascript" src="__Manager_JS__/main.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="__STATIC__/Easyui/themes/metro-gms/easyui.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/Easyui/themes/icon.css">
+    <!--<link rel="stylesheet" href="__STATIC__/Font/iconfont.css">-->
+    <link rel="stylesheet" type="text/css" href="__STATIC__/Easyui/themes/color.css">
+
+    <link rel="stylesheet" type="text/css" href="__STATIC__/Tipper/css/jquery.fs.tipper.css">
+    <script type="text/javascript" src="__STATIC__/Tipper/js/jquery.fs.tipper.js"></script>
+
+
+
+    <link rel="stylesheet" type="text/css" href="__CSS__/main.css">
+
+    <link rel="stylesheet" type="text/css" href="__Manager_KEDA__/css/style.css">
+
+    <script type="text/javascript" src="__Manager_KEDA__/js/base64.js"></script>
+
+    <script type="text/javascript" src="__Manager_JS__/realVideoForOne.js"></script>
+
+
+
+
+
+
+    <style>
+        body {
+            padding: 0px;
+            margin: 0px;
+            width: 100%;
+            height: 100%;
+            font-size:9pt;
+
+        }
+        .tree-header div {
+            /*设置文本颜色*/
+            color: #000000;
+        }
+        .fitem {
+            padding-left: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+        }
+        /*/!*修改Window样式*!/*/
+        /*.window {*/
+            /*background-color: #35383A;*/
+        /*}*/
+        .tree-node {
+            height: 24px;
+            font-size: large;
+        }
+        .tree-title {
+            font-size: 16px;
+            line-height: normal;
+        }
+        .ptzPanel {
+            background-color: #FFFFFF;
+        }
+
+        td.ptzleftup
+        {
+            background-image:url(__Manager_KEDA__/images/realplay_one/leftup.png);
+            background-size:contain;
+        }
+        td.ptzup
+        {
+            background-image:url(__Manager_KEDA__/images/realplay_one/up.png);
+            background-size:contain;
+
+        }
+        td.ptzrightup
+        {
+            background-image:url(__Manager_KEDA__/images/realplay_one/rightup.png);
+            background-size:contain;
+
+        }
+        td.ptzright
+        {
+            background-image:url(__Manager_KEDA__/images/realplay_one/right.png);
+            background-size:contain;
+
+        }
+        td.ptzreset
+        {
+            background-image:url(__Manager_KEDA__/images/realplay_one/reset.png);
+            background-size:contain;
+
+        }
+        td.ptzleft
+        {
+            background-image:url(__Manager_KEDA__/images/realplay_one/left.png);
+            background-size:contain;
+
+        }
+        td.ptzleftdown
+        {
+            background-image:url(__Manager_KEDA__/images/realplay_one/leftdown.png);
+            background-size:contain;
+
+        }
+        td.ptzdown
+        {
+            background-image:url(__Manager_KEDA__/images/realplay_one/down.png);
+            background-size:contain;
+
+        }
+        td.ptzrightdown
+        {
+            background-image:url(__Manager_KEDA__/images/realplay_one/rightdown.png);
+            background-size:contain;
+
+        }
+        td.ptzfocusfar
+        {
+
+            background-image:url(__Manager_KEDA__/images/realplay_one/focus_far.png);
+            background-size:cover;
+            margin: 1px;
+
+        }
+        td.ptzfocusnear
+        {
+            background-image:url(__Manager_KEDA__/images/realplay_one/focus_near.png);
+            background-size:cover;
+            margin: 1px;
+
+        }
+
+        button.btnviewlow
+        {
+            background-color:transparent;
+            height:22px;
+            font-size:12px;
+            line-height:22px;
+            border:0;
+            color:#000000;
+        }
+        button.btnviewhigh
+        {
+            background-color: transparent;
+            height:22px;
+            font-size:12px;
+            line-height:22px;
+            border:0;
+            color:#000000;
+        }
+        td.fullscreen
+        {
+            background-image:url(__Manager_KEDA__/images/realplay_one/full_screen_normal.bmp);
+        }
+        td.ctrlplay
+        {
+            background-image:url(__Manager_KEDA__/images/realplay_one/play_normal.png);
+        }
+
+        td.audiocall
+        {
+            background-image:url(__Manager_KEDA__/images/realplay_one/audiocall_normal.png);
+        }
+        td.fullscreen
+        {
+            background-image:url(__Manager_KEDA__/images/realplay_one/full_screen_normal.png);
+            background-size: cover;
+        }
+        td.ctrlvolume
+        {
+            background-image:url(__Manager_KEDA__/images/realplay_one/volume_normal.png);
+        }
+    </style>
+    <style>
+        .tipped {}
+        .tipped:hover { }
+    </style>
+    <script type="text/javascript">
+        function myBrowser(){
+            var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+            var isOpera = userAgent.indexOf("Opera") > -1;
+            if (isOpera) {
+                return "Opera"
+            }; //判断是否Opera浏览器
+            if (userAgent.indexOf("Firefox") > -1) {
+                return "FF";
+            } //判断是否Firefox浏览器
+            if (userAgent.indexOf("Chrome") > -1){
+                return "Chrome";
+            }
+            if (userAgent.indexOf("Safari") > -1) {
+                return "Safari";
+            } //判断是否Safari浏览器
+            if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera) {
+                return "IE";
+            }; //判断是否IE浏览器
+        }
+
+        $(document).ready(function (){
+//            if(CheckBrowserVersion()){
+//                CheckOcxReg();
+//            }
+            $(".tipped").tipper();
+            showTipsMessage('正在初始化视频控件。。。')
+//            1.获取车辆列表，并构建树
+//            InitDeviceTree();
+//            2.初始化角度调整进度条
+            InitPtzSpeedSlider();
+            initTitle();
+//            3.初始化音量调节控件
+//            InitRealPlayVolumeSlider();
+//            4.初始化按钮选中与否状态
+//            g_nScreenStyle = 1;
+//            InitMcuOcx();
+//            objMcuOcx.SetWndStyle(1);
+////            InitScreenStyle();
+////            initPtzCtrl();
+////            TODO：需要设置一些初始化信息，比如说，更改图标状态。
+//            document.getElementById("mcuocx").focus();
+
+        });
+
+
+
+    </script>
+    <meta name="renderer" content="ie-comp">
+
+</head>
+<body class="easyui-layout" style="width: 100%;height: 100%;">
+<script type="text/javascript">
+    <!-- 当窗口关闭后，释放资源-->
+    window.onunload = function() {
+        UnInitMcuOcx();
+        return true;
+    }
+</script>
+
+<div id="main_center" data-options="region:'center',split:false,collapsible:true" style="width: 100%;background-color: #FFFFFF">
+    <!-- 图形主界面-->
+    <div id="ocxCenter" class="easyui-layout" style="width: 100%;height: 100%;">
+        <div id="ptzPanel" class="ptzPanel" data-options="region:'west',split:false" style="width: 300px;height: 100%;">
+            <div style="width:100%;padding-top: 20px">
+                <h3 style="padding-left: 5px"><div id="id_curdevinfo" align="center" style="font-size:16px;color:#000000"></div></h3>
+                <br>
+                <hr>
+                <br>
+                <h4 style="padding-left: 5px">摄像头控制：</h4>
+                <br>
+
+                <table id="id_leftpanal" width="100%" height="200px" >
+                    <tr >
+
+                        <td id="id_ptzTD" width="100%" height="147px" style="background:#FFFFFF" valign="top" align="center">
+                            <div style="float:left;width:100%;" align="center" >
+                                <table bordercolor="#cccccc" width="150px" height="150px" background="__Manager_KEDA__/images/realplay_one/ptz-bj.png">
+                                    <tr>
+                                        <td width="33%" id="id_ptzleftup" class="ptzleftup tipped" data-title="移动镜头"  data-tipper-options='{"direction":"bottom","follow":"true"}' onclick="ClickPTZLeftUp()" onmouseover="OverPTZLeftUp()"
+                                            onmouseout="OutPTZLeftUp()" onmousedown="DownPTZLeftUp()" onmouseup="UpPTZLeftUp()"></td>
+                                        <td width="33%" id="id_ptzup" class="ptzup tipped" data-title="移动镜头"  data-tipper-options='{"direction":"bottom","follow":"true"}' onclick="ClickPTZUp()" onmouseover="OverPTZUp()"
+                                            onmouseout="OutPTZUp()" onmousedown="DownPTZUp()" onmouseup="UpPTZUp()"></td>
+                                        <td width="33%" id="id_ptzrightup" class="ptzrightup tipped" data-title="移动镜头"  data-tipper-options='{"direction":"bottom","follow":"true"}' onclick="ClickPTZRightUp()" onmouseover="OverPTZRightUp()"
+                                            onmouseout="OutPTZRightUp()" onmousedown="DownPTZRightUp()" onmouseup="UpPTZRightUp()"></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="33%" id="id_ptzleft" class="ptzleft tipped" data-title="移动镜头"  data-tipper-options='{"direction":"bottom","follow":"true"}' onclick="ClickPTZLeft()" onmouseover="OverPTZLeft()"
+                                            onmouseout="OutPTZLeft()" onmousedown="DownPTZLeft()" onmouseup="UpPTZLeft()"></td>
+                                        <td width="33%" id="id_ptzreset" class="ptzreset tipped" data-title="重置镜头"  data-tipper-options='{"direction":"bottom","follow":"true"}' onclick="ClickPTZReset()" onmouseover="OverPTZReset()"
+                                            onmouseout="OutPTZReset()" onmousedown="DownPTZReset()" onmouseup="UpPTZReset()"></td>
+                                        <td width="33%" id="id_ptzright" class="ptzright tipped" data-title="移动镜头"  data-tipper-options='{"direction":"bottom","follow":"true"}' onclick="ClickPTZRight()" onmouseover="OverPTZRight()"
+                                            onmouseout="OutPTZRight()" onmousedown="DownPTZRight()" onmouseup="UpPTZRight()"></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="33%" id="id_ptzleftdown" class="ptzleftdown tipped" data-title="移动镜头"  data-tipper-options='{"direction":"bottom","follow":"true"}' onclick="ClickPTZLeftDown()" onmouseover="OverPTZLeftDown()"
+                                            onmouseout="OutPTZLeftDown()" onmousedown="DownPTZLeftDown()" onmouseup="UpPTZLeftDown()"></td>
+                                        <td width="33%" id="id_ptzdown" class="ptzdown tipped" data-title="移动镜头"  data-tipper-options='{"direction":"bottom","follow":"true"}' onclick="ClickPTZDown()" onmouseover="OverPTZDown()"
+                                            onmouseout="OutPTZDown()" onmousedown="DownPTZDown()" onmouseup="UpPTZDown()"></td>
+                                        <td width="33%" id="id_ptzrightdown" class="ptzrightdown tipped" data-title="移动镜头"  data-tipper-options='{"direction":"bottom","follow":"true"}' onclick="ClickPTZRightDown()" onmouseover="OverPTZRightDown()"
+                                            onmouseout="OutPTZRightDown()" onmousedown="DownPTZRightDown()" onmouseup="UpPTZRightDown()"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div style="float:left;width:100%;padding-top: 8px" align="center">
+                                <!--<button onclick="ClickPTZFocusFar()" class="ptzfocusfar" /><button class="ptzfocusnear" onclick="ClickPTZFocusNear()"/>-->
+                                <table>
+                                    <tr style="line-height:35px;" class="tipped" data-title="镜头变倍"  data-tipper-options='{"direction":"bottom","follow":"true"}' >
+                                        <td width="10%"></td>
+                                        <td width="80%">
+                                            <div id="id_ptzspeed" title="速度" >
+                                            </div>
+                                        </td>
+                                        <td width="10%" align="center"><input type="text" id="id_ptzspeed_value" value="8" style="width: 20px"/></td>
+                                    </tr>
+                                </table>
+                                <table width="108px" height="36px" >
+                                    <tr>
+
+                                        <td width="33%" id="id_ptzfocusnear" class="ptzfocusnear tipped" data-title="变焦控制--近焦"  data-tipper-options='{"direction":"bottom","follow":"true"}' onclick="ClickPTZFocusNear()" onmouseover="OverPTZFocusNear()"
+                                            onmouseout="OutPTZFocusNear()" onmousedown="DownPTZFocusNear()" onmouseup="UpPTZFocusNear()"></td>
+                                        <td width="33%"></td>
+                                        <td width="33%" id="id_ptzfocusfar" class="ptzfocusfar tipped" data-title="变焦控制--远焦"  data-tipper-options='{"direction":"bottom","follow":"true"}' onclick="ClickPTZFocusFar()" onmouseover="OverPTZFocusFar()"
+                                            onmouseout="OutPTZFocusFar()" onmousedown="DownPTZFocusFar()" onmouseup="UpPTZFocusFar()"></td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <br/>
+                <hr>
+                <br/>
+
+                <h4 style="padding-left: 5px">消息状态：</h4>
+                <div id="resultDesc" style="padding-top: 10px;padding-left: 24px">
+                    <!--<p id="searchDesc"></p>-->
+                    <!--<p id="searchResult"></p>-->
+
+                </div>
+
+            </div>
+        </div>
+        <div data-options="region:'center',split:false" >
+            <div id="id_playwindow" class="divplaywindow" style="width: 100%;height: 100%;">
+                <!-- ie浏览器-->
+                <object id="mcuocx" name="name_mcuocx" classid="clsid:24E9635B-FE64-47A0-B0E0-A76E0E06B3D0" style="width:100%;height:100%;padding:0px;margin: 0px;"></object>
+                <!-- 谷歌浏览器-->
+                <!--<object id="mcuocx" name="name_mcuocx" CLSID="{24E9635B-FE64-47A0-B0E0-A76E0E06B3D0}" TYPE="application/x-itst-activex" style="width:100%;height:100%;"></object>-->
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="main_bottom" data-options="region:'south',split:false,collapsible:true" style="width: 100%;height: 40px;background-color: #FFFFFF;" >
+    <table id="id_playbottom" width="100%" height="30px" style="padding-top: 4px">
+        <tr height="28px" >
+            <td width="10px"></td>
+            <td id="id_ctrlplay" class="ctrlplay tipped" valign="bottom" data-title="开启/关闭 浏览窗口" data-tipper-options='{"direction":"right"}'  width="28px" onclick="ClickCtrlPlay()" ></td>
+            <td id="id_ctrlvolume" class="ctrlvolume tipped" valign="bottom" data-title="开启/关闭 声音" data-tipper-options='{"direction":"right"}' width="30px" onclick="ClickCtrlVolume()"></td>
+            <!--<td id="id_ctrlvolume" class="ctrlvolume" width="28px"></td>-->
+            <!-- 音量调整 -->
+            <!--<td width="100px"><div id="id_volumevalue"/></td>-->
+            <td id="id_audiocall" class="audiocall tipped" valign="bottom" data-title="开启/关闭 对讲" data-tipper-options='{"direction":"right"}' width="28px" onclick="ClickCtrlAudioCall()" ></td>
+            <!-- 暂时屏蔽<td id="id_realsnap" class="realsnap" width="28px" onclick="ClickCtrlSnap()" onmouseover="OverCtrlSnap()"
+            onmouseout="OutCtrlSnap()" onmousedown="DownCtrlSnap()" onmouseup="UpCtrlSnap()"></td>
+            <td id="id_realrecoder" class="realrecoder" width="28px" onclick="ClickCtrlRealRecoder()" onmouseover="OverCtrlRealRecoder()"
+            onmouseout="OutCtrlRealRecoder()" onmousedown="DownCtrlRealRecoder()" onmouseup="UpCtrlRealRecoder()"></td>
+            <td id="id_realzoomin" class="realzoomin" width="28px" onclick="ClickCtrlZoomIn()" onmouseover="OverCtrlZoomIn()"
+            onmouseout="OutCtrlZoomIn()" onmousedown="DownCtrlZoomIn()" onmouseup="UpCtrlZoomIn()"></td>
+            -->
+            <td></td>
+            <td align="right" width="45px" valign="bottom">
+                <button id="id_btnviewhigh" disabled="disabled" style="border: solid #008DC4 1px;padding-left: 2px;padding-right: 2px" class="btnviewhigh" onclick="ClickViewHighBtn()">清晰</button>
+            </td>
+            <td align="right" width="45px" style="padding-right: 20px" valign="bottom">
+                <button id="id_btnviewlow"   class="btnviewlow" style="border: solid #008DC4 0px;padding-left: 2px;padding-right: 2px" onclick="ClickViewLowBtn()">流畅</button>
+            </td>
+            <td id="id_fullscreen" valign="bottom" class="fullscreen tipped" data-title="全屏" data-tipper-options='{"direction":"left"}' width="28px" onclick="ClickFullScreen()" ></td>
+            <td width="10px"></td>
+
+        </tr>
+    </table>
+</div>
+
+
+<SCRIPT type="text/javascript" for="name_mcuocx" event="OcxEventCB(lEvent,lWndIndex,lReserve1,lReserve2)">
+    DealRealPlayEvent(lEvent,lWndIndex,lReserve1,lReserve2);
+</SCRIPT>
+<script type="text/javascript" for="name_mcuocx" event="errorMessage(param1)">
+    alert(param1);
+</script>
+
+<script>
+
+    var vehicle_license = '{$vehicle_license}';
+    var channeIndex = '{$channe_index}';
+    var device_id = '{$device_id}';
+    var domain_id = '{$domain_id}';
+    //    某个单车的信息，需要传过来
+
+    function initTitle(){
+        var name = vehicle_license+"_通道"+(parseInt(channeIndex)+1);
+        if (name != "") {
+            if (g_WebType == 0) {
+                document.getElementById("id_curdevinfo").innerHTML = "设备：" + name;
+            }
+            else {
+                if (year == 0 || month == 0 || day == 0) {
+                    document.getElementById("id_curdevinfo").innerHTML = "设备：" + name;
+                }
+                else {
+                    document.getElementById("id_curdevinfo").innerHTML = "设备：" + name
+                            + "&nbsp;&nbsp;&nbsp;日期：" + year + "-" + month + "-" + day;
+                }
+            }
+        }
+        else {
+            document.getElementById("id_curdevinfo").innerHTML = "";
+        }
+    }
+
+    //    启动视频监控，需要device_id,通道编号，车牌号，
+    function init(){
+        g_nScreenStyle = 1;
+        InitMcuOcx();
+        objMcuOcx.SetWndStyle(1);
+//            InitScreenStyle();
+//            initPtzCtrl();
+//            TODO：需要设置一些初始化信息，比如说，更改图标状态。
+        document.getElementById("mcuocx").focus();
+        console.log("camera's car is: ",vehicle_license,channeIndex,device_id);
+//                TODO:需要的参数,测试数据，待修改
+        g_nCurWndIndex = 0;
+        //                  当前窗口
+        g_testWndIndex = g_nCurWndIndex;
+
+
+////                  设备名称
+        g_testDevName = vehicle_license+"_通道"+(parseInt(channeIndex)+1);
+////                  设备域id：md5
+//                g_testDevDomainId = node.data.domainid;
+//                attributes.domain_id
+        g_testDevDomainId = '97d24f19acc74f1bb709370b7948cd04';
+        if(domain_id){
+            g_testDevDomainId = domain_id;
+        }
+
+////                  设备id：md5@kedacom
+//                g_testDevId = node.data.devpuid;
+//                attributes.device_id+"@kedacom"
+        g_testDevId = device_id +'@kedacom';
+////                  通道编号：1 由0开始的。
+//                g_testChan = node.data.channo;
+        g_testChan = channeIndex;
+////                  制造厂商：kedacom
+//                g_testManu = node.data.manu;
+        g_testManu = 'kedacom';
+////                  是否在线：
+//                g_testOnline = node.data.online;
+        g_testOnline = 1;
+        console.log(g_testWndIndex + " " + g_testDevName + " " + g_testDevDomainId + " " + g_testDevId + " " + g_testChan + " " + g_testManu);
+////			alert(g_testWndIndex + " " + g_testDevName + " " + g_testDevDomainId + " " + g_testDevId + " " + g_testChan + " " + g_testManu);
+        ClickComfirmDeviceBtn();
+    }
+
+//    init();
+    var tryTimes = 0;
+    var interval = setInterval("refresh()",1000);
+
+    function refresh(){
+        if(tryTimes>30){
+            if(interval){
+                clearInterval(interval);
+            }
+            CheckOcxReg();
+            return;
+        }
+        var ocxObj = document.getElementById("mcuocx");
+        var bRet = false;
+        if(ocxObj && typeof(ocxObj.GetVersion) != "undefined"){
+            console.log('mcuocx is ok');
+
+            if(interval){
+                clearInterval(interval);
+            }
+            showTipsMessage('视频控件加载完成！');
+            init();
+        }else {
+            tryTimes ++;
+            console.log('mcuocx is nok');
+        }
+    }
+
+
+    var ptzCtrlhide = true;
+
+    function initPtzCtrl(){
+        $('#ptzPanel').show();
+        $('#ptzPanel').panel('maximize').panel('refresh');
+        $('#ptzPanel').panel('restore').panel('refresh');
+
+        $('#ocxCenter').layout('panel', 'west').panel('resize',{width:300});
+        $('#ocxCenter').layout('resize');
+        console.log('initPtz');
+    }
+    function ClickPtzCtrlBtn(){
+        if(ptzCtrlhide){
+//            $('#ptzPanel').window('open');
+//            $('#ptzPanel').show();
+            $('#ptzPanel').show();
+            $('#ptzPanel').panel('maximize').panel('refresh');
+            $('#ptzPanel').panel('restore').panel('refresh');
+
+
+            $('#ocxCenter').layout('panel', 'west').panel('resize',{width:300});
+            $('#ocxCenter').layout('resize');
+            document.getElementById("id_ptzCtrl").style.background = "url('Public/Manager/keda/images/realplay/ptzhide_disable.png')";
+
+        }else{
+            $('#ptzPanel').hide();
+            $('#ptzPanel').panel('minimize').panel('refresh');
+            $('#ptzPanel').panel('restore').panel('refresh');
+
+
+            $('#ocxCenter').layout('panel', 'west').panel('resize',{width:0});
+            $('#ocxCenter').layout('resize');
+            document.getElementById("id_ptzCtrl").style.background = "url('Public/Manager/keda/images/realplay/ptzhide.png')";
+        }
+        ptzCtrlhide = !ptzCtrlhide;
+    }
+
+    function showTipsMessage(msg){
+        var content = "<p>"+msg+"</p>";
+        $('#resultDesc').html(content);
+    }
+
+</script>
+
+</body>
+
+</html>

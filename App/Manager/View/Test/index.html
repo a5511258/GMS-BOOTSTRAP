@@ -1,0 +1,54 @@
+
+<h1>照片上传测试</h1>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js">
+</script>
+<input id="choiceImg" accept="image/*" type="file" onchange="selectImgFile();">
+<img id="imgContent" style="width: 100px;height: 100px;border: 1px solid #ffa8a8;"/>
+
+<script>
+
+//    var iMaxFilesize = 1048576; // 1MB
+    function selectImgFile(){
+        var oFile = document.getElementById('choiceImg').files[0];
+
+        // filter for image files
+        var rFilter = /^(image\/bmp|image\/gif|image\/jpeg|image\/png|image\/tiff)$/i;
+        if (! rFilter.test(oFile.type)) {
+//            document.getElementById('error').style.display = 'block';
+            alert('需要一张图片！');
+            return;
+        }
+
+        // little test for filesize
+//        if (oFile.size > iMaxFilesize) {
+//            alert('过大！');
+//            return;
+//        }
+
+        var oImage = document.getElementById('imgContent');
+
+        // prepare HTML5 FileReader
+        var oReader = new FileReader();
+        oReader.onload = function(e){
+
+            // e.target.result contains the DataURL which we will use as a source of the image
+            var tempImg = new Image();
+            tempImg.src = e.target.result;
+            oImage.src = e.target.result;
+
+
+            var cvs = document.createElement('canvas');
+            //naturalWidth真实图片的宽度
+            cvs.width = oImage.naturalWidth;
+            cvs.height = oImage.naturalHeight;
+            var ctx = cvs.getContext("2d").drawImage(tempImg, 0, 0);
+//            缩小一半
+            var newImageData = cvs.toDataURL("image/jpeg", 50/100);
+
+            oImage.src = newImageData;
+        };
+
+        // read selected file as DataURL
+        oReader.readAsDataURL(oFile);
+    }
+</script>

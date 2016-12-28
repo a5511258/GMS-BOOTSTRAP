@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>管理控制台 | {:C('SOFT_NAME')}</title>
+<link rel="stylesheet" type="text/css" href="__STATIC__/Easyui/themes/metro-gms/easyui.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/Themes/default.css">
+<link rel="stylesheet" type="text/css" href="__STATIC__/Easyui/themes/icon.css">
+<link rel="stylesheet" href="__STATIC__/Font/iconfont.css">
+<link rel="stylesheet" type="text/css" href="__STATIC__/Easyui/themes/color.css">
+<link rel="stylesheet" type="text/css" href="__CSS__/main.css">
+<script type="text/javascript" src="__STATIC__/Jquery/jquery.min.js"></script>
+<script type="text/javascript" src="__STATIC__/Easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="__STATIC__/Easyui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="__JS__/main.js"></script>
+</head>
+<body class="easyui-layout" id="Main_Layout_Box">
+<div id="Main_Layout_North" data-options="region:'north',split:false">
+    <!--此处修改管理平台后面V字符-->
+    <div id="header_logo"> <a href="{:U('Admin/Index/index')}"><img src="__IMG__/Main/courtLogo.png" height="36px" width="36px" style="vertical-align: middle;padding-right: 6px" alt="logo"/>{:C('SOFT_NAME')}</a> <i class="opacity-80">v{:C('SOFT_VERSION')}</i> <!--<a class="justify" href="javascript:void(0);"></a>--></div>
+    <ul id="header_nav" class="header_nav">
+    <volist name="AdminMenu" id="v"><a href="JavaScript:void(0);" id="nav_{$v['id']}" menuType ="{$v['menu_type']}" menuUrl ="{:U($v['name'])}" menuMC ="{$v['name']}" menuTitle ="{$v['title']}" menuIcon="{$v['icon']}"><li>{$v['title']}</li></a></volist>
+    <!--<a href="{:U('Manager/Index/index')}" target="_self" ><li>实时监控</li></a>-->
+  </ul>
+    <ul class="header_nav" style="float:right">
+        <a href="JavaScript:void(0);" id="userinfo"><li>{$UserInfo['group_title']}[{$UserInfo['username']}]</li></a>
+        <!--<a href="JavaScript:void(0);" onclick="UpdateTabs('Admin/User/userinfo','用户资料','{:U('User/userinfo')}','iconfont icon-user')"><li>{$UserInfo['group_title']}[{$UserInfo['username']}]</li></a>-->
+        <!--<if condition="Is_Auth('Admin/Index/cache')">-->
+            <!--<a href="JavaScript:void(0);" onclick="UpdateTabs('Admin/Index/cache','缓存更新','{:U('Index/cache')}','iconfont icon-shezhi')"><li>缓存更新</li></a>-->
+        <!--</if>-->
+        <if condition="Is_Auth_Check('Manager/Setting/setting')">
+            <a id="setting" href="JavaScript:void(0);"><li>设置</li></a>
+        </if>
+        <if condition="Is_Auth_Check('Manager/Setting/generateLogs')">
+            <a href="{:U('Gps/Index/generateLogs')}" target="_blank"><li>导出日志</li></a>
+        </if>
+
+        <a href="./Public/Manager/keda/bin/BS-Setup.exe" target="_blank"><li>插件下载</li></a>
+        <a href="{:U('Public/logout')}"><li>退出</li></a>
+  </ul>
+</div>
+<div id="Main_Layout_West" data-options="region:'west',split:false,cls:'Main_Layout_West_box'">
+<volist name="AdminMenu" id="v">
+    <div id="nav_{$v['id']}_box" class="nav_box">
+        <div class="right_box">
+          <volist id="vo" name="v['children']">
+            <dl id="right_{$vo['id']}_box_menu">
+              <dd>
+                <ul>
+                  <volist id="vo2" name="vo['children']">
+                  <a href="JavaScript:void(0);" onclick="UpdateTabs('{$vo2['name']}','{$vo2['title']}','{$vo2['url']}','{$vo2['icon']}')"><li><i class="icon iconfont {$vo2['icon']}"  style="margin: 5px"></i>{$vo2['title']}</li></a>
+                  </volist>
+                </ul>
+              </dd>
+            </dl>
+          </volist>
+        </div>
+        <ul class="left_box">
+            <volist id="vo" name="v['children']">
+            <a href="JavaScript:void(0);" id="left_{$vo['id']}_nav_menu" class="left_nav" onclick="LeftMenu('{$vo['id']}')"><li><i class="icon iconfont {$vo['icon']}"></i><div>{$vo['title']}</div></li></a>
+            </volist>
+        </ul>
+    </div>
+</volist>
+</div>
+<div id="Main_Layout_Center" data-options="region:'center',split:false" style="margin-bottom: 14px">
+  <div id="MainTabs" class="easyui-tabs" data-options="fit:true,border:false">
+  </div>
+</div>
+
+<div id="div_dialog_set" class="easyui-dialog" data-options="closed:true,modal:true" style="padding: 5px 10px;"></div>
+
+
+<script>
+    var user_info_url = "{:U('User/userinfo')}";
+    var setting_url = "{:U('Manager/index/setting')}";
+
+
+</script>
+
+
+
+</body>
+</html>

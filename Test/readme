@@ -1,0 +1,39 @@
+本目录为测试以及其他维护所需脚本信息，请勿删除
+
+1. keda_online.xml为在线车辆的模拟数据，当前模拟在线车辆为
+测试前需添加
+    扎赉特旗人民法院-车载
+    林西县人民法院-车载
+    达尔罕茂明安联合旗人民法院-车载
+    扎兰屯市人民法院-车载
+
+INSERT INTO `courtgms`.`service_vehicle_info` (`vehicle_id`, `vehicle_brand`, `vehicle_license`, `vehicle_state`, `group_id`, `vehicle_buy_date`, `vehicle_type`, `vehicle_explain`, `vehicle_buy_price`, `vehicle_model`, `vehicle_driver`, `vehicle_place`, `vehicle_photo`, `vehicle_from`, `device_name`) VALUES ('94', '', '扎赉特旗人民法院-车载', '1', '1', '2016-10-19', '10', '', '0', '', '', '', '', '2', '扎赉特旗人民法院-车载');
+INSERT INTO `courtgms`.`service_vehicle_info` (`vehicle_id`, `vehicle_brand`, `vehicle_license`, `vehicle_state`, `group_id`, `vehicle_buy_date`, `vehicle_type`, `vehicle_explain`, `vehicle_buy_price`, `vehicle_model`, `vehicle_driver`, `vehicle_place`, `vehicle_photo`, `vehicle_from`, `device_name`) VALUES ('95', '', '林西县人民法院-车载', '1', '1', '2016-10-19', '10', '', '0', '', '', '', '', '3', NULL);
+INSERT INTO `courtgms`.`service_vehicle_info` (`vehicle_id`, `vehicle_brand`, `vehicle_license`, `vehicle_state`, `group_id`, `vehicle_buy_date`, `vehicle_type`, `vehicle_explain`, `vehicle_buy_price`, `vehicle_model`, `vehicle_driver`, `vehicle_place`, `vehicle_photo`, `vehicle_from`, `device_name`) VALUES ('96', '', '达尔罕茂明安联合旗人民法院-车载', '1', '1', '2016-10-19', '10', '', '0', '', '', '', '', '2', '达尔罕茂明安联合旗人民法院-车载');
+INSERT INTO `courtgms`.`service_vehicle_info` (`vehicle_id`, `vehicle_brand`, `vehicle_license`, `vehicle_state`, `group_id`, `vehicle_buy_date`, `vehicle_type`, `vehicle_explain`, `vehicle_buy_price`, `vehicle_model`, `vehicle_driver`, `vehicle_place`, `vehicle_photo`, `vehicle_from`, `device_name`) VALUES ('97', '', '扎兰屯市人民法院-车载', '1', '1', '2016-10-19', '10', '', '0', '', '', '', '', '2', '扎兰屯市人民法院-车载');
+
+
+
+
+2. kedaGpsSimulator.php 科达设备模拟
+$deviceArr=array(
+    "c779049aed924cfa8146128b17654ffb",
+);
+INSERT INTO `CourtGms`.`service_vehicle_info` (`vehicle_brand`, `vehicle_license`, `vehicle_state`, `group_id`, `vehicle_buy_date`, `vehicle_type`, `vehicle_explain`, `vehicle_buy_price`, `vehicle_model`, `vehicle_driver`, `vehicle_place`, `vehicle_photo`, `vehicle_from`, `device_name`) VALUES ('', '达尔罕茂明安联合旗人民法院-车载', '1', '1', '2016-10-19', '10', '', '0', '', '', '', '', '2', '达尔罕茂明安联合旗人民法院-车载');
+INSERT INTO `CourtGms`.`service_vehicle_info` (`vehicle_brand`, `vehicle_license`, `vehicle_state`, `group_id`, `vehicle_buy_date`, `vehicle_type`, `vehicle_explain`, `vehicle_buy_price`, `vehicle_model`, `vehicle_driver`, `vehicle_place`, `vehicle_photo`, `vehicle_from`, `device_name`) VALUES ('', '丰镇市人民法院-车载', '1', '1', '2016-10-19', '10', '', '0', '', '', '', '', '2', '丰镇市人民法院-车载');
+
+
+3. otherGpsSimulator.php 第三方设备模拟
+$deviceArr=array(
+    "蒙A123456",
+    "蒙A123457",
+    "蒙A123458",
+    "蒙A123459",
+);
+INSERT INTO `CourtGms`.`service_vehicle_info` ( `vehicle_brand`, `vehicle_license`, `vehicle_state`, `group_id`, `vehicle_buy_date`, `vehicle_type`, `vehicle_explain`, `vehicle_buy_price`, `vehicle_model`, `vehicle_driver`, `vehicle_place`, `vehicle_photo`, `vehicle_from`, `device_name`) VALUES ( '', '蒙A123456', '1', '1', '2016-10-19', '10', '', '0', '', '', '', '', '1', '蒙A123456');
+INSERT INTO `CourtGms`.`service_vehicle_info` ( `vehicle_brand`, `vehicle_license`, `vehicle_state`, `group_id`, `vehicle_buy_date`, `vehicle_type`, `vehicle_explain`, `vehicle_buy_price`, `vehicle_model`, `vehicle_driver`, `vehicle_place`, `vehicle_photo`, `vehicle_from`, `device_name`) VALUES ( '', '蒙A123457', '1', '1', '2016-10-19', '10', '', '0', '', '', '', '', '1', '蒙A123457');
+INSERT INTO `CourtGms`.`service_vehicle_info` ( `vehicle_brand`, `vehicle_license`, `vehicle_state`, `group_id`, `vehicle_buy_date`, `vehicle_type`, `vehicle_explain`, `vehicle_buy_price`, `vehicle_model`, `vehicle_driver`, `vehicle_place`, `vehicle_photo`, `vehicle_from`, `device_name`) VALUES ( '', '蒙A123458', '1', '1', '2016-10-19', '10', '', '0', '', '', '', '', '1', '蒙A123458');
+INSERT INTO `CourtGms`.`service_vehicle_info` ( `vehicle_brand`, `vehicle_license`, `vehicle_state`, `group_id`, `vehicle_buy_date`, `vehicle_type`, `vehicle_explain`, `vehicle_buy_price`, `vehicle_model`, `vehicle_driver`, `vehicle_place`, `vehicle_photo`, `vehicle_from`, `device_name`) VALUES ( '', '蒙A123459', '1', '1', '2016-10-19', '10', '', '0', '', '', '', '', '1', '蒙A123459');
+
+
+

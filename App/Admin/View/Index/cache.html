@@ -1,0 +1,24 @@
+<extend name="Public/base"/>
+<block name="body">
+  <div class="fixed-bar" id="Hooks_Bar" style="height: auto">
+    <div class="item-title">
+      <h3>缓存更新</h3>
+    </div>
+  </div>
+    <table class="table tb-type2 nobdb">
+      <tbody>
+        <tr class="noborder">
+          <td class="vatop rowform"><a class="easyui-linkbutton" href="{:U('Index/cache',array('type'=>'site'))}"><span style="font-size: 14px; font-weight: 600;">更新站点数据缓存</span></a></td>
+          <td class="vatop tips">修改过站点设置，或者栏目管理，模块安装等时可以进行缓存更新</td>
+        </tr>
+        <tr>
+          <td class="vatop rowform"><a class="easyui-linkbutton" href="{:U('Index/cache',array('type'=>'template'))}"><span style="font-size: 14px; font-weight: 600;">更新站点模板缓存</span></a></td>
+          <td class="vatop tips">当修改模板时，模板没及时生效可以对模板缓存进行更新</td>
+        </tr>
+        <tr>
+          <td class="vatop rowform"><a class="easyui-linkbutton" href="{:U('Index/cache',array('type'=>'logs'))}"><span style="font-size: 14px; font-weight: 600;">清除网站运行日志</span></a></td>
+          <td class="vatop tips">网站运行过程中会记录各种错误日志，以文件的方式保存</td>
+        </tr>
+      </tbody>
+    </table>
+</block>

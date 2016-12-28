@@ -1,0 +1,164 @@
+<!-- 拍照设置-->
+<style>
+    .passage input {
+        margin-left: 8px;
+        margin-right: 4px;
+    }
+</style>
+<div style="text-align: center;padding-top: 50px">
+
+    <div style="padding: 10px;width: 80%;text-align: left" >
+        <p id="textCheckBoxs" class="passage">
+            拍摄通道
+            <input type="checkbox" checked="true" value="1">1
+            <input type="checkbox"  value="2">2
+            <input type="checkbox"  value="3">3
+            <input type="checkbox"  value="4">4
+            <input type="checkbox"  value="5">5
+            <input type="checkbox"  value="6">6
+            <input type="checkbox"  value="7">7
+            <input type="checkbox"  value="8">8
+        </p>
+    </div>
+    <div style="padding: 10px;width: 80%;text-align: left" >
+        <div style="width: 50%;float: left">
+            <span style="margin-right: 12px">拍照张数</span><input id="number" class="easyui-numberspinner" style="width:60px;"
+               data-options="min:1,max:65535,editable:true" value="1"/>
+
+        </div>
+        <div style="width: 50%;float: right">
+            <span style="margin-right: 12px">拍照间隔</span> <input id="interval" class="easyui-numberspinner" style="width:60px;"
+                       data-options="min:0,max:65535,editable:true" value="0"/>
+        </div>
+    </div>
+    <div style="padding: 10px;width: 80%;text-align: left" >
+        <div style="margin-top:10px;width: 50%;float: left">
+            <span style="margin-right: 8px">保存标志</span>
+                <select id="save_flag"  class="easyui-combobox" data-options="editable:false" style="width:100px;">
+                    <option value="0">实时上传</option>
+                    <option value="1">保存</option>
+                </select>
+        </div>
+        <div style="margin-top:10px;margin-bottom:10px;width: 50%;float: right">
+            <span style="margin-right: 24px">分辨率</span>
+                <select id="resolution"  class="easyui-combobox" data-options="editable:false" style="width:100px;">
+                    <option value="1">320*240</option>
+                    <option value="2">640*480</option>
+                    <option value="3">800*600</option>
+                    <option value="4">1024*768</option>
+                    <option value="5">176*144</option>
+                    <option value="6">352*288</option>
+                    <option value="7">704*288</option>
+                    <option value="8">704*576</option>
+                </select>
+        </div>
+    </div>
+    <br>
+    <div style="padding: 10px;width: 80%;text-align: left" >
+        <div style="margin-top:10px">
+            <span style="margin-right: 12px">图像质量</span><input id="quality" class="easyui-numberspinner" style="width:60px;"
+                                                               data-options="min:1,max:10,editable:true" value="1"/>
+        </div>
+    </div>
+    <div style="padding: 10px;width: 80%;text-align: left" >
+        <div style="width: 50%;float: left">
+            <span style="margin-right: 32px">亮度</span>
+            <input id="brightness" class="easyui-numberspinner" style="width:60px;"
+                                                               data-options="min:0,max:255,editable:true" value="0"/>
+            <span>0~255</span>
+        </div>
+        <div style="width: 50%;float: right">
+            <span style="margin-right: 32px">色度</span> <input id="chroma" class="easyui-numberspinner" data-options="min:0,max:255,editable:true" style="width:60px;"value="0">
+            <span>0~255</span>
+        </div>
+    </div>
+    <br>
+    <div style="padding: 10px;width: 80%;text-align: left" >
+        <div style="width: 50%;float: left">
+            <span style="margin-right: 24px">对比度</span><input id="contrast" class="easyui-numberspinner" style="width:60px;"
+                                                               data-options="min:0,max:127,editable:true" value="0"/>
+            <span>0~127</span>
+        </div>
+        <div style="width: 50%;float: right">
+            <span style="margin-right: 20px">饱和度</span> <input id="saturation" class="easyui-numberspinner" style="width:60px;"
+                                                                data-options="min:0,max:127,editable:true" value="0"/>
+            <span>0~127</span>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <button onclick="startTakePhoto()">开始拍照</button>
+    <button onclick="stopTakePhoto()">停止拍照</button>
+
+    <button onclick="closeWindows()">关闭</button>
+
+</div>
+
+<script>
+    function startTakePhoto(){
+        var data = getParams();
+        console.log(data);
+//        获取复选框选中内容，选中了哪些通道
+        var arr = $("#textCheckBoxs input:checkbox:checked");
+        for (var i = 0;i< arr.length;i++){
+            console.log(arr[i]);
+            var passage = arr[i].value;
+            console.log(passage);
+            data.passage = passage;
+            SM_takePhoto(data);
+        }
+    }
+    function stopTakePhoto(){
+
+    }
+    function closeWindows(){
+        $(<?php echo "'#".$windowId."'";?>).window('close');
+    }
+    function getParams(){
+
+        var number = $('#number').val();
+        var interval = $('#interval').val();
+        var save_flag = $('#save_flag').combobox('getValue');
+//        console.log(save_flag);
+        var resolution = $('#resolution').combobox('getValue');
+        var quality = $('#quality').val();
+        var brightness = $('#brightness').val();
+        var contrast = $('#contrast').val();
+        var saturation = $('#saturation').val();
+        var chroma = $('#chroma').val();
+
+
+
+
+        var param = {
+            "passage":1,
+            //通道id ： 快速拍照使用1，
+            "command":number,
+            //拍摄命令 ： 0，表示停止拍照，0xFFFF表示录像，其余表示拍照数量
+            "interval":interval,
+            // 拍照间隔/录像时间 秒,0 表示按最小间隔拍照或一直录像
+            "save_flag":save_flag,
+            //保存标志,1:保存; 0:实时上传
+            "resolution":resolution,
+            //分辨率 0x01:320*240; 0x02:640*480; 0x03:800*600; 0x04:1024*768; 0x05:176*144;[Qcif]; 0x06:352*288;[Cif]; 0x07:704*288;[HALF D1]; 0x08:704*576;[D1];
+            "quality":quality,
+            //图像/视频质量:1-10,1 代表质量损失最小,10 表示压缩比最大
+            "brightness":brightness,
+            //亮度 0-255
+            "contrast":contrast,
+            //对比度 0-127
+            "saturation":saturation,
+            //饱和度 0-127
+            "chroma":chroma
+             //色度 0-255
+        };
+
+        return param;
+    }
+
+</script>

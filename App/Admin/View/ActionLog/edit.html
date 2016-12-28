@@ -1,0 +1,93 @@
+<extend name="Public/base"/>
+<block name="body">
+	<!--<div class="fixed-bar" id="ActionLog_Bar" style="height: auto">-->
+	<!--&lt;!&ndash;<div class="item-title">&ndash;&gt;-->
+		<!--&lt;!&ndash;<h3>行为日志</h3>&ndash;&gt;-->
+		<!--&lt;!&ndash;<ul class="tab-base">&ndash;&gt;-->
+			<!--&lt;!&ndash;<if condition="Is_Auth('Admin/ActionLog/index')">&ndash;&gt;-->
+			<!--&lt;!&ndash;<li><a href="{:U('Admin/ActionLog/index')}"><span>列表</span></a></li>&ndash;&gt;-->
+			<!--&lt;!&ndash;</if>&ndash;&gt;-->
+			<!--&lt;!&ndash;<li><a class="current" href="#"><span>查看</span></a></li>&ndash;&gt;-->
+		<!--&lt;!&ndash;</ul>&ndash;&gt;-->
+	<!--&lt;!&ndash;</div>&ndash;&gt;-->
+	<!--</div>-->
+<!--<table class="table tb-type2 nobdb">-->
+	<!--<tbody>-->
+	<!--<tr>-->
+			<!--<td colspan="2" class="required"><label for="for_name">行为id:</label></td>-->
+		<!--</tr>-->
+		<!--<tr class="noborder">-->
+			<!--<td class="vatop rowform">{:get_action($_info["action_id"],'title')}[{$_info["action_id"]}]</td>-->
+			<!--<td class="vatop tips"></td>-->
+		<!--</tr><tr>-->
+			<!--<td colspan="2" class="required"><label for="for_name">执行用户:</label></td>-->
+		<!--</tr>-->
+		<!--<tr class="noborder">-->
+			<!--<td class="vatop rowform">[{$_info["user_id"]}]</td>-->
+			<!--<td class="vatop tips"></td>-->
+		<!--</tr><tr>-->
+			<!--<td colspan="2" class="required"><label for="for_name">执行行为者ip:</label></td>-->
+		<!--</tr>-->
+		<!--<tr class="noborder">-->
+			<!--<td class="vatop rowform">{$_info["action_ip"]}</td>-->
+			<!--<td class="vatop tips"></td>-->
+		<!--</tr><tr>-->
+			<!--<td colspan="2" class="required"><label for="for_name">触发行为的表:</label></td>-->
+		<!--</tr>-->
+		<!--<tr class="noborder">-->
+			<!--<td class="vatop rowform">{$_info["model"]}</td>-->
+			<!--<td class="vatop tips"></td>-->
+		<!--</tr><tr>-->
+			<!--<td colspan="2" class="required"><label for="for_name">触发行为的数据id:</label></td>-->
+		<!--</tr>-->
+		<!--<tr class="noborder">-->
+			<!--<td class="vatop rowform">{$_info["record_id"]}</td>-->
+			<!--<td class="vatop tips"></td>-->
+		<!--</tr><tr>-->
+			<!--<td colspan="2" class="required"><label for="for_name">日志备注:</label></td>-->
+		<!--</tr>-->
+		<!--<tr class="noborder">-->
+			<!--<td class="vatop rowform" colspan="2">{$_info["remark"]}</td>-->
+		<!--</tr>	</tbody>-->
+	<!--<tfoot>-->
+		<!--<tr class="tfoot">-->
+			<!--<td colspan="2"><a class="easyui-linkbutton" href="JavaScript:void(0);" onclick="history.go(-1)" data-options="iconCls:'iconfont icon-edit'"><span style="font-size: 14px; font-weight: 600;">返回</span></a></td>-->
+		<!--</tr>-->
+	 <!--</tfoot>-->
+<!--</table>-->
+
+	<form id="view_form">
+
+		<div style="width: 351px;float:left;">
+
+			<div class="fitem">
+				<label>行为名称:</label>
+				<input class="easyui-textbox" style="height: 30px;width: 180px;" data-options="value:'{:get_action($_info["action_id"],'title')}',readonly:true"/>
+			</div>
+			<div class="fitem">
+				<label>执行用户:</label>
+				<input class="easyui-textbox" style="height: 30px;width: 180px;" data-options="value:'{$_info["user_id"]}',readonly:true"/>
+			</div>
+
+			<div class="fitem">
+				<label>操作者ip为:</label>
+				<input class="easyui-textbox" style="height: 30px;width: 180px;" data-options="value:'{$_info["action_ip"]}',readonly:true"/>
+			</div>
+
+			<!--<div class="fitem">-->
+				<!--<label>操作者操作界面为:</label>-->
+				<!--<input class="easyui-textbox" style="height: 30px;width: 180px;" data-options="value:'',readonly:true"/>-->
+			<!--</div>-->
+
+			<div class="fitem" style="height: 60px">
+				<label>操作详情为:</label>
+				<input class="easyui-textbox" style="height: 60px;width: 180px; word-break:break-all" data-options="multiline:true,value:'{$_info["remark"]}',readonly:true"/>
+			</div>
+		</div>
+
+	</form>
+
+
+
+
+</block>

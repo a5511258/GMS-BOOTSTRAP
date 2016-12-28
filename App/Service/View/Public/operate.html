@@ -1,0 +1,14 @@
+<table class="table tb-type2 nobdb">
+    <tbody>
+    <tr>
+        <td colspan="2" class="required"><label for="for_name">角色权限:</label></td>
+    </tr>
+    <tr class="noborder">
+        <td class="vatop rowform"><select name="group_ids[]" class="easyui-combotree" style="height:30px;" data-options="value:'{$_group_id}',url:'{:U("Admin/Function/get_auth_group")}&r_type=json',valueField:'id',textField:'text',cascadeCheck:false,required:false,editable:false">
+
+            <!--<td class="vatop rowform"><select name="group_ids[]" class="easyui-combotree" style="height:30px;" data-options="value:'{$_group_id}',url:'{:U("Admin/Function/get_auth_group")}&r_type=json',valueField:'id',textField:'text',multiple:true,cascadeCheck:false,required:false,editable:false">-->
+            </select></td>
+        <td class="vatop tips"></td>
+    </tr>
+    </tbody>
+</table>

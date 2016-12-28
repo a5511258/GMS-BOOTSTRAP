@@ -1,0 +1,80 @@
+<extend name="Public/base"/><block name="body"><div class="fixed-bar" id="Action_Bar" style="height: auto">
+	<div class="item-title">
+		<h3>行为</h3>
+		<ul class="tab-base">
+			<li><a class="current" href="JavaScript:void(0);" onclick="Data_Reload('Action_Data_List');"><span>列表</span></a></li>
+			<li><a href="JavaScript:void(0);" onclick="Data_Search('Action_Search_From','Action_Data_List');"><span>搜索</span></a></li>
+			<if condition="Is_Auth('Admin/Action/add')">
+			<li><a href="{:U('Admin/Action/add')}"><span>新增</span></a></li>
+			</if>
+		</ul>
+	</div>
+</div>
+<div style="display: none">
+<form id="Action_Form" class="update_from" style="width:600px; height:320px;"></form>
+</form>
+  <form id="Action_Search_From" class="search_from">
+	<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
+    <tr>
+			<th>行为唯一标识 : </th>
+			<td><input name="s_name" type="text" class="easyui-textbox" style="height:30px;"></td>
+		</tr><tr>
+			<th>行为说明 : </th>
+			<td><input name="s_title" type="text" class="easyui-textbox" style="height:30px;"></td>
+		</tr><tr>
+			<th>行为描述 : </th>
+			<td><input name="s_remark" type="text" class="easyui-textbox" style="height:30px;"></td>
+		</tr><tr>
+			<th>行为规则 : </th>
+			<td><input name="s_rule" type="text" class="easyui-textbox" style="height:30px;"></td>
+		</tr><tr>
+			<th>日志规则 : </th>
+			<td><input name="s_log" type="text" class="easyui-textbox" style="height:30px;"></td>
+		</tr><tr>
+			<th>状态 : </th>
+			<td><input name="s_status" type="text" class="easyui-textbox" style="height:30px;"></td>
+		</tr><tr>
+			<th>修改时间 : </th>
+			<td><input name="s_update_time_min" type="text" class="easyui-datetimebox" style="height:30px;"> - <input name="s_update_time_max" type="text" class="easyui-datetimebox" style="height:30px;"></td>
+		</tr>    </table>
+  </form>
+</div>
+
+<table id="Action_Data_List"></table>
+
+<script type="text/javascript">
+$(function() {
+	$("#Action_Data_List").datagrid({
+		url : "{:U('Action/index')}",
+		fit : true,
+		striped : true,
+		border : false,
+		pagination : true,
+		pageSize : 20,
+		pageList : [ 10, 20, 50 ],
+		pageNumber : 1,
+		sortName : 'id',
+		sortOrder : 'desc',
+		toolbar : '#Action_Bar',
+		singleSelect : true,
+		columns : [[
+            {field : 'id',title : 'ID',width : 40,sortable:true},
+{field : "name",title : "行为唯一标识",width :100,sortable:true},{field : "title",title : "行为说明",width :100,sortable:true},{field : "remark",title : "行为描述",width :100,sortable:true},{field : "rule",title : "行为规则",width :100,sortable:true},{field : "log",title : "日志规则",width :100,sortable:true},{field : "status",title : "状态",width :100,sortable:true},{field : "update_time",title : "修改时间",width :100,sortable:true,formatter: function (value, row, index) {
+			return u_to_ymdhis(value)
+		}},			{field : "operate",title : "操作",width : 200,formatter: function (value, row, index) {
+				operate_menu='';
+				
+				<if condition="Is_Auth('Admin/Action/edit')">
+				operate_menu = operate_menu+"<a href='<?php echo U('edit'); ?>&id="+row.id+"' >编辑</a>";
+				</if>
+
+				<if condition="Is_Auth('Admin/Action/del')">
+				operate_menu = operate_menu+" | <a href='#' onclick=\"Data_Remove('<?php echo U('del'); ?>&id="+row.id+"','Action_Data_List');\">删除</a>";
+				</if>
+
+				return operate_menu;
+			}}
+		]]
+	});
+})
+</script></block>

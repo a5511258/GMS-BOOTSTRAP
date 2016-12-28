@@ -1,0 +1,99 @@
+<extend name="Public/base"/>
+<block name="body">
+  <div class="fixed-bar" id="Addons_Bar" style="height: auto">
+    <div class="item-title">
+      <h3>插件</h3>
+      <ul class="tab-base">
+        <li><a class="current" href="JavaScript:void(0);" onclick="Data_Reload('Addons_Data_List');"><span>列表</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <table id="Addons_Data_List">
+  </table>
+  <script type="text/javascript">
+$(function() {
+	$("#Addons_Data_List").datagrid({
+		url : "{:U('Addons/index')}",
+		fit : true,
+		striped : true,
+		border : false,
+		toolbar : '#Addons_Bar',
+		singleSelect : true,
+		columns : [[
+        {
+            field: "name",
+            title: "插件名称[插件][版本]",
+            width: 200,
+            formatter: function(value, row, index) {
+                return row.title + ' [' +row.name+ ']' + ' [' +row.version+ ']'
+            }
+        },
+        {
+            field: "description",
+            title: "描述",
+            width: 300
+        },
+        {
+            field: "author",
+            title: "作者[邮箱]",
+            width: 200,
+            formatter: function(value, row, index) {
+                return '<a href="'+row.author_site+'" target="_blank">'+row.author + ' [' +row.author_email+ ']</a>'
+            }
+        },
+        {
+            field: "create_time",
+            title: "安装时间",
+            width: 140,
+            formatter: function(value, row, index) {
+				if(value>1){
+                	return u_to_ymdhis(value)
+				}else{
+                	return '未安装'
+				}
+            }
+        },
+        {
+            field: "update_time",
+            title: "更新时间",
+            width: 140,
+            formatter: function(value, row, index) {
+				if(value>1){
+                	return u_to_ymdhis(value)
+				}else{
+                	return '未安装'
+				}
+            }
+        },
+        {
+            field: "operate",
+            title: "操作",
+            width: 120,
+            formatter: function(value, row, index) {
+                operate_menu = '';
+				if(row.status==1){
+				<if condition="Is_Auth('Admin/Addons/disabled')">
+				if(row.disabled == 1){
+					operate_menu = operate_menu+"<a href='#' onclick=\"Data_Ajax('<?php echo U('disabled'); ?>&addon_name="+row.name+"&d=0','Addons_Data_List','');\">禁用</a>";
+				}else{
+					operate_menu = operate_menu+"<a href='#' onclick=\"Data_Ajax('<?php echo U('disabled'); ?>&addon_name="+row.name+"&d=1','Addons_Data_List','');\">启用</a>";
+				}
+				if(row.isconfig == 1){
+					operate_menu = operate_menu+" | <a href='<?php echo U('config'); ?>&addon_name="+row.name+"'>配置</a>";
+				}
+				</if>
+				<if condition="Is_Auth('Admin/Addons/uninstall')">
+				operate_menu = operate_menu+" | <a href='#' onclick=\"Data_Ajax('<?php echo U('uninstall'); ?>&addon_name="+row.name+"','Addons_Data_List','确认卸载插件 "+row.title + ' [' +row.name+ ']' + ' [' +row.version+ ']'+" 吗？');\">卸载</a>";
+				</if>
+				}
+				<if condition="Is_Auth('Admin/Addons/install')">
+					if(row.status==0){
+					operate_menu = operate_menu+"<a href='<?php echo U('install'); ?>&addon_name="+row.name+"' >安装</a>";
+					}
+				</if>
+				return operate_menu;
+			}}
+		]]
+	});
+})
+</script></block>

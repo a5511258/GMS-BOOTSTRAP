@@ -1,0 +1,168 @@
+<extend name="Public/base"/>
+<block name="body">
+  <div class="fixed-bar" id="DataBase_Bar" style="height: auto">
+    <div class="item-title">
+      <h3>数据备份</h3>
+      <ul class="tab-base">
+        <li><a id="export" href="JavaScript:void(0);" onClick="export_table();"><span>备份表</span></a></li>
+        <li><a id="optimize" href="JavaScript:void(0);" onClick="optimize();"><span>优化表</span></a></li>
+        <li><a id="repair" href="JavaScript:void(0);" onClick="repair();"><span>修复表</span></a></li>
+      </ul>
+    </div>
+  </div>
+    <table id="DataBase_Data_List">
+      <thead>
+        <tr>
+          <th data-options="field:'ids',width:50"></th>
+          <th data-options="field:'name',width:200">表名</th>
+          <th data-options="field:'rows',width:120">数据量</th>
+          <th data-options="field:'data_length',width:120">数据大小</th>
+          <th data-options="field:'create_time',width:160">创建时间</th>
+          <th data-options="field:'info',width:160">备份状态</th>
+          <th data-options="field:'action',width:120">操作</th>
+        </tr>
+      </thead>
+  <form id="export-form"  method="post">
+      <tbody>
+        <volist name="list" id="table">
+          <tr>
+            <td><input class="ids" checked="chedked" type="checkbox" name="tables[]" value="{$table.name}"></td>
+            <td>{$table.name}</td>
+            <td>{$table.rows}</td>
+            <td>{$table.data_length|format_bytes}</td>
+            <td>{$table.create_time}</td>
+            <td><div class="{$table.name}_box info_box">-</div></td>
+            <td><a href="{:U('optimize?tables='.$table['name'])}">优化表</a>&nbsp; <a href="{:U('repair?tables='.$table['name'])}">修复表</a></td>
+          </tr>
+        </volist>
+      </tbody>
+  </form>
+    </table>
+<script type="text/javascript">
+$(function() {
+	$("#DataBase_Data_List").datagrid({
+		fit : true,
+		striped : true,
+		border : false,
+		toolbar : '#DataBase_Bar',
+	});
+})
+//优化表
+var var_optimize=0;
+function optimize(){
+	if(var_optimize==1){
+		alert('正在优化请稍等...');
+	}else{
+		$('#optimize').html('<span>正在优化,请勿关闭或者刷新窗口</span>');
+		var_optimize=1;
+				$.messager.show({
+					title:'操作成功',
+					msg:'优化开始，时间可能较长，请勿关闭窗口，或重新打开',
+					timeout:10000,
+					showType:'slide'
+				});
+		$.post('{:U("optimize")}', $('#export-form').serialize(), function(data){
+			if(data.status){
+				$.messager.show({
+					title:'成功信息',
+					msg:data.info,
+					timeout:3000,
+					showType:'slide'
+				});
+			} else {
+				$.messager.alert('失败信息',data.info,'');
+			}
+			$('#optimize').html('<span>优化表</span>');
+			var_optimize=0;
+		}, "json");
+	}
+	return false;
+}
+//修复表
+var var_repair=0;
+function repair(){
+	if(var_repair==1){
+		alert('正在修复请稍等...');
+	}else{
+		$('#repair').html('<span>正在修复,请勿关闭或者刷新窗口</span>');
+		var_repair=1;
+				$.messager.show({
+					title:'操作成功',
+					msg:'修复开始，时间可能较长，请勿关闭窗口，或重新打开',
+					timeout:3000,
+					showType:'slide'
+				});
+		$.post('{:U("repair")}', $('#export-form').serialize(), function(data){
+			if(data.status){
+				$.messager.show({
+					title:'成功信息',
+					msg:data.info,
+					timeout:10000,
+					showType:'slide'
+				});
+			} else {
+				$.messager.alert('失败信息',data.info,'');
+			}
+			$('#repair').html('<span>修复表</span>');
+			var_repair=0;
+		}, "json");
+	}
+	return false;
+}
+//备份表
+var var_export_table=0;
+function export_table(){
+	if(var_export_table==1){
+		alert('正在备份请稍等...');
+	}else{
+		$('#export').html('<span>正在备份,请勿关闭或者刷新窗口</span>');
+		var_export_table=1;
+		$.post('{:U("export")}', $('#export-form').serialize(), function(data){
+			if(data.status){
+				tables = data.tables;
+				backup(data.tab);
+				$.messager.show({
+					title:'操作成功',
+					msg:'备份开始，时间可能较长，请勿关闭窗口，或重新打开',
+					timeout:10000,
+					showType:'slide'
+				});
+				window.onbeforeunload = function(){ return "正在备份数据库，请不要关闭！" }
+			} else {
+				$.messager.alert('失败信息',data.info,'');
+			}
+			var_export_table=0;
+		}, "json");
+	}
+	return false;
+}
+
+        function backup(tab, status){
+            status && showmsg(tab.id, "开始备份...(0%)");
+            $.get("{:U('export')}", tab, function(data){
+                if(data.status){
+                    showmsg(tab.id, data.info);
+                    if(!$.isPlainObject(data.tab)){
+						$.messager.show({
+							title:'备份成功',
+							msg:'备份完成，点击重新备份',
+							timeout:3000,
+							showType:'slide'
+						});
+						$('.info_box').html('-')
+						$('#export').html('<span>备份表</span>');
+                        window.onbeforeunload = function(){ return null }
+                        return true;
+                    }else{
+                    	backup(data.tab, tab.id != data.tab.id);
+					}
+                }
+            }, "json");
+
+        }
+
+        function showmsg(id, msg){
+            $('.'+tables[id]+'_box').html(msg);
+        }
+</script> 
+</block>

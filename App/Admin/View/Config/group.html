@@ -1,0 +1,56 @@
+<extend name="Public/base"/><block name="body"><div class="fixed-bar" id="Config_Bar" style="height: auto">
+	<div class="item-title">
+		<h3>网站设置</h3>
+		<ul class="tab-base">
+        <volist name="type" id="group">
+			<li><a href="{:U('?id='.$key)}" <if condition="$key eq $id">class="current"</if>><span>{$group}配置</span></a></li>
+         </volist>
+		</ul>
+	</div>
+</div>
+<form id="Config_Form" method="post" action="{:U('group')}&id={$id}">
+<table class="table tb-type2 nobdb">
+	<tbody>
+    	<volist name="list" id="config">
+    	<tr>
+			<td colspan="2" class="required"><label for="for_{$config.name}">{$config.title}:</label></td>
+		</tr>
+		<tr class="noborder">
+			<td class="vatop rowform">
+            <switch name="config.type">
+            <case value="0">
+              <input type="text" name="config[{$config.name}]" id="for_{$config.name}" value="{$config.value}" class="easyui-numberbox" style="height: 30px;"/>
+            </case>
+            <case value="1">
+              <input type="text" name="config[{$config.name}]" id="for_{$config.name}" value="{$config.value}" class="easyui-textbox" style="height: 30px;"/>
+            </case>
+            <case value="2">
+            <textarea name="config[{$config.name}]" id="for_{$config.name}" type="text" class="easyui-textbox" style="width: 300px; height: 60px;" data-options="required:false,multiline:true">{$config.value}</textarea>
+            </case>
+            <case value="3">
+            <textarea name="config[{$config.name}]" id="for_{$config.name}" type="text" class="easyui-textbox" style="width: 300px; height: 60px;" data-options="required:false,multiline:true">{$config.value}</textarea>
+            </case>
+            <case value="4">
+              <select name="config[{$config.name}]" id="for_{$config.name}" class="easyui-combobox" data-options="value:'{$config.value}',multiple:false,required:false,editable:false" style="height: 30px;">
+                <volist name=":model_field_attr($config['extra'])" id="vo">
+                <option value="{$key}">{$vo}</option>
+                </volist>
+              </select>
+            </case>
+            <case value="5">
+              <input type="text" name="config[{$config.name}]" id="for_{$config.name}" value="{$config.value}" class="easyui-kindeditor" config_date="1" style="width: 600px; height: 300px;">
+            </case>
+          	</switch>
+            </td>
+			<td class="vatop tips">{$config.remark}</td>
+		</tr>
+        </volist>
+	</tbody>
+	<tfoot>
+		<tr class="tfoot">
+			<td colspan="2"><a class="easyui-linkbutton" href="JavaScript:void(0);" onclick="$('#Config_Form').submit();" data-options="iconCls:'iconfont icon-edit'"><span style="font-size: 14px; font-weight: 600;">提交</span></a></td>
+		</tr>
+	</tfoot>
+</table>
+</form>
+</block>

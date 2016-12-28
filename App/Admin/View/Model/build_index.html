@@ -1,0 +1,94 @@
+
+<div class="fixed-bar" id="{$ModelInfo['name']}_Bar">
+	<div class="item-title">
+		<h3>{$ModelInfo['title']}</h3>
+		<ul class="tab-base">
+			<li><a class="current" href="JavaScript:void(0);" onclick="Data_Reload('{$ModelInfo['name']}_Data_List');"><span>列表</span></a></li>
+			<li><a href="JavaScript:void(0);" onclick="Data_Search('{$ModelInfo['name']}_Search_From','{$ModelInfo['name']}_Data_List');"><span>搜索</span></a></li>
+			<literal><if condition="Is_Auth('Admin/</literal>{$ModelInfo['name']}<literal>/add')"></literal>
+			<li><a href="<literal>{:U('Admin/</literal>{$ModelInfo['name']}<literal>/add')}</literal>"><span>新增</span></a></li>
+			<literal></if></literal>
+		</ul>
+	</div>
+</div>
+<div style="display: none">
+  <form id="{$ModelInfo['name']}_Search_From" class="search_from">
+	<table border="0" cellpadding="0" cellspacing="0" style="width:100%">
+    <volist name="_Search" id="field">
+		<tr>
+			<th>{$field['title']} : </th>
+			<td>{$field['form']}</td>
+		</tr>
+    </volist>
+    </table>
+  </form>
+</div>
+
+<table id="{$ModelInfo['name']}_Data_List"></table>
+
+<script type="text/javascript">
+$(function() {
+	$("#{$ModelInfo['name']}_Data_List").datagrid({
+		url : "<literal>{:U('</literal>{$ModelInfo['name']}<literal>/index')}</literal>",
+		fit : true,
+		striped : true,
+		border : false,
+		pagination : true,
+		pageSize : 20,
+		pageList : [ 10, 20, 50 ],
+		pageNumber : 1,
+		sortName : 'id',
+		sortOrder : 'desc',
+		toolbar : '#{$ModelInfo["name"]}_Bar',
+		singleSelect : true,
+		columns : [[
+            {field : 'id',title : 'ID',width : 40,sortable:true},
+<?php foreach ($_List as $key => $field ) {
+	$extra=unserialize($field['extra']);
+	if(in_array($field['type'],array('select','checkbox'))){
+		if($extra['type']==1 || $extra['type']==2){
+			$option='';
+			$option=model_field_attr($extra['option']);
+			echo '{field : "'.$field["name"].'",title : "'.$field["title"].'",width :'.$field["l_width"].',sortable:true,formatter: function (value, row, index) {
+			var op_'.$field["name"].'=new Array()
+			';
+			foreach ($option as $key => $option_one ) {
+			echo 'op_'.$field["name"].'["'.$key.'"]="'.$option_one.'"
+			';
+			}
+			echo '
+			return op_'.$field["name"].'[value];
+			}},
+			';
+		}
+	}elseif(in_array($field['type'],array('datetime'))){
+		if($extra['from_type']=='datetimebox'){
+		echo '{field : "'.$field["name"].'",title : "'.$field["title"].'",width :'.$field["l_width"].',sortable:true,formatter: function (value, row, index) {
+			return u_to_ymdhis(value)
+		}},';
+		}else{
+		echo '{field : "'.$field["name"].'",title : "'.$field["title"].'",width :'.$field["l_width"].',sortable:true,formatter: function (value, row, index) {
+			return u_to_ymd(value)
+		}},';
+		}
+	}else{
+		echo '{field : "'.$field["name"].'",title : "'.$field["title"].'",width :'.$field["l_width"].',sortable:true},';
+	}
+}?>
+			{field : "operate",title : "操作",width : 200,formatter: function (value, row, index) {
+				operate_menu='';
+				
+				<literal><if condition="Is_Auth('Admin/</literal><?php echo $ModelInfo['name'];?><literal>/edit')"></literal>
+				<literal>operate_menu = operate_menu+"<a href='<?php echo "<?php echo U('edit'); ?>"; ?>&id="+row.id+"' >编辑</a>";</literal>
+				<literal></if></literal>
+
+				<literal><if condition="Is_Auth('Admin/</literal><?php echo $ModelInfo['name'];?><literal>/del')"></literal>
+				<literal>operate_menu = operate_menu+" | <a href='#' onclick=\"Data_Remove('<?php echo "<?php echo U('del'); ?>"; ?>&id="+row.id+"','<?php echo $ModelInfo['name'];?>_Data_List');\">删除</a>";</literal>
+				<literal></if></literal>
+
+				return operate_menu;
+			}}
+		]]
+	});
+})
+</script>

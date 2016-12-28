@@ -1,0 +1,30 @@
+.c1,.c1:hover{
+	color: #F9F9F9;
+	background: #009AD7;
+}
+a.c1:hover{
+	color: #FFFFFF;
+	background: #008DC4;
+	filter: none;
+}
+
+
+.bon1,.bon1:hover{
+	color: #FFFFFF;
+	background: #37485d;
+}
+a.bon1:hover{
+	color: #FFFFFF;
+	background: #37485d;
+	filter: none;
+}
+
+.bon2,.bon2:hover{
+	color: #FFFFFF;
+	background: #900;
+}
+a.bon2:hover{
+	color: #FFFFFF;
+	background: #900;
+	filter: none;
+}

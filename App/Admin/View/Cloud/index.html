@@ -1,0 +1,101 @@
+<extend name="Public/base"/>
+<block name="body">
+  <div class="fixed-bar" id="Cloud_Bar" style="height: auto">
+    <div class="item-title">
+      <h3>云商店</h3>
+      <ul class="tab-base">
+        <li><a class="current" href="JavaScript:void(0);" onclick="Data_Reload('Cloud_Data_List');"><span>列表</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div style="display: none">
+    <form id="Cloud_Search_From" class="search_from">
+      <table border="0" cellpadding="0" cellspacing="0" style="width:100%">
+        <tr>
+          <th>配置名称 : </th>
+          <td><input name="s_name" type="text" class="easyui-textbox" style="height:30px;"></td>
+        </tr>
+        <tr>
+          <th>配置类型 : </th>
+          <td><select name="s_type" class="easyui-combobox" style="height:30px;" data-options="value:'',url:'{:U("Admin/Function/get_Cloud")}&cname=Cloud_TYPE_LIST|type|title&r_type=json',valueField:'type',textField:'title',multiple:false,required:false,editable:false">
+            </select></td>
+        </tr>
+        <tr>
+          <th>配置说明 : </th>
+          <td><input name="s_title" type="text" class="easyui-textbox" style="height:30px;"></td>
+        </tr>
+        <tr>
+          <th>配置分组 : </th>
+          <td><select name="s_group" class="easyui-combobox" style="height:30px;" data-options="value:'',url:'{:U("Admin/Function/get_Cloud")}&cname=Cloud_GROUP_LIST|group|title&r_type=json',valueField:'group',textField:'title',multiple:false,required:false,editable:false">
+            </select></td>
+        </tr>
+        <tr>
+          <th>状态 : </th>
+          <td><select name="s_status" class="easyui-combobox" style="height:30px;" data-options="value:'',multiple:false,required:false,editable:false">
+              <option value="" >请选择一个选项</option>
+              <option value="1" >启用</option>
+              <option value="0" >禁用</option>
+            </select></td>
+        </tr>
+        <tr>
+          <th>排序 : </th>
+          <td><input name="s_sort" type="text" class="easyui-numberbox" style="height:30px;" data-options="precision:'0',decimalSeparator:'.',groupSeparator:',',required:false"></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <style>
+	.mb5{
+		margin-bottom:5px !important;
+	}
+	.f12{
+		font-size:12px !important;
+	}
+	.mr15 {
+		margin-right: 15px !important;
+	}
+	.gray {
+		color: #999999 !important;
+	}
+	.mr20 {
+		margin-right: 20px !important;
+	}
+  </style>
+  <table id="Cloud_Data_List" >
+  </table>
+  <script type="text/javascript">
+$(function() {
+	$("#Cloud_Data_List").datagrid({
+		url : "{:U('Cloud/index')}",
+		fit : true,
+		striped : true,
+		border : false,
+		nowrap:false,
+		pagination : true,
+		pageSize : 20,
+		pageList : [ 10, 20, 50 ],
+		pageNumber : 1,
+		sortName : 'id',
+		sortOrder : 'desc',
+		toolbar : '#Cloud_Bar',
+		singleSelect : true,
+		columns : [[
+			{field : "icon",title : "应用图标",width :72,formatter: function (value, row, index) {
+						return '<img src="' + value + '" style=" width:50px;height:50px;border:1px solid #999; margin:5px;">';
+			}},
+			{field : "name",title : "应用介绍",width :620,formatter: function (value, row, index) {
+				return '<h3 class="mb5 f12"><a target="_blank" href="'+row.address+'">'+row.title+'</a></h3><div class="mb5"> <span class="mr15">版本：<b>'+row.version+'</b></span> <span>开发者：<a target="_blank" href="'+row.authorsite+'">'+row.author+'</a></span> <span>适配 Gms 最低版本：'+row.adaptation+'</span> </div><div class="gray"><p>'+row.introduce+'</p></div><div>';
+			}},
+			{field : "operate",title : "操作",width : 200,formatter: function (value, row, index) {
+				operate_menu='';
+				
+				<if condition="Is_Auth('Admin/Cloud/install')">
+				operate_menu = operate_menu+"<a href='<?php echo U('install'); ?>&id="+row.id+"' >安装</a>";
+				</if>
+
+				return operate_menu;
+			}}
+		]]
+	});
+})
+</script></block>

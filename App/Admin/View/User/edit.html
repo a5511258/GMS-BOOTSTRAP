@@ -1,0 +1,67 @@
+<extend name="Public/base"/>
+<block name="body">
+  <div class="fixed-bar" id="User_Bar" style="height: auto">
+    <div class="item-title">
+      <h3>更新用户</h3>
+      <ul class="tab-base">
+        <if condition="Is_Auth('Admin/User/index')">
+          <li><a href="{:U('Admin/User/index')}"><span>用户列表</span></a></li>
+        </if>
+        <if condition="Is_Auth('Admin/User/add')">
+          <li><a href="{:U('Admin/User/add')}"><span>新增用户</span></a></li>
+        </if>
+        <!--<li><a class="current" href="#"><span>更新用户</span></a></li>-->
+      </ul>
+    </div>
+  </div>
+  <form id="User_Form" method="post">
+    <table class="table tb-type2 nobdb">
+      <tbody>
+      <tr>
+        <td colspan="2" class="required"><label for="for_name">用户名:</label></td>
+        <!--<td colspan="2" class="required"><label for="for_name">密码:</label></td>-->
+      </tr>
+      <tr class="noborder">
+        <td class="vatop rowform" colspan="2"><input name="username" type="text" class="easyui-textbox" style="height:30px;" value="" data-options="value:'{$_info["username"]}',required:false"></td>
+        <!--<td class="vatop rowform" colspan="2"><input name="text" type="password" class="easyui-textbox" style="height:30px;" value="" data-options="required:false"></td>-->
+        <td class="vatop tips"></td>
+      </tr>
+      <tr>
+        <td colspan="2" class="required"><label for="for_name">电话:</label></td>
+      </tr>
+      <tr class="noborder">
+        <td colspan="2" class="vatop rowform"><input name="phone" type="text" class="easyui-textbox" style="height:30px;" value="" data-options="value:'{$_info["phone"]}',required:false"></td>
+        <td class="vatop tips"></td>
+      </tr>
+      <tr>
+        <td colspan="2" class="required"><label for="for_name">用户组:</label></td>
+      </tr>
+      <tr class="noborder">
+        <td class="vatop rowform"><select name="service_group_id" class="easyui-combotree" style="height:30px;" data-options="value:'{$_info["service_group_id"]}',url:'{:U("Admin/Function/getGroupInfosToTree")}',valueField:'id',textField:'text',required:false,editable:false"></select></td>
+        <td class="vatop tips"></td>
+      </tr>
+      <tr>
+        <td colspan="2" class="required"><label for="for_name">状态:</label></td>
+      </tr>
+      <tr class="noborder">
+        <td class="vatop rowform"><select name="status" class="easyui-combobox" style="height:30px;" data-options="value:'1',url:'{:U("Admin/Function/get_field_option")}&f_id=83&r_type=json',valueField:'key',textField:'val',multiple:false,required:false,editable:false">
+          </select></td>
+        <td class="vatop tips"></td>
+      </tr>
+      <tr>
+        <td colspan="2" class="required"><label for="for_name">备注:</label></td>
+      </tr>
+      <tr class="noborder">
+        <td class="vatop rowform"><input name="remark" value="" type="text" class="easyui-textbox" data-options="value:'{$_info["remark"]}',required:false,multiline:true" style="width:300px; height:80px;"></td>
+        <td class="vatop tips"></td>
+      </tr>
+      </tbody>
+      <tfoot>
+        <tr class="tfoot">
+          <td colspan="2"><a class="easyui-linkbutton" href="JavaScript:void(0);" onclick="$('#User_Form').submit();" data-options="iconCls:'iconfont icon-edit'"><span style="font-size: 14px; font-weight: 600;">提交</span></a></td>
+        </tr>
+      </tfoot>
+    </table>
+    <input name="id" type="hidden" value="{:I('get.id')}" />
+  </form>
+</block>

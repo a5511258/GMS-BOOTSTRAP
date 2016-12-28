@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> {:C('SOFT_NAME')}|Gms管理系统</title>
+    <link rel="stylesheet" type="text/css" href="__STATIC__/Easyui/themes/metro-gms/easyui.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/themes/default.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/Easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/Easyui/themes/color.css">
+    <link rel="stylesheet" type="text/css" href="__SERVICE_CSS__/jquery.jOrgChart.css">
+
+    <link href="__SERVICE_UPLOADIFY__/uploadify.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+    <!--<link rel="stylesheet" href="__CSS__/skin.css" />-->
+    <script type="text/javascript" src="__STATIC__/Jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/Easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="__STATIC__/Easyui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="__SERVICE_JS__/jquery.jOrgChart.js"></script>
+    <script src="__SERVICE_UPLOADIFY__/jquery.uploadify.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="/CourtGms/Public/Static/BaiduMap/baidu_offline_api.js"></script>
+
+    <!--<script type="text/javascript" src="__Map__/"></script>-->
+
+
+
+    <script charset="utf-8" src="__STATIC__/kindeditor/kindeditor-min.js"></script>
+    <script charset="utf-8" src="__STATIC__/kindeditor/lang/zh_CN.js"></script>
+    <script charset="utf-8" src="__STATIC__/Echarts/echarts.js"></script>
+
+    <script charset="utf-8" src="__JS__/base.js" />
+    <script>
+        var ke_pasteType=2;
+        var ke_fileManagerJson="{:U('Admin/FilesUpdata/filemanager')}";
+        var ke_uploadJson="{:U('Admin/FilesUpdata/upload')}";
+        var ke_Uid='{:session(C("AUTH_KEY"));}';
+        var Root='__ROOT__';
+        $(document).ready(function (){
+            $(".tipped").tipper();
+        });
+	</script>
+    <script type="text/javascript" src="__STATIC__/Tipper/js/jquery.fs.tipper.js"></script>
+
+    <style>
+        .tipped {}
+        .tipped:hover {}
+    </style>
+</head>
+
+<block name="body"> </block>
+</html>

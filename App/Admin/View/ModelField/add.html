@@ -1,0 +1,374 @@
+<extend name="Public/base" />
+<block name="body">
+  <div class="fixed-bar" id="ModelField_Bar" style="height: auto">
+    <div class="item-title">
+      <h3>字段管理</h3>
+      <ul class="tab-base">
+        <if condition="Is_Auth('Admin/Model/index')">
+          <li><a href="{:U('Admin/Model/index')}"><span>模型列表</span></a></li>
+        </if>
+        <if condition="Is_Auth('Admin/ModelField/index')">
+          <li><a href="{:U('Admin/ModelField/index',array('model_id'=>I('get.model_id')))}"><span>字段列表</span></a></li>
+        </if>
+        <li><a class="current" href="{:U('Admin/ModelField/add',array('model_id'=>I('get.model_id')))}"><span>新增</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <form id="ModelField_Form" method="post">
+    <table class="table tb-type2 nobdb">
+      <tbody>
+        <tr>
+          <td colspan="2" class="required"><label for="for_name">字段名:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input name="name" style="height:30px;" id="for_name" value="" type="text" class="easyui-textbox" data-options="required:false"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label for="for_title">字段标题:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input name="title" style="height:30px;" id="for_title" value="" type="text" class="easyui-textbox" data-options="required:false"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label for="for_type">数据类型:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><select style="height:30px;" id="for_type" name="type" class="easyui-combobox" data-options="value:'num',multiple:false,required:false,editable:false, onSelect:function(rec){field_setting(rec.value)}">
+              <volist name="Think.config.FIELD_LIST" id="vo">
+                <option value="{$vo.type}">{$vo.title}</option>
+              </volist>
+            </select></td>
+          <td class="vatop tips"><strong style="color:#F00">修改数据类型后，字段参数会发生改变，请慎重！</strong></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label for="for_field">字段定义:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><select style="height:30px;" id="for_field" name="field" class="easyui-combobox" data-options="multiple:false">
+            </select></td>
+          <td class="vatop tips">如果没有你想要的字段定义，可以直接输入</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label>字段属性:</label></td>
+        </tr>
+        <tr>
+          <td colspan="2" id="extra" class="required"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label for="for_value">字段默认值:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input name="value" style="height:30px;" id="for_value" value="" type="text" class="easyui-textbox" data-options="required:false"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label for="for_remark">备注:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><textarea name="remark" id="for_remark" class="easyui-textbox" data-options="multiline:true" style="width: 300px; height: 100px"></textarea></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label for="for_sort_l">字段排序:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"> 列表
+            <input class="easyui-textbox" style="height:30px;width: 40px" type="text" name="sort_l" id="for_sort_l" value="{$field_sort}">
+            搜索
+            <input class="easyui-textbox" style="height:30px;width: 40px" type="text" name="sort_s" value="{$field_sort}">
+            新增
+            <input class="easyui-textbox" style="height:30px;width: 40px" type="text" name="sort_a" value="{$field_sort}">
+            修改
+            <input class="easyui-textbox" style="height:30px;width: 40px" type="text" name="sort_e" value="{$field_sort}"></td>
+          <td class="vatop tips">如果为0,即不显示</td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label for="for_l_width">列表宽度:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><input name="l_width" style="height:30px;" id="for_l_width" value="100" type="text" class="easyui-textbox" data-options="required:false"></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label for="for_validate_rule">验证规则:</label>
+            <a id="for_validate_rule_c" href="JavaScript:void(0);">帮助生成</a></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><textarea name="validate_rule" id="for_validate_rule" class="easyui-textbox" data-options="multiline:true" style="width: 300px; height: 100px"></textarea></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label for="for_auto_rule">完成规则:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><textarea name="auto_rule" id="for_auto_rule" class="easyui-textbox" data-options="multiline:true" style="width: 300px; height: 100px"></textarea></td>
+          <td class="vatop tips"></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="required"><label for="for_status">状态:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop rowform"><select style="height:30px;" id="for_status" name="status" class="easyui-combobox" data-options="value:'1',multiple:false,required:false,editable:false">
+              <option value="0" >禁用</option>
+              <option value="1" >启用</option>
+            </select></td>
+          <td class="vatop tips"></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="tfoot">
+          <td colspan="2"><a class="easyui-linkbutton" href="JavaScript:void(0);" onclick="$('#ModelField_Form').submit();" data-options="iconCls:'iconfont icon-edit'"><span style="font-size: 14px; font-weight: 600;">提交</span></a></td>
+        </tr>
+      </tfoot>
+    </table>
+    <input type="hidden" name="model_id" value="{$model_id}" />
+  </form>
+  <script type="text/javascript">
+function field_setting(fieldtype) {
+    if (fieldtype == "") {
+        return false;
+    }
+    $.getJSON("{:U('Admin/Function/field_setting')}&r_type=json",{fieldtype:fieldtype}, function (data) {
+        $('#extra').html(data.extra);
+		$.parser.parse('#extra');
+    });
+	$('#for_field').combobox({
+		url: '{:U("Admin/Function/get_field_default")}&fieldtype=' + fieldtype,
+		valueField: 'id',
+		textField: 'text'
+	});
+}
+$(document).ready(function(){
+	field_setting('num');
+		$('#for_validate_rule_box').window({
+			width:700,
+			height:500,
+			modal:true
+		}).window('close');
+	$('#for_validate_rule_c').click(function(){
+		$('#for_validate_rule_box').window('open');
+	})
+	$('#for_validate_rule_c_f').click(function(){
+		$('#for_validate_rule_box').window('close');
+		$('#for_validate_rule').textbox({
+			value:$('#for_validate_rule').textbox('getText')+$('#result').val()+'\n'
+		})
+		
+	})
+})
+
+/*自动验证生成规则*/
+
+$(function(){
+	fa="";fb="";fc="";fd="";fe="";ff="";
+	ff="regex";
+	$("#submit").click(function(){
+		_str = "array(验证字段,验证规则,错误提示,验证条件,附加规则,验证时间),";
+		fa = $("#fa").val();
+		fc = $("#fc").val();
+		_rule = "regex,unique";
+		if(_rule.indexOf(ff) == -1) fb = $("#fbval").val();
+		_str = _str.replace("验证字段","'"+fa+"'");
+		_str = _str.replace("验证规则","'"+fb+"'");
+		_str = _str.replace("错误提示","'"+fc+"'");
+		if(fb == "require" || fb == "email" || fb == "url" || fb == "currency" || fb == "number"){
+			_str = _str.replace(",验证条件,附加规则,验证时间","");
+		}else{
+			_str = _str.replace("验证条件",fd);
+			_str = _str.replace("验证时间",fe);
+			if(ff == "regex"){
+				_str = _str.replace("附加规则","");
+			}else{
+				_str = _str.replace("附加规则","'"+ff+"'");
+			}
+		}
+		$("#result").val(_str);
+
+	});
+
+	$("input[name='fd']").click(function(){
+		fd = $(this).val();
+	});
+
+	$("input[name='fb']").click(function(){
+		if($(this).attr("id") == "fb0"){
+			fb = $("#fbval").val();
+		}else{
+			fb = $(this).val();
+		}
+	});
+
+	$("input[name='fe']").click(function(){
+		fe = $(this).val();
+	});
+
+	$("input[name='ff']").click(function(){
+		if($(this).val() == "regex"){
+			$(".fb1").show();
+			$(".fb").hide();
+		}
+
+		if($(this).val() == "unique"){
+			$(".fb").hide();
+			$(".fb1").hide();
+			fb = "";
+		}
+
+		if($(this).val() !== "regex" && $(this).val() !=="unique") {
+			$(".fb").show();
+			$(".fb1").hide();
+			$("#fb0").prop("checked","checked");
+			$("#fbval").focus();
+		}
+		$("#fbval").val("");
+		if($(this).val() == "in" || $(this).val() == "notin") $("#fbval").val("array(1,2)");
+		if($(this).val() == "between" || $(this).val() == "notbetween") $("#fbval").val("1,2 || array(1,2)");
+		if($(this).val() == "expire") $("#fbval").val("2012-1-15,2013-1-15");
+		if($(this).val() == "ip_allow" || $(this).val() == "ip_deny") $("#fbval").val("201.12.2.5,201.12.2.6");
+		ff = $(this).val();
+	});
+
+});
+</script>
+  <div id="for_validate_rule_box" title="添加自动验证规则">
+    <table class="table tb-type2 nobdb">
+      <tbody>
+        <tr>
+          <td class="required"><label>验证字段名称:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop"><input name="fa" style="height:30px;" id="fa" value="" type="text" class="easyui-textbox" data-options="required:false"></td>
+        </tr>
+        <tr>
+          <td class="required"><label>验证规则:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop">
+          <div class="fb" style="display:none"><label><input type="radio" name="fb" id="fb0"/></label><input type="text" id="fbval"/></div>
+          <div class="fb1">
+		<label><input type="radio" name="fb" id="fb1" value="require"/>require 字段必须</label>
+		<label><input type="radio" name="fb" id="fb2" value="email"/>email 邮箱</label>
+		<label><input type="radio" name="fb" id="fb3" value="url"/>url URL地址</label>
+		<label><input type="radio" name="fb" id="fb4" value="currency"/>currency 货币</label>
+		<label><input type="radio" name="fb" id="fb5" value="number"/>number 数字</label>
+          </div></td>
+        </tr>
+        <tr>
+          <td class="required"><label>提示信息:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop"><input name="fc" style="height:30px;" id="fc" value="" type="text" class="easyui-textbox" data-options="required:false"></td>
+        </tr>
+        <tr>
+          <td class="required"><label>验证条件:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop">
+		<label><input type="radio" name="fd" id="fd1" value="0"/>存在字段就验证</label>
+		<label><input type="radio" name="fd" id="fd2" value="1"/>必须验证</label>
+		<label><input type="radio" name="fd" id="fd3" value="2"/>值不为空的时候验证</label></td>
+        </tr>
+        <tr>
+          <td class="required"><label>验证时间:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop">
+		<label><input type="radio" name="fe" id="fe1" value="1"/>新增验证</label>
+		<label><input type="radio" name="fe" id="fe2" value="2"/>编辑验证</label>
+		<label><input type="radio" name="fe" id="fe3" value="3"/>全部验证</label></td>
+        </tr>
+        <tr>
+          <td class="required"><label>生成规则:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop"><textarea name="result" id="result" cols="30" rows="3" style="width:100%"></textarea><br/>
+          <input type="button" value="生成规则" class="btn btn-danger" id="submit"/>
+          <input type="button" value="返回" class="btn btn-danger" id="for_validate_rule_c_f"/></td>
+        </tr>
+        <tr>
+          <td class="required"><label>附加规则:</label></td>
+        </tr>
+        <tr class="noborder">
+          <td class="vatop">
+		<label>
+		<input type="radio" name="ff" id="ff1" value="regex" checked="checked"/>regex
+		<p>正则验证，定义的验证规则是一个正则表达式（默认）</p>
+		</label><br />
+
+		<label>
+		<input type="radio" name="ff" id="ff2" value="function"/>function
+		<p>函数验证，定义的验证规则是一个函数名</p>
+		</label><br />
+
+		<label>
+		<input type="radio" name="ff" id="ff3" value="callback"/>callback
+		<p>方法验证，定义的验证规则是当前模型类的一个方法</p>
+		</label><br />
+
+		<label>
+		<input type="radio" name="ff" id="ff4" value="confirm"/>confirm
+		<p>验证表单中的两个字段是否相同，定义的验证规则是一个字段名</p>
+		</label><br />
+
+		<label>
+		<input type="radio" name="ff" id="ff5" value="equal"/>equal
+		<p>验证是否等于某个值，该值由前面的验证规则定义</p>
+		</label><br />
+
+		<label>
+		<input type="radio" name="ff" id="ff6" value="notequal"/>notequal
+		<p>验证是否不等于某个值，该值由前面的验证规则定义</p>
+		</label><br />
+
+		<label>
+		<input type="radio" name="ff" id="ff7" value="in"/>in
+		<p>验证是否在某个范围内，定义的验证规则可以是一个数组或者逗号分割的字符串</p>
+		</label><br />
+
+		<label>
+		<input type="radio" name="ff" id="ff8" value="notin"/>notin
+		<p>验证是否不在某个范围内，定义的验证规则可以是一个数组或者逗号分割的字符串</p>
+		</label><br />
+
+		<label>
+		<input type="radio" name="ff" id="ff9" value="length"/>length
+		<p>验证长度，定义的验证规则可以是一个数字（表示固定长度）或者数字范围（例如3,12 表示长度从3到12的范围）</p>
+		</label><br />
+
+
+		<label>
+		<input type="radio" name="ff" id="ff10" value="between"/>between
+		<p>验证范围，定义的验证规则表示范围，可以使用字符串或者数组，例如1,31或者array(1,31)</p>
+		</label><br />
+
+		<label>
+		<input type="radio" name="ff" id="ff11" value="notbetween"/>notbetween
+		<p>验证不在某个范围，定义的验证规则表示范围，可以使用字符串或者数组</p>
+		</label><br />
+
+		<label>
+		<input type="radio" name="ff" id="ff12" value="expire"/>expire
+		<p>验证是否在有效期，定义的验证规则表示时间范围，可以到时间，例如可以使用 2012-1-15,2013-1-15 表示当前提交有效期在2012-1-15到2013-1-15之间，也可以使用时间戳定义</p>
+		</label><br />
+
+		<label>
+		<input type="radio" name="ff" id="ff13" value="ip_allow"/>ip_allow
+		<p>验证IP是否允许，定义的验证规则表示允许的IP地址列表，用逗号分隔，例如201.12.2.5,201.12.2.6</p>
+		</label><br />
+
+		<label>
+		<input type="radio" name="ff" id="ff14" value="ip_deny"/>ip_deny
+		<p>验证IP是否禁止，定义的验证规则表示禁止的ip地址列表，用逗号分隔，例如201.12.2.5,201.12.2.6</p>
+		</label><br />
+
+		<label>
+		<input type="radio" name="ff" id="ff15" value="unique"/>unique
+		<p>验证是否唯一，系统会根据字段目前的值查询数据库来判断是否存在相同的值，当表单数据中包含主键字段时unique不可用于判断主键字段本身</p>
+		</label><br /></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</block>
