@@ -1,1 +1,0 @@
-sudo mkdir /txkjsudo mkdir /txkj/dbbackupsudo chmod  -R 777 /txkj

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit();?><div id="div_ftitle" class="ftitle"></div>
+<div id="div_ftitle" class="ftitle"></div>
 
 <form id="form_group" method="post">
 
@@ -73,16 +73,16 @@
 
         $("#inp_groupfather").combotree({
             value:1,
-            url: '<?php echo U("Admin/Function/getGroupInfosToTree");?>',
+            url: '{:U("Admin/Function/getGroupInfosToTree")}',
             required: true,
             editable: false
         });
 
-        var TypeData = $.parseJSON('<?php echo ($_dataType); ?>');
+        var TypeData = $.parseJSON('{$_dataType}');
 
        // console.log(TypeData);
 
-        var IndustryData = $.parseJSON('<?php echo ($_dataIndustry); ?>');
+        var IndustryData = $.parseJSON('{$_dataIndustry}');
 
        // console.log(IndustryData);
 
@@ -130,7 +130,7 @@
             validType: 'lettersChineseDigital[100]'
         });
 
-        $('#div_ftitle').text('<?php echo ($_type); ?>');
+        $('#div_ftitle').text('{$_type}');
 
         ////数据正确性校验
         $.extend($.fn.validatebox.defaults.rules, {
@@ -171,19 +171,19 @@
 
             $("#form_group").form('clear');
 
-            $("#inp_groupid").val('<?php echo ($_info["group_id"]); ?>');
+            $("#inp_groupid").val('{$_info.group_id}');
 
-            $("#inp_name").textbox('setValue', '<?php echo ($_info["group_name"]); ?>');
+            $("#inp_name").textbox('setValue', '{$_info.group_name}');
 
-            $("#inp_grouptype").combobox('select', '<?php echo ($_info["group_type"]); ?>');
+            $("#inp_grouptype").combobox('select', '{$_info.group_type}');
 
-            $("#inp_industry").combobox('select', '<?php echo ($_info["industry"]); ?>');
+            $("#inp_industry").combobox('select', '{$_info.industry}');
 //
 
-            $("#hd_groupfatherlevel").val('<?php echo ($_info["id_level"]); ?>');
+            $("#hd_groupfatherlevel").val('{$_info.id_level}');
 
 
-            if (0 == '<?php echo ($_info["parent_id"]); ?>') {
+            if (0 == '{$_info.parent_id}') {
 
                 $("#inp_groupfather").combotree({readonly: true});
             }
@@ -191,18 +191,18 @@
                 $("#inp_groupfather").combotree({readonly: false});
             }
 
-            $("#inp_groupfather").combotree('setValue', '<?php echo ($_info["parent_id"]); ?>' == 0 ? '根节点' : '<?php echo ($_info["parent_id"]); ?>');
+            $("#inp_groupfather").combotree('setValue', '{$_info.parent_id}' == 0 ? '根节点' : '{$_info.parent_id}');
 
-            $('#inp_responsibility_people').textbox('setValue','<?php echo ($_info["responsibility_people"]); ?>')
+            $('#inp_responsibility_people').textbox('setValue','{$_info.responsibility_people}')
 
-            $("#inp_limitnum").numberbox('setValue', '<?php echo ($_info["limit_num"]); ?>');
-            $("#inp_telno").textbox('setValue', '<?php echo ($_info["tel_no"]); ?>');
-            $("#inp_address").textbox('setValue', '<?php echo ($_info["address"]); ?>');
-            $("#inp_desc").textbox('setValue', '<?php echo ($_info["description"]); ?>');
+            $("#inp_limitnum").numberbox('setValue', '{$_info.limit_num}');
+            $("#inp_telno").textbox('setValue', '{$_info.tel_no}');
+            $("#inp_address").textbox('setValue', '{$_info.address}');
+            $("#inp_desc").textbox('setValue', '{$_info.description}');
 
         }
 
-        if ('<?php echo ($_type); ?>' == '编辑') {
+        if ('{$_type}' == '编辑') {
             fillForm();
         }
         else{
@@ -217,3 +217,4 @@
 
 
 </script>
+
