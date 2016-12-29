@@ -6,10 +6,6 @@
  * Time: 10:38
  */
 
-define('C_DB_HOST','localhost');
-define('C_DB_GMS','TobaccoGms1');
-define('C_DB_GMS_USER','root');
-define('C_DB_GMS_PWD','tianxunceshi');
 
 //define('C_DB_GPS','CourtGps');
 //define('C_DB_GPS_USER','root');

@@ -6,7 +6,5 @@
  * Time: 19:04
  */
 
-define('APP_ENV','dev');
-//define('APP_ENV','dev');
-//define('APP_ENV','product');
+define('APP_ENV','local');
 require_once "./Constant/load_constant_config.php";

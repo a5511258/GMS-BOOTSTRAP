@@ -2234,7 +2234,7 @@ if (typeof jQuery === 'undefined') {
   // ============================================================
 
   function transitionEnd() {
-    var el = document.createElement('bootstrap')
+    var el = document.createElement('Bootstrap')
 
     var transEndEventNames = {
       WebkitTransition : 'webkitTransitionEnd',

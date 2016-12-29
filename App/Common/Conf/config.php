@@ -25,7 +25,9 @@ return array(
 	'SOFT_AUTHOR_QQ'=>'912524639',
 	'SOFT_AUTHOR_EMAIL'=>'912524639@QQ.COM',
 	'SOFT_AUTHOR_SITE'=>'http://51zsqc.com',
+//    'WEB_SITE_TITLE' => 'GMS管理系统',
 
+    //默认数据库配置
 	/* 数据库设置 */
 	'DB_TYPE' => 'mysql', // 数据库类型
 	'DB_HOST' => C_DB_HOST, // 服务器地址
@@ -47,82 +49,6 @@ return array(
 	'DB_SQL_LOG' => true, // SQL执行日志记录
 	'DB_BIND_PARAM' => false, // 数据库写入数据自动参数绑定
 
-	/**
-	 * 用来用在Auth类，权限验证中.Common\Libs\Auth
-	 */
-//	'DB_CONFIG1' =>array(
-//		/* 数据库设置 */
-//		'DB_TYPE' => 'mysql', // 数据库类型
-//		'DB_HOST' => C_DB_HOST, // 服务器地址
-//		'DB_NAME' => 'YanCaoSafe', // 数据库名
-//		'DB_USER' => 'root', // 用户名
-//		'DB_PWD' => 'tianxunceshi', // 密码
-//		'DB_PORT' => '3306', // 端口
-//		'DB_PREFIX' => 'cms_', // 数据库表前缀
-//		'DB_FIELDTYPE_CHECK' => true, // 是否进行字段类型检查
-//		'DB_FIELDS_CACHE' => true, // 启用字段缓存
-//		'DB_CHARSET' => 'utf8', // 数据库编码默认采用utf8
-//		'DB_DEPLOY_TYPE' => 0, // 数据库部署方式:0 集中式(单一服务器),1 分布式(主从服务器)
-//		'DB_RW_SEPARATE' => false, // 数据库读写是否分离 主从式有效
-//		'DB_MASTER_NUM' => 1, // 读写分离后 主服务器数量
-//		'DB_SLAVE_NO' => '', // 指定从服务器序号
-//		'DB_SQL_BUILD_CACHE' => false, // 数据库查询的SQL创建缓存
-//		'DB_SQL_BUILD_QUEUE' => 'file', // SQL缓存队列的缓存方式 支持 file xcache和apc
-//		'DB_SQL_BUILD_LENGTH' => 20, // SQL缓存的队列长度
-//		'DB_SQL_LOG' => true, // SQL执行日志记录
-//		'DB_BIND_PARAM' => false, // 数据库写入数据自动参数绑定
-//	),
-
-	/**
-	 * 用来用在终端车辆
-	 */
-	'DB_CONFIG1' =>array(
-		/* 数据库设置 */
-		'DB_TYPE' => 'mysql', // 数据库类型
-		'DB_HOST' => C_DB_HOST, // 服务器地址
-		'DB_NAME' => 'TobaccoTerminal', // 数据库名
-		'DB_USER' => 'root', // 用户名
-		'DB_PWD' => 'tianxunceshi', // 密码
-		'DB_PORT' => '3306', // 端口
-		'DB_PREFIX' => '', // 数据库表前缀
-		'DB_FIELDTYPE_CHECK' => true, // 是否进行字段类型检查
-		'DB_FIELDS_CACHE' => true, // 启用字段缓存
-		'DB_CHARSET' => 'utf8', // 数据库编码默认采用utf8
-		'DB_DEPLOY_TYPE' => 0, // 数据库部署方式:0 集中式(单一服务器),1 分布式(主从服务器)
-		'DB_RW_SEPARATE' => false, // 数据库读写是否分离 主从式有效
-		'DB_MASTER_NUM' => 1, // 读写分离后 主服务器数量
-		'DB_SLAVE_NO' => '', // 指定从服务器序号
-		'DB_SQL_BUILD_CACHE' => false, // 数据库查询的SQL创建缓存
-		'DB_SQL_BUILD_QUEUE' => 'file', // SQL缓存队列的缓存方式 支持 file xcache和apc
-		'DB_SQL_BUILD_LENGTH' => 20, // SQL缓存的队列长度
-		'DB_SQL_LOG' => true, // SQL执行日志记录
-		'DB_BIND_PARAM' => false, // 数据库写入数据自动参数绑定
-	),
-	/**
-	 * 红树林数据库
-	 */
-	'DB_CONFIG2' =>array(
-		/* 数据库设置 */
-		'DB_TYPE' => 'mysql', // 数据库类型
-		'DB_HOST' => C_DB_HOST, // 服务器地址
-		'DB_NAME' => 'mvsp2', // 数据库名
-		'DB_USER' => 'root', // 用户名tx
-		'DB_PWD' => '', // 密码
-		'DB_PORT' => '3307', // 端口
-		'DB_PREFIX' => 'tx', // 数据库表前缀
-		'DB_FIELDTYPE_CHECK' => true, // 是否进行字段类型检查
-		'DB_FIELDS_CACHE' => true, // 启用字段缓存
-		'DB_CHARSET' => 'utf8', // 数据库编码默认采用utf8
-		'DB_DEPLOY_TYPE' => 0, // 数据库部署方式:0 集中式(单一服务器),1 分布式(主从服务器)
-		'DB_RW_SEPARATE' => false, // 数据库读写是否分离 主从式有效
-		'DB_MASTER_NUM' => 1, // 读写分离后 主服务器数量
-		'DB_SLAVE_NO' => '', // 指定从服务器序号
-		'DB_SQL_BUILD_CACHE' => false, // 数据库查询的SQL创建缓存
-		'DB_SQL_BUILD_QUEUE' => 'file', // SQL缓存队列的缓存方式 支持 file xcache和apc
-		'DB_SQL_BUILD_LENGTH' => 20, // SQL缓存的队列长度
-		'DB_SQL_LOG' => true, // SQL执行日志记录
-		'DB_BIND_PARAM' => false, // 数据库写入数据自动参数绑定
-	),
 	/* 数据缓存设置 */
 	'DATA_CACHE_TIME' => 0, // 数据缓存有效期 0表示永久缓存
 	'DATA_CACHE_COMPRESS' => false, // 数据缓存是否压缩缓存
@@ -177,6 +103,17 @@ return array(
 	'TMPL_DETECT_THEME' => false, // 自动侦测模板主题
 	'TMPL_TEMPLATE_SUFFIX' => '.html', // 默认模板文件后缀
 	'TMPL_FILE_DEPR' => '/', // 模板文件CONTROLLER_NAME与ACTION_NAME之间的分割符
+
+
+    /* 模板相关配置 */
+    'TMPL_PARSE_STRING' => array(
+        '__STATIC__' => __ROOT__ . '/Public/Static',
+        '__IMG__' => __ROOT__ . '/Public/Admin/images',
+        '__CSS__' => __ROOT__ . '/Public/Admin/css',
+        '__JS__' => __ROOT__ . '/Public/Admin/js',
+        '__SERVICE_CSS__' => __ROOT__ . '/Public/Service/css',
+        '__SERVICE_IMG__' => __ROOT__ . '/Public/Service/img',
+    ),
 	
 	// 布局设置
 	'TMPL_ENGINE_TYPE' => 'Think', // 默认模板引擎 以下设置仅对使用Think模板引擎有效
@@ -223,32 +160,7 @@ return array(
 			'pictures'=>array('type'=>'pictures','title'=>'图片','field'=>array('varchar(80) NOT NULL')),
 			'files'=>array('type'=>'files','title'=>'附件','field'=>array('varchar(80) NOT NULL'))
 	),
-//	1 000 000 000
-	'MAX_VEHICLE_NUMBER' => 1000000000,
 
-	//'配置项'=>'配置值'
-	/* 数据库设置 */
-	DB_CONFIG_NAME_GPS=>array(
-		'DB_TYPE' => 'mysql', // 数据库类型
-		'DB_HOST' => C_DB_HOST, // 服务器地址
-		'DB_NAME' => C_DB_GPS, // 数据库名
-		'DB_USER' => C_DB_GPS_USER, // 用户名
-		'DB_PWD' =>  C_DB_GPS_PWD, // 密码
-		'DB_PORT' => '3306', // 端口
-		'DB_PREFIX' => '', // 数据库表前缀
-		'DB_FIELDTYPE_CHECK' => true, // 是否进行字段类型检查
-		'DB_FIELDS_CACHE' => true, // 启用字段缓存
-		'DB_CHARSET' => 'utf8', // 数据库编码默认采用utf8
-		'DB_DEPLOY_TYPE' => 0, // 数据库部署方式:0 集中式(单一服务器),1 分布式(主从服务器)
-		'DB_RW_SEPARATE' => false, // 数据库读写是否分离 主从式有效
-		'DB_MASTER_NUM' => 1, // 读写分离后 主服务器数量
-		'DB_SLAVE_NO' => '', // 指定从服务器序号
-		'DB_SQL_BUILD_CACHE' => false, // 数据库查询的SQL创建缓存
-		'DB_SQL_BUILD_QUEUE' => 'file', // SQL缓存队列的缓存方式 支持 file xcache和apc
-		'DB_SQL_BUILD_LENGTH' => 20, // SQL缓存的队列长度
-		'DB_SQL_LOG' => true, // SQL执行日志记录
-		'DB_BIND_PARAM' => false, // 数据库写入数据自动参数绑定
-	),
 	DB_CONFIG_NAME_GMS=>array(
 		/* 数据库设置 */
 		'DB_TYPE' => 'mysql', // 数据库类型
@@ -270,24 +182,6 @@ return array(
 		'DB_SQL_BUILD_LENGTH' => 20, // SQL缓存的队列长度
 		'DB_SQL_LOG' => true, // SQL执行日志记录
 		'DB_BIND_PARAM' => false, // 数据库写入数据自动参数绑定
-	),
-	DB_CONFIG_NAME_KEDA_KDMAAA=>array(
-		/* 数据库设置 */
-		'DB_TYPE' => 'mysql', // 数据库类型
-		'DB_HOST' => C_DB_KEDA_HOST, // 服务器地址
-		'DB_NAME' => C_DB_KEDA_DB_KDMAAA, // 数据库名
-		'DB_USER' => C_DB_KEDA_USER, // 用户名
-		'DB_PWD' =>  C_DB_KEDA_PWD, // 密码
-		'DB_PORT' => '3306', // 端口
-	),
-	DB_CONFIG_NAME_KEDA_MPS=>array(
-		/* 数据库设置 */
-		'DB_TYPE' => 'mysql', // 数据库类型
-		'DB_HOST' => C_DB_KEDA_HOST, // 服务器地址
-		'DB_NAME' => C_DB_KEDA_DB_MPS, // 数据库名
-		'DB_USER' => C_DB_KEDA_USER, // 用户名
-		'DB_PWD' =>  C_DB_KEDA_PWD, // 密码
-		'DB_PORT' => '3306', // 端口
 	),
 
 );

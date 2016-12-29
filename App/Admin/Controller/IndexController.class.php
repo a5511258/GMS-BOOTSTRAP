@@ -1,6 +1,7 @@
 <?php
 
 namespace Admin\Controller;
+use Common\Libs\Dir;
 
 /**
  * 后台首页控制器
@@ -29,7 +30,7 @@ class IndexController extends AdminCoreController {
     public function cache() {
         if (isset($_GET['type'])) {
 			//设置Dir类
-			$Dir = new \Common\Libs\Dir();
+			$Dir = new Dir();
 			//设置缓存模型
             $cache = D('Common/Cache');
 			//获取当前更新类型
