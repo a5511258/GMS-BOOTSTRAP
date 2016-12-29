@@ -1,60 +1,43 @@
 <extend name="Public/base"/>
 <block name="body">
-    <css href="Public/Admin/css/login.css" />
+    <php>$bjsj=rand(1,4);</php>
+    <css href="Public/Admin/css/login.css"/>
+    <!--随机背景图片-->
     <style>
-        .bg{position: absolute;right: 0px;top: 0px;bottom: 0px;left: 0px;-moz-background-size: 100% 100%;-o-background-size: 100% 100%;-webkit-background-size: 100% 100%;-ms-background-size: 100% 100%;background-size: 100% 100%;filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";background-image:url(./Public/Admin/images/Login/bg_3.jpg);background-size: cover}
+        .bg{
+            background-image:url(./Public/Admin/images/Login/bg_{$bjsj}.jpg);
+        }
     </style>
     <body class="bg">
     <div class="login_box">
         <div class="login_title">
             <div class="logo">{:C('SOFT_NAME')}</div>
-            <div class="info">—— V {:C('SOFT_VERSION')}</div>
+            <!--<div class="info">—— V {:C('SOFT_VERSION')}</div>-->
         </div>
-        <div class="login_form" style="">
+        <div class="login_form">
             <form class="form-horizontal" role="form">
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
                     <div class="col-sm-10">
-                        <input type="email" style="height:33px;width: 280px" class="form-control" id="inputEmail3" placeholder="用户名">
+                        <input type="text" style="height:33px;width: 280px" class="form-control" id="inputEmail3"
+                               placeholder="用户名">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">密码&nbsp</label>
                     <div class="col-sm-10">
-                        <input type="password" style="height:33px;width: 280px" class="form-control" id="inputPassword3" placeholder="密码">
+                        <input type="password" style="height:33px;width: 280px" class="form-control" id="inputPassword3"
+                               placeholder="密码">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default">登录</button>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">登录</button>
                     </div>
+
                 </div>
             </form>
         </div>
-
-        <!--<form id="login_form">-->
-            <!--<div class="form">-->
-                <!--<div class="inputs">-->
-                    <!--<div><span>用户名：</span>-->
-                        <!--<input id="username" name="username" class="easyui-textbox" data-options="prompt:'请输入用户名';" style="height:33px;" type="text">-->
-                    <!--</div>-->
-                    <!--<div><span>密码：</span>-->
-                        <!--<input id="password" name="password" class="easyui-textbox" style="height:33px;" type="password">-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div style="text-align: center;padding-top: 6px">-->
-                    <!--<a id="submit" style="width: 150px;height: 36px;background-color: #6FA5DB;color: white" class="easyui-linkbutton" onclick="login()"-->
-                       <!--data-options="plain:true,">登 录</a>-->
-                    <!--&lt;!&ndash;<input type="checkbox" class="checkbox" name="rember_password" id="rm" checked="checked">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<label for="rm" style="color:#999">记住密码</label>&ndash;&gt;-->
-                <!--</div>-->
-
-                <!--&lt;!&ndash;<div class="msg"></div>&ndash;&gt;-->
-                <!--&lt;!&ndash;<div style="clear:both;"></div>&ndash;&gt;-->
-                <!--&lt;!&ndash;<div class="extend"> <a href="http://wpa.qq.com/msgrd?v=3&uin={:C('ADMIN_QQ')}&site=qq&menu=yes" target="_blank">联系管理员</a></div>&ndash;&gt;-->
-
-            <!--</div>-->
-        <!--</form>-->
     </div>
     </body>
 </block>

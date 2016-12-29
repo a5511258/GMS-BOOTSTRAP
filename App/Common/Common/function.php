@@ -834,3 +834,11 @@ function p($data)
     echo "<pre>";
     print_r($data);
 }
+function successData($data){
+    $res['Code'] = 200;
+    $res['Data'] = $data;
+}
+function errorData($msg){
+    $res['Code'] = 400;
+    $res['Msg'] = $msg;
+}

@@ -1,2 +1,5 @@
 .idea/copyright/profiles_settings.xml
 .idea/modules.xml
+.idea/workspace.xml
+*.log
+Runtime/Cache/Admin/7c89c4e03b5756e9b4543663c7c8599d.php
