@@ -7,20 +7,15 @@ class AdminCoreController extends CoreController {
     protected function _initialize() {
 		//继承CoreController的初始化函数
         parent::_initialize();
-		$AUTH_KEY=session(C('AUTH_KEY'));
-		//判断认证key如果小于1 或 Admin模块登录Key不为1，跳转到后台登录网关
-		if( $AUTH_KEY < 1 ) {
-			redirect(U(C('AUTH_USER_GATEWAY')));
-		}else{
-//			if(!in_array($this->UserInfo['group_id'],array(1,2)) && !(in_array ( session ( C ( 'AUTH_KEY' ) ), C ( 'AUTH_ADMIN' ) ))){
-//				$this->error ( '你不是管理员组用户所以无法登录！' ,U('Public/login'));
-//			}
-			//判断当前模块是否为非认证模块
-			$Auth_Rule = MODULE_NAME . '/' . CONTROLLER_NAME . '/' . ACTION_NAME;
-			if (!Is_Auth($Auth_Rule)) {
-				$this->error ( '你没有权限进行 ' . $Auth_Rule . ' 操作！' );
-			}
-		}
+        if(is_login()){
+            //判断当前模块是否为非认证模块
+            $Auth_Rule = MODULE_NAME . '/' . CONTROLLER_NAME . '/' . ACTION_NAME;
+            if (!Is_Auth($Auth_Rule)) {
+                $this->error ( '你没有权限进行 ' . $Auth_Rule . ' 操作！' );
+            }
+        }else{
+            redirect(U(C('AUTH_USER_GATEWAY')));
+        }
 	}
 
 	//后台菜单

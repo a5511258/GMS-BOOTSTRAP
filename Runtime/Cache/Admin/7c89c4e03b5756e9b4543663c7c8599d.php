@@ -1,14 +1,37 @@
-<extend name="Public/base"/>
-<block name="body">
-    <css href="Public/Admin/css/login.css" />
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> <?php echo C('SOFT_NAME');?>|Gms管理系统</title>
+    <link href="__IMG__/favicon.ico" mce_href="__IMG__/favicon.ico" rel="bookmark" type="image/x-icon" /> 
+    <link href="__IMG__/favicon.ico" mce_href="__IMG__/favicon.ico" rel="icon" type="image/x-icon" /> 
+    <link href="__IMG__/favicon.ico" mce_href="__IMG__/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="/GMS-BOOTSTRAP/Public/Static/Bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/GMS-BOOTSTRAP/Public/Static/Font/iconfont.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/GMS-BOOTSTRAP/Public/Static/Bootstrap/js/html5shiv.min.js"></script>
+    <script src="/GMS-BOOTSTRAP/Public/Static/Bootstrap/js/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/GMS-BOOTSTRAP/Public/Static/Jquery/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/GMS-BOOTSTRAP/Public/Static/Bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <link rel="stylesheet" type="text/css" href="Public/Admin/css/login.css" />
     <style>
         .bg{position: absolute;right: 0px;top: 0px;bottom: 0px;left: 0px;-moz-background-size: 100% 100%;-o-background-size: 100% 100%;-webkit-background-size: 100% 100%;-ms-background-size: 100% 100%;background-size: 100% 100%;filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";background-image:url(./Public/Admin/images/Login/bg_3.jpg);background-size: cover}
     </style>
     <body class="bg">
     <div class="login_box">
         <div class="login_title">
-            <div class="logo">{:C('SOFT_NAME')}</div>
-            <div class="info">—— V {:C('SOFT_VERSION')}</div>
+            <div class="logo"><?php echo C('SOFT_NAME');?></div>
+            <div class="info">—— V <?php echo C('SOFT_VERSION');?></div>
         </div>
         <div class="login_form" style="">
             <form class="form-horizontal" role="form">
@@ -51,10 +74,12 @@
 
                 <!--&lt;!&ndash;<div class="msg"></div>&ndash;&gt;-->
                 <!--&lt;!&ndash;<div style="clear:both;"></div>&ndash;&gt;-->
-                <!--&lt;!&ndash;<div class="extend"> <a href="http://wpa.qq.com/msgrd?v=3&uin={:C('ADMIN_QQ')}&site=qq&menu=yes" target="_blank">联系管理员</a></div>&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="extend"> <a href="http://wpa.qq.com/msgrd?v=3&uin=<?php echo C('ADMIN_QQ');?>&site=qq&menu=yes" target="_blank">联系管理员</a></div>&ndash;&gt;-->
 
             <!--</div>-->
         <!--</form>-->
     </div>
     </body>
-</block>
+
+</body>
+</html>

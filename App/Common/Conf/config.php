@@ -18,14 +18,24 @@ return array(
 	'DEFAULT_JSONP_HANDLER' => 'jsonpReturn', // 默认JSONP格式返回的处理方法
 	'DEFAULT_FILTER' => 'htmlspecialchars', // 默认参数过滤方法 用于I函数...
 	
-	'SOFT_NAME'=>'内蒙古高院车辆管理系统',
-	'SOFT_SITE'=>'http://51zsqc.com',
+	'SOFT_NAME'=>'GMS_Base',
+	'SOFT_SITE'=>'',
 	'SOFT_VERSION'=>'1.0',
-	'SOFT_AUTHOR'=>'天迅科技',
-	'SOFT_AUTHOR_QQ'=>'912524639',
-	'SOFT_AUTHOR_EMAIL'=>'912524639@QQ.COM',
-	'SOFT_AUTHOR_SITE'=>'http://51zsqc.com',
-//    'WEB_SITE_TITLE' => 'GMS管理系统',
+	'SOFT_AUTHOR'=>'',
+	'SOFT_AUTHOR_QQ'=>'',
+	'SOFT_AUTHOR_EMAIL'=>'',
+	'SOFT_AUTHOR_SITE'=>'',
+
+    'WEB_CONFIG' =>array(
+        //网站标题
+        'WEB_SITE_TITLE' => 'GMS_Base',
+        //0:纯色|1:根据值|2:随机（1-5）
+        'WEB_LOGIN_BG_TYPE' => 2,
+        //后台登录背景图片路径
+        'WEB_LOGIN_BG_IMG' => './Public/Admin/images/Login/bg_1.jpg',
+        //后台记住密码时间
+        'WEB_REMIND_ME' => 3600
+    ),
 
     //默认数据库配置
 	/* 数据库设置 */
@@ -107,12 +117,7 @@ return array(
 
     /* 模板相关配置 */
     'TMPL_PARSE_STRING' => array(
-        '__STATIC__' => __ROOT__ . '/Public/Static',
-        '__IMG__' => __ROOT__ . '/Public/Admin/images',
-        '__CSS__' => __ROOT__ . '/Public/Admin/css',
-        '__JS__' => __ROOT__ . '/Public/Admin/js',
-        '__SERVICE_CSS__' => __ROOT__ . '/Public/Service/css',
-        '__SERVICE_IMG__' => __ROOT__ . '/Public/Service/img',
+        '__STATIC__' => __ROOT__ . '/Public/Static'
     ),
 	
 	// 布局设置
