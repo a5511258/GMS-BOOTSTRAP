@@ -4,8 +4,8 @@
     <css href="Public/Admin/css/login.css"/>
     <!--随机背景图片-->
     <style>
-        .bg{
-            background-image:url(./Public/Admin/images/Login/bg_{$bjsj}.jpg);
+        .bg {
+            background-image: url(./Public/Admin/images/Login/bg_{$bjsj}.jpg);
         }
     </style>
     <body class="bg">
@@ -15,29 +15,36 @@
             <!--<div class="info">—— V {:C('SOFT_VERSION')}</div>-->
         </div>
         <div class="login_form">
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" method="post" onsubmit="visibleForm()">
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">用户名</label>
+                    <label for="inpUser" class="col-sm-2 control-label">用户名</label>
                     <div class="col-sm-10">
-                        <input type="text" style="height:33px;width: 280px" class="form-control" id="inputEmail3"
-                               placeholder="用户名">
+                        <input id="userTip" type="text" class="form-control"
+                               id="inpUser" placeholder="用户名" data-toggle="tooltip"
+                               title="adsfasdfs" data-placement="bottom"
+                               data-animation="">
+                        <!-- HTML to write -->
+                        <!--<a  href="#" >-->
+
+                        <!--</a>-->
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">密码&nbsp</label>
+                    <label for="inpPwd" class="col-sm-2 control-label">密码&nbsp</label>
                     <div class="col-sm-10">
-                        <input type="password" style="height:33px;width: 280px" class="form-control" id="inputPassword3"
+                        <input type="password" class="form-control" id="inpPwd"
                                placeholder="密码">
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-primary btn-lg btn-block">登录</button>
+                    <div class="col-sm-offset-3 col-sm-10">
+                        <button type="button" id="loginButton" class="btn btn-primary btn-lg btn-block">登录</button>
                     </div>
 
                 </div>
             </form>
         </div>
     </div>
+    <js href="Public/Admin/js/login.js"/>
     </body>
 </block>

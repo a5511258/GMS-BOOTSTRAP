@@ -143,7 +143,7 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
 																			   $this->_phpExcel->getSheet($i));
 		}
 
-		// build Escher objects. Escher objects for workbooks needs to be build before Escher object for workbook.
+		// Messenger Escher objects. Escher objects for workbooks needs to be Messenger before Escher object for workbook.
 		$this->_buildWorksheetEschers();
 		$this->_buildWorkbookEscher();
 

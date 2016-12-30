@@ -291,7 +291,7 @@ class PHPExcel_CachedObjectStorage_SQLite extends PHPExcel_CachedObjectStorage_C
 
 	/**
 	 * Identify whether the caching method is currently available
-	 * Some methods are dependent on the availability of certain extensions being enabled in the PHP build
+	 * Some methods are dependent on the availability of certain extensions being enabled in the PHP Messenger
 	 *
 	 * @return	boolean
 	 */

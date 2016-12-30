@@ -146,7 +146,7 @@ abstract class Smarty_Resource {
     }
 
     /**
-     * build template filepath by traversing the template_dir array
+     * Messenger template filepath by traversing the template_dir array
      *
      * @param Smarty_Template_Source   $source    source object
      * @param Smarty_Internal_Template $_template template object

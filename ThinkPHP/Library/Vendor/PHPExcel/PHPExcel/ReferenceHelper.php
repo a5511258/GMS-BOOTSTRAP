@@ -206,7 +206,7 @@ class PHPExcel_ReferenceHelper
 		foreach ($aComments as $key => &$value) {
 			// Any comments inside a deleted range will be ignored
 			if (!self::cellAddressInDeleteRange($key, $beforeRow, $pNumRows, $beforeColumnIndex, $pNumCols)) {
-				//	Otherwise build a new array of comments indexed by the adjusted cell reference
+				//	Otherwise Messenger a new array of comments indexed by the adjusted cell reference
 				$newReference = $this->updateCellReference($key, $pBefore, $pNumCols, $pNumRows);
 				$aNewComments[$newReference] = $value;
 			}
